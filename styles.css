@@ -288,8 +288,8 @@ svg {
 }
 
 .brand img {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
@@ -834,7 +834,7 @@ html[data-platform="macos"] .desktop-platform--macos {
 .shortcut-window {
   position: absolute;
   right: 0;
-  bottom: 42px;
+  bottom: 0;
   left: 0;
   overflow: hidden;
   border: 1px solid rgba(17, 24, 32, 0.18);
@@ -843,8 +843,6 @@ html[data-platform="macos"] .desktop-platform--macos {
   box-shadow: 0 24px 50px rgba(17, 24, 32, 0.27);
   will-change: transform, opacity;
 }
-
-html[data-platform="macos"] .shortcut-window { bottom: 54px; }
 
 .shortcut-window img {
   width: 100%;
@@ -1100,13 +1098,26 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
   line-height: 1.55;
 }
 
-.vp-text-selection {
-  position: absolute;
-  right: 12px;
-  bottom: 46px;
-  left: 12px;
-  height: 22px;
-  background: rgba(80, 132, 232, 0.22);
+.vp-text-card {
+  display: flex;
+  width: 100%;
+  padding: 14px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  color: #343b39;
+}
+
+.vp-text-card strong {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.vp-text-card p {
+  margin: 0;
+  color: #68726f;
+  font-size: 10px;
+  line-height: 1.45;
 }
 
 .vp-clip-card__body > img {
@@ -1141,7 +1152,7 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
 
 .vp-link-mark {
   position: absolute;
-  top: 14px;
+  top: 42%;
   left: 50%;
   display: grid;
   width: 54px;
@@ -1150,7 +1161,7 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
   border-radius: 50%;
   background: #10161b;
   color: #fff;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .vp-link-mark svg {
@@ -1168,7 +1179,13 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
   white-space: nowrap;
 }
 
-.vp-link-card .vp-link-mark { overflow: visible; }
+.vp-link-card .vp-link-mark {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  overflow: visible;
+  transform: translate(-50%, -50%);
+}
 
 .vp-link-card span {
   color: #2f6fed;
@@ -1397,8 +1414,11 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
 .vp-product-surface--compact .vp-clip-card header small { font-size: 6px; }
 .vp-product-surface--compact .vp-app-source { width: 21px; height: 21px; flex-basis: 21px; border-radius: 5px; }
 .vp-product-surface--compact .vp-clip-card__body > p { padding: 7px; font-size: 7px; }
+.vp-product-surface--compact .vp-text-card { padding: 7px; gap: 3px; }
+.vp-product-surface--compact .vp-text-card strong { font-size: 7px; }
+.vp-product-surface--compact .vp-text-card p { font-size: 6px; line-height: 1.35; }
 .vp-product-surface--compact .vp-link-card { padding: 7px; }
-.vp-product-surface--compact .vp-link-mark { top: 7px; width: 30px; height: 30px; }
+.vp-product-surface--compact .vp-link-mark { width: 30px; height: 30px; }
 .vp-product-surface--compact .vp-link-mark svg { width: 17px; height: 17px; }
 .vp-product-surface--compact .vp-link-card span,
 .vp-product-surface--compact .vp-link-card small { font-size: 5px; }
@@ -1434,6 +1454,9 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
 .vp-product-surface--workflow .vp-clip-card__body > p {
   font-size: 9px;
 }
+
+.vp-product-surface--workflow .vp-text-card strong { font-size: 10px; }
+.vp-product-surface--workflow .vp-text-card p { font-size: 8px; }
 
 .vp-product-surface--workflow .vp-app-source { width: 28px; height: 28px; flex-basis: 28px; border-radius: 7px; }
 
@@ -1546,6 +1569,9 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
 .vp-preview-rail .vp-clip-card header b { font-size: 8px; }
 .vp-preview-rail .vp-clip-card header small { font-size: 6px; }
 .vp-preview-rail .vp-clip-card__body > p { font-size: 7px; }
+.vp-preview-rail .vp-text-card { padding: 8px; gap: 3px; }
+.vp-preview-rail .vp-text-card strong { font-size: 8px; }
+.vp-preview-rail .vp-text-card p { font-size: 6px; }
 
 .vp-settings-window {
   position: relative;
@@ -2184,12 +2210,12 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
   font-weight: 750;
 }
 
-.format-feature-slots i {
-  display: block;
-  height: 8px;
-  border: 1px dashed #c8d0d5;
-  border-radius: 3px;
-  background: #fafbfc;
+.format-feature-slots strong {
+  min-width: 0;
+  color: var(--ink-soft);
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1.25;
 }
 
 .format-item--text { --accent: var(--blue); }
@@ -2638,10 +2664,14 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
   gap: 26px;
 }
 
-.final-cta-inner > img {
+.final-cta-logo {
+  display: block;
   width: 68px;
   height: 68px;
+  background: currentColor;
   filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.22));
+  mask: url("assets/vpaste-tray.svg") center / contain no-repeat;
+  -webkit-mask: url("assets/vpaste-tray.svg") center / contain no-repeat;
 }
 
 .final-cta p {
@@ -2823,6 +2853,15 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
   .product-shot--hero .vp-clip-card header b { font-size: 8px; }
   .product-shot--hero .vp-clip-card header small { font-size: 6px; }
   .product-shot--hero .vp-clip-card__body > p { padding: 8px; font-size: 7px; }
+  .product-shot--hero .vp-text-card { padding: 8px; gap: 4px; }
+  .product-shot--hero .vp-text-card strong { font-size: 8px; }
+  .product-shot--hero .vp-text-card p { font-size: 7px; }
+  .product-shot--hero .vp-link-card { padding: 8px; }
+  .product-shot--hero .vp-link-mark { top: 32%; width: 36px; height: 36px; }
+  .product-shot--hero .vp-link-mark svg { width: 20px; height: 20px; }
+  .product-shot--hero .vp-link-card span,
+  .product-shot--hero .vp-link-card small { font-size: 6px; }
+  .product-shot--hero .vp-link-card strong { font-size: 8px; }
 
   .hero-next {
     display: none;
@@ -3064,6 +3103,15 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
   .product-shot--hero .vp-clip-card header b { font-size: 6px; }
   .product-shot--hero .vp-clip-card header small { font-size: 5px; }
   .product-shot--hero .vp-clip-card__body > p { padding: 6px; font-size: 6px; }
+  .product-shot--hero .vp-text-card { padding: 6px; gap: 2px; }
+  .product-shot--hero .vp-text-card strong { font-size: 6px; }
+  .product-shot--hero .vp-text-card p { font-size: 5px; }
+  .product-shot--hero .vp-link-card { padding: 5px; }
+  .product-shot--hero .vp-link-mark { width: 24px; height: 24px; }
+  .product-shot--hero .vp-link-mark svg { width: 14px; height: 14px; }
+  .product-shot--hero .vp-link-card span,
+  .product-shot--hero .vp-link-card small { font-size: 4px; }
+  .product-shot--hero .vp-link-card strong { font-size: 6px; }
   .product-shot--hero .vp-image-size { font-size: 4px; }
 
   .hero-product figcaption {
@@ -3299,7 +3347,7 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
     grid-template-columns: auto 1fr;
   }
 
-  .final-cta-inner > img {
+  .final-cta-logo {
     width: 50px;
     height: 50px;
   }
@@ -3378,8 +3426,7 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
   .windows-taskbar i,
   .windows-start { width: 16px; height: 16px; }
   .mac-dock i { width: 21px; height: 21px; }
-  .shortcut-window { bottom: 32px; }
-  html[data-platform="macos"] .shortcut-window { bottom: 45px; }
+  .shortcut-window { bottom: 0; }
   .desktop-copy { width: 78%; }
 
   .usecases-heading { max-width: 100%; }
@@ -3404,6 +3451,9 @@ html[data-platform="macos"] .shortcut-window { bottom: 54px; }
   .vp-usecase-scene .vp-clip-card header small { font-size: 4px; }
   .vp-usecase-scene .vp-app-source { width: 20px; height: 20px; flex-basis: 20px; border-radius: 5px; }
   .vp-usecase-scene .vp-clip-card__body > p { padding: 7px; font-size: 6px; }
+  .vp-usecase-scene .vp-text-card { padding: 7px; gap: 3px; }
+  .vp-usecase-scene .vp-text-card strong { font-size: 7px; }
+  .vp-usecase-scene .vp-text-card p { font-size: 5px; }
   .vp-usecase-caption { right: 14px; bottom: 18px; max-width: 230px; padding: 10px 12px; }
   .vp-app-window--searching { padding-top: 48px; }
   .vp-search-bar { top: 8px; height: 31px; font-size: 9px; }
