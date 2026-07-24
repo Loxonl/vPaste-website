@@ -533,41 +533,6 @@ svg {
   transform-origin: center bottom;
 }
 
-.hero-product figcaption {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 650;
-  text-transform: uppercase;
-}
-
-.hero-product figcaption span:first-child {
-  color: var(--ink-soft);
-}
-
-.hero-next {
-  position: absolute;
-  z-index: 2;
-  right: 24px;
-  bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--muted);
-  font-size: 9px;
-  font-weight: 800;
-}
-
-.hero-next svg {
-  width: 14px;
-  height: 14px;
-  margin-left: 5px;
-}
-
 .shortcut-section {
   min-height: 1020px;
   background: #eef1f3;
@@ -833,6 +798,7 @@ html[data-platform="macos"] .desktop-platform--macos {
 
 .shortcut-window {
   position: absolute;
+  z-index: 4;
   right: 0;
   bottom: 0;
   left: 0;
@@ -876,6 +842,10 @@ html[data-platform="macos"] .desktop-platform--macos {
   --vp-card-width: 208px;
   --vp-card-height: 226px;
   --vp-card-header: 48px;
+  --vp-source-frame: 60px;
+  --vp-source-height: 58px;
+  --vp-source-icon: 54px;
+  --vp-source-offset: -4px;
   min-width: 0;
   min-height: var(--vp-app-height);
   overflow: hidden;
@@ -1026,7 +996,7 @@ html[data-platform="macos"] .desktop-platform--macos {
   min-height: var(--vp-card-header);
   align-items: center;
   justify-content: space-between;
-  padding: 6px 11px;
+  padding: 6px calc(var(--vp-source-frame) - 2px) 6px 11px;
   overflow: hidden;
   color: #fff;
 }
@@ -1051,21 +1021,29 @@ html[data-platform="macos"] .desktop-platform--macos {
 }
 
 .vp-app-source {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
-  place-items: center;
+  position: absolute;
+  top: var(--vp-source-offset);
+  right: var(--vp-source-offset);
+  display: flex;
+  width: var(--vp-source-frame);
+  height: var(--vp-source-height);
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  border-radius: 9px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 4px 10px rgba(14, 35, 49, 0.18);
+  opacity: 0.92;
+  filter: drop-shadow(-8px 8px 16px rgba(0, 0, 0, 0.18));
+}
+
+.vp-app-source--word {
+  filter: none;
 }
 
 .vp-app-source img {
-  width: 100%;
-  height: 100%;
+  width: var(--vp-source-icon);
+  height: var(--vp-source-icon);
   object-fit: contain;
+  transform: translateX(3px) scale(1.14);
+  transform-origin: center;
 }
 
 .vp-clip-card--text header { background: #4caf50; }
@@ -1075,6 +1053,7 @@ html[data-platform="macos"] .desktop-platform--macos {
 .vp-clip-card--link header { background: linear-gradient(135deg, #2f6fed, #66c2ff); }
 .vp-clip-card--file header { background: #00aebe; }
 .vp-clip-card--color header { background: #2196f3; }
+.vp-clip-card--rich header { background: #107c41; }
 .vp-clip-card--code header { background: #596272; }
 .vp-clip-card--reply header { background: #3a9b68; }
 .vp-clip-card--address header { background: #7e6db0; }
@@ -1118,6 +1097,54 @@ html[data-platform="macos"] .desktop-platform--macos {
   color: #68726f;
   font-size: 10px;
   line-height: 1.45;
+}
+
+.vp-rich-card {
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  background: #fff;
+  color: #25332b;
+}
+
+.vp-rich-card table {
+  width: 280px;
+  min-width: 280px;
+  border-collapse: collapse;
+  font-size: 8px;
+  line-height: 1.25;
+  table-layout: auto;
+}
+
+.vp-rich-card th,
+.vp-rich-card td {
+  padding: 7px 8px;
+  border: 1px solid #c6d4cb;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.vp-rich-card th {
+  background: #dff1e6;
+  color: #185c37;
+  font-weight: 760;
+}
+
+.vp-rich-card tbody tr:nth-child(even) {
+  background: #f4f8f5;
+}
+
+.vp-rich-link {
+  color: #1769c2;
+  text-decoration: underline;
+}
+
+.vp-rich-color {
+  padding: 2px 4px;
+  border-radius: 3px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
 }
 
 .vp-clip-card__body > img {
@@ -1370,6 +1397,10 @@ html[data-platform="macos"] .desktop-platform--macos {
   --vp-card-width: 118px;
   --vp-card-height: 124px;
   --vp-card-header: 31px;
+  --vp-source-frame: 39px;
+  --vp-source-height: 38px;
+  --vp-source-icon: 35px;
+  --vp-source-offset: -3px;
   min-height: var(--vp-app-height);
 }
 
@@ -1407,16 +1438,19 @@ html[data-platform="macos"] .desktop-platform--macos {
 }
 
 .vp-product-surface--compact .vp-clip-card header {
-  padding: 4px 7px;
+  padding: 4px calc(var(--vp-source-frame) - 2px) 4px 7px;
 }
 
 .vp-product-surface--compact .vp-clip-card header b { font-size: 7px; }
 .vp-product-surface--compact .vp-clip-card header small { font-size: 6px; }
-.vp-product-surface--compact .vp-app-source { width: 21px; height: 21px; flex-basis: 21px; border-radius: 5px; }
 .vp-product-surface--compact .vp-clip-card__body > p { padding: 7px; font-size: 7px; }
 .vp-product-surface--compact .vp-text-card { padding: 7px; gap: 3px; }
 .vp-product-surface--compact .vp-text-card strong { font-size: 7px; }
 .vp-product-surface--compact .vp-text-card p { font-size: 6px; line-height: 1.35; }
+.vp-product-surface--compact .vp-rich-card { padding: 5px; }
+.vp-product-surface--compact .vp-rich-card table { width: 165px; min-width: 165px; font-size: 4px; }
+.vp-product-surface--compact .vp-rich-card th,
+.vp-product-surface--compact .vp-rich-card td { padding: 4px; }
 .vp-product-surface--compact .vp-link-card { padding: 7px; }
 .vp-product-surface--compact .vp-link-mark { width: 30px; height: 30px; }
 .vp-product-surface--compact .vp-link-mark svg { width: 17px; height: 17px; }
@@ -1435,6 +1469,10 @@ html[data-platform="macos"] .desktop-platform--macos {
   --vp-card-width: 172px;
   --vp-card-height: 184px;
   --vp-card-header: 40px;
+  --vp-source-frame: 50px;
+  --vp-source-height: 48px;
+  --vp-source-icon: 45px;
+  --vp-source-offset: -3px;
   width: 94%;
   height: 94%;
   min-height: 0;
@@ -1457,8 +1495,6 @@ html[data-platform="macos"] .desktop-platform--macos {
 
 .vp-product-surface--workflow .vp-text-card strong { font-size: 10px; }
 .vp-product-surface--workflow .vp-text-card p { font-size: 8px; }
-
-.vp-product-surface--workflow .vp-app-source { width: 28px; height: 28px; flex-basis: 28px; border-radius: 7px; }
 
 .vp-preview-scene {
   position: relative;
@@ -2026,7 +2062,12 @@ html[data-platform="macos"] .desktop-platform--macos {
 .vp-tag-window .vp-clip-card header { min-height: 38px; }
 .vp-tag-window .vp-clip-card header b { font-size: 8px; }
 .vp-tag-window .vp-clip-card header small { font-size: 6px; }
-.vp-tag-window .vp-app-source { width: 25px; height: 25px; flex-basis: 25px; border-radius: 6px; }
+.vp-tag-window {
+  --vp-source-frame: 48px;
+  --vp-source-height: 46px;
+  --vp-source-icon: 43px;
+  --vp-source-offset: -3px;
+}
 
 .vp-tag-toolbar {
   position: absolute;
@@ -2833,6 +2874,10 @@ html[data-platform="macos"] .desktop-platform--macos {
     --vp-card-width: 148px;
     --vp-card-height: 160px;
     --vp-card-header: 34px;
+    --vp-source-frame: 43px;
+    --vp-source-height: 41px;
+    --vp-source-icon: 38px;
+    --vp-source-offset: -3px;
     min-height: var(--vp-app-height);
   }
 
@@ -2856,16 +2901,16 @@ html[data-platform="macos"] .desktop-platform--macos {
   .product-shot--hero .vp-text-card { padding: 8px; gap: 4px; }
   .product-shot--hero .vp-text-card strong { font-size: 8px; }
   .product-shot--hero .vp-text-card p { font-size: 7px; }
+  .product-shot--hero .vp-rich-card { padding: 7px; }
+  .product-shot--hero .vp-rich-card table { width: 205px; min-width: 205px; font-size: 5.5px; }
+  .product-shot--hero .vp-rich-card th,
+  .product-shot--hero .vp-rich-card td { padding: 5px; }
   .product-shot--hero .vp-link-card { padding: 8px; }
   .product-shot--hero .vp-link-mark { top: 32%; width: 36px; height: 36px; }
   .product-shot--hero .vp-link-mark svg { width: 20px; height: 20px; }
   .product-shot--hero .vp-link-card span,
   .product-shot--hero .vp-link-card small { font-size: 6px; }
   .product-shot--hero .vp-link-card strong { font-size: 8px; }
-
-  .hero-next {
-    display: none;
-  }
 
   .shortcut-section {
     min-height: auto;
@@ -3063,6 +3108,10 @@ html[data-platform="macos"] .desktop-platform--macos {
     --vp-card-width: 108px;
     --vp-card-height: 112px;
     --vp-card-header: 27px;
+    --vp-source-frame: 34px;
+    --vp-source-height: 33px;
+    --vp-source-icon: 31px;
+    --vp-source-offset: -2px;
     width: 660px;
     max-width: none;
     transform: translateX(-11%);
@@ -3099,13 +3148,17 @@ html[data-platform="macos"] .desktop-platform--macos {
   }
 
   .product-shot--hero .vp-clip-card { border-radius: 8px; }
-  .product-shot--hero .vp-clip-card header { padding: 3px 6px; }
+  .product-shot--hero .vp-clip-card header { padding: 3px calc(var(--vp-source-frame) - 2px) 3px 6px; }
   .product-shot--hero .vp-clip-card header b { font-size: 6px; }
   .product-shot--hero .vp-clip-card header small { font-size: 5px; }
   .product-shot--hero .vp-clip-card__body > p { padding: 6px; font-size: 6px; }
   .product-shot--hero .vp-text-card { padding: 6px; gap: 2px; }
   .product-shot--hero .vp-text-card strong { font-size: 6px; }
   .product-shot--hero .vp-text-card p { font-size: 5px; }
+  .product-shot--hero .vp-rich-card { padding: 4px; }
+  .product-shot--hero .vp-rich-card table { width: 150px; min-width: 150px; font-size: 4px; }
+  .product-shot--hero .vp-rich-card th,
+  .product-shot--hero .vp-rich-card td { padding: 3px; }
   .product-shot--hero .vp-link-card { padding: 5px; }
   .product-shot--hero .vp-link-mark { width: 24px; height: 24px; }
   .product-shot--hero .vp-link-mark svg { width: 14px; height: 14px; }
@@ -3113,16 +3166,6 @@ html[data-platform="macos"] .desktop-platform--macos {
   .product-shot--hero .vp-link-card small { font-size: 4px; }
   .product-shot--hero .vp-link-card strong { font-size: 6px; }
   .product-shot--hero .vp-image-size { font-size: 4px; }
-
-  .hero-product figcaption {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .hero-product figcaption span:last-child {
-    display: none;
-  }
 
   .shortcut-pin {
     gap: 38px;
@@ -3216,6 +3259,10 @@ html[data-platform="macos"] .desktop-platform--macos {
     --vp-card-width: 100px;
     --vp-card-height: 106px;
     --vp-card-header: 25px;
+    --vp-source-frame: 32px;
+    --vp-source-height: 31px;
+    --vp-source-icon: 29px;
+    --vp-source-offset: -2px;
     width: 100%;
     height: 100%;
   }
@@ -3242,7 +3289,7 @@ html[data-platform="macos"] .desktop-platform--macos {
   }
 
   .vp-product-surface--workflow .vp-clip-card { border-radius: 7px; }
-  .vp-product-surface--workflow .vp-clip-card header { padding: 3px 5px; }
+  .vp-product-surface--workflow .vp-clip-card header { padding: 3px calc(var(--vp-source-frame) - 2px) 3px 5px; }
   .vp-product-surface--workflow .vp-clip-card header b { font-size: 6px; }
   .vp-product-surface--workflow .vp-clip-card header small { font-size: 4px; }
   .vp-product-surface--workflow .vp-clip-card__body > p { padding: 5px; font-size: 5px; }
@@ -3440,16 +3487,15 @@ html[data-platform="macos"] .desktop-platform--macos {
   .vp-usecase-scene--preview .vp-preview-scene { min-height: 390px; }
   .vp-usecase-scene > .vp-app-window { width: 96%; }
   .vp-usecase-scene > .vp-app-window,
-  .vp-tag-window { height: 230px; --vp-app-height: 230px; --vp-bar-height: 34px; --vp-card-width: 112px; --vp-card-height: 128px; --vp-card-header: 30px; }
+  .vp-tag-window { height: 230px; --vp-app-height: 230px; --vp-bar-height: 34px; --vp-card-width: 112px; --vp-card-height: 128px; --vp-card-header: 30px; --vp-source-frame: 38px; --vp-source-height: 36px; --vp-source-icon: 34px; --vp-source-offset: -2px; }
   .vp-usecase-scene .vp-app-bar { height: 34px; gap: 4px; padding-inline: 8px; }
   .vp-usecase-scene .vp-app-icon-button { width: 20px; height: 20px; flex-basis: 20px; font-size: 10px; }
   .vp-usecase-scene .vp-app-tab { min-width: 40px; padding-inline: 4px; font-size: 7px; }
   .vp-usecase-scene .vp-card-rail { height: 196px; gap: 6px; padding: 8px; justify-content: flex-start; }
   .vp-usecase-scene .vp-clip-card { width: 112px; height: 128px; flex-basis: 112px; border-radius: 8px; }
-  .vp-usecase-scene .vp-clip-card header { min-height: 30px; padding: 3px 6px; }
+  .vp-usecase-scene .vp-clip-card header { min-height: 30px; padding: 3px calc(var(--vp-source-frame) - 2px) 3px 6px; }
   .vp-usecase-scene .vp-clip-card header b { font-size: 6px; }
   .vp-usecase-scene .vp-clip-card header small { font-size: 4px; }
-  .vp-usecase-scene .vp-app-source { width: 20px; height: 20px; flex-basis: 20px; border-radius: 5px; }
   .vp-usecase-scene .vp-clip-card__body > p { padding: 7px; font-size: 6px; }
   .vp-usecase-scene .vp-text-card { padding: 7px; gap: 3px; }
   .vp-usecase-scene .vp-text-card strong { font-size: 7px; }
