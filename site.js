@@ -7,85 +7,103 @@
 
   const translations = {
     en: {
+      "demo.light": "Light",
+      "demo.dark": "Dark",
+      "demo.backTop": "Back to top",
+      "demo.noResults": "No matching items in this demo",
+      "demo.settings": "Settings",
+      "alt.searchCapture": "vPaste search: an expanded search field and matching clipboard cards with highlighted keywords",
+      "alt.settingsCapture": "vPaste General settings with the System, Light and Dark theme menu open",
+      "demo.label": "Interactive demo",
+      "demo.preview": "Feature preview",
       "a11y.skip": "Skip to content",
       "a11y.menu": "Open menu",
       "a11y.closeMenu": "Close menu",
-      "nav.experience": "Experience",
+      "a11y.primaryNav": "Primary navigation",
+      "a11y.home": "vPaste home",
+      "a11y.language": "Language",
+      "a11y.demoPlatform": "Demo platform",
+      "a11y.projectFacts": "Project facts",
+      "a11y.privacyFlow": "Local clipboard flow",
+      "nav.experience": "One shortcut",
       "nav.formats": "Formats",
-      "nav.workflow": "Settings",
+      "nav.workflow": "Customize",
       "nav.privacy": "Privacy",
       "nav.source": "Open source",
-      "hero.kicker": "Clipboard history, made visual",
-      "hero.slogan": "A polished clipboard, one shortcut away",
-      "hero.lede": "vPaste turns text, rich content, images, links, colors, and files into clear visual cards with smooth, focused motion. See what you copied, find it fast, and paste it back in the format the work expects",
+      "hero.kicker": "Every copy, clearly visible",
+      "hero.slogan": "Your clipboard, one shortcut away",
+      "hero.lede": "vPaste automatically sorts text, images, links, colors, and files into clear visual cards. Call it up anytime to browse, search, preview, and paste again",
       "hero.platforms": "Windows + macOS",
-      "hero.local": "Local-first by design",
+      "hero.local": "History stored locally",
       "hero.license": "GPL-3.0 open source",
-      "action.repository": "View on GitHub",
-      "action.releases": "Browse releases",
-      "shortcut.kicker": "Polished, not persistent",
-      "shortcut.title": "Slides in when needed. Gets out of the way",
-      "shortcut.body": "The compact panel appears above your current app with smooth motion, keeps keyboard and mouse selection close, then returns focus after you paste",
+      "action.download": "Download vPaste",
+      "action.repository": "View source",
+      "action.releases": "Download latest release",
+      "shortcut.kicker": "One shortcut from any app",
+      "shortcut.title": "Call it up. Pick one. Carry on",
+      "shortcut.body": "Call up your history and choose an item. Auto-paste sends it back to your app and closes the panel. Multi-display setups follow your active screen",
       "shortcut.press": "Press",
       "shortcut.canvasLabel": "Your desktop",
-      "usecases.kicker": "See more than a list of copies",
-      "usecases.title": "Know what it is before you paste",
-      "usecases.body": "Every card shows useful context—content preview, format, source app, and time—so history stays readable instead of becoming a wall of text",
+      "usecases.kicker": "Visual clipboard history",
+      "usecases.title": "See what you copied at a glance",
+      "usecases.body": "Type, time, source app, and a useful preview live on every card. Even a long history stays easy to recognize and recover",
       "usecases.aria": "Clipboard use cases",
-      "usecases.history": "Recover overwritten copies",
-      "usecases.historyBody": "Recent-first local history brings back text, images, links, colors, and files",
-      "usecases.snippets": "Restore the original format",
-      "usecases.snippetsBody": "Paste stored HTML or RTF where supported, or use the plain-text shortcut",
-      "usecases.search": "Search what you remember",
-      "usecases.searchBody": "Match text, link titles, file names and paths, or source apps",
-      "usecases.preview": "Preview without opening",
-      "usecases.previewBody": "Inspect rich text, images, links, and files before they leave history",
-      "usecases.organize": "Group by real context",
-      "usecases.organizeBody": "Filter by type, app, date, or favorite, then add record tags when needed",
-      "usecases.historyVisual": "Local history, newest first",
-      "usecases.historyVisualBody": "Repeated copies return to the front instead of creating noise",
-      "usecases.snippetVisual": "Rich format or plain text",
-      "usecases.searchVisual": "Search titles, paths, apps, and text",
-      "usecases.searchQuery": "release shortcut",
-      "usecases.placeholder": "IMAGE PLACEHOLDER",
-      "usecases.placeholderSize": "1600 × 1060 px",
-      "formats.kicker": "Keep more than clipboard text",
-      "formats.title": "Copy whatever the work requires",
-      "formats.body": "vPaste stores each content type with the details needed to recognize, preview, search, and restore it—from rich formatting and link metadata to image dimensions and file paths",
+      "usecases.history": "Recover overwritten items",
+      "usecases.historyBody": "Text, images, and files stay ordered by time and ready to use again",
+      "usecases.snippets": "Keep the original format",
+      "usecases.snippetsBody": "Preserve headings, lists, and tables, or paste as plain text when needed",
+      "usecases.queue": "Paste queue",
+      "usecases.queueBody": "Collect copies in a queue, drag to reorder or reverse the list, then paste items one by one with Ctrl / ⌘ + V while the queue is active",
+      "usecases.drag": "Cross-app drag and drop",
+      "usecases.dragBody": "Drag text, links, images, or files into compatible apps, including multiple files from one record",
+      "usecases.search": "Search the clue you remember",
+      "usecases.searchBody": "Text, page titles, file paths, and source apps can all lead you back",
+      "usecases.preview": "Preview before you paste",
+      "usecases.previewBody": "Check rich text, images, links, and files before deciding how to use them",
+      "usecases.organize": "Filter, tag, and favorite",
+      "usecases.organizeBody": "Filter by type, app, date, or favorite and keep reusable items close",
+      "formats.kicker": "Every format, easy to see",
+      "formats.title": "The right card for every kind of content",
+      "formats.body": "Text, images, links, colors, and files are sorted automatically, with the context you need to recognize, search, preview, and reuse them",
       "formats.text": "Text",
-      "formats.textBody": "Keep copied HTML or RTF so cards preserve hierarchy, tables, links, and styling in preview, with a searchable plain-text fallback",
-      "formats.textFeature1": "Layout, tables & links",
-      "formats.textFeature2": "HTML / RTF + fallback",
-      "formats.textFeature3": "Rich or plain-text paste",
+      "formats.textBody": "Keep headings, lists, and tables intact, then paste with the original formatting or as plain text",
+      "formats.textFeature1": "Headings, tables & links",
+      "formats.textFeature2": "Searchable content",
+      "formats.textFeature3": "Formatted or plain paste",
       "formats.image": "Images",
-      "formats.imageBody": "Preview the image without loading the original into the list",
-      "formats.imageFeature1": "Persistent thumbnail",
-      "formats.imageFeature2": "Pixel dimensions",
-      "formats.imageFeature3": "Screenshots, web & local",
+      "formats.imageBody": "See the image in the card, inspect full detail, and export it whenever you need the file",
+      "formats.imageFeature1": "Full-size preview",
+      "formats.imageFeature2": "Dimensions & GIF detection",
+      "formats.imageFeature3": "Export as an image file",
       "formats.link": "Links",
-      "formats.linkBody": "Fetch page metadata in the background without delaying capture",
-      "formats.linkFeature1": "Page title",
-      "formats.linkFeature2": "Preview image + icon",
-      "formats.linkFeature3": "Full URL searchable",
+      "formats.linkBody": "Add page titles and preview images automatically, so a link is more than a bare URL",
+      "formats.linkFeature1": "Title & preview image",
+      "formats.linkFeature2": "Preview before opening",
+      "formats.linkFeature3": "Search title or URL",
       "formats.color": "Colors",
-      "formats.colorBody": "Recognize common CSS colors and show the exact value",
+      "formats.colorBody": "See the swatch and its value together, then convert between common color formats",
       "formats.colorFeature1": "HEX / RGB / HSL",
       "formats.colorFeature2": "Live color swatch",
       "formats.colorFeature3": "One-click conversion",
       "formats.file": "Files",
-      "formats.fileBody": "Keep files and folders as files—not text paths",
-      "formats.fileFeature1": "Name, type & path",
-      "formats.fileFeature2": "Single, folder or batch",
-      "formats.fileFeature3": "Paste back as file list",
-      "search.kicker": "Search the details that survived",
-      "search.title": "Remember a word, a title, a path, or an app",
-      "search.body": "Search plain and rich text, cached link titles, file names and paths, and source apps. Build tabs that filter by content type, app, date, favorites, or record tags",
-      "search.point1": "Text and rich-text fallback",
-      "search.point2": "Link titles, file names, and paths",
-      "search.point3": "Source app, date, favorites, and tags",
-      "workflow.kicker": "Control without clutter",
-      "workflow.title": "Tune the interface to the way you work",
-      "workflow.body": "Choose the theme and language, decide what vPaste remembers, set privacy boundaries, and keep frequent actions on the keyboard",
+      "formats.fileBody": "Keep files, folders, and multi-file copies ready to preview, locate, or send again",
+      "formats.fileFeature1": "Single files, folders & batches",
+      "formats.fileFeature2": "Preview common content",
+      "formats.fileFeature3": "Open location or copy path",
+      "search.kicker": "Remember a little, find the rest",
+      "search.title": "Search whatever you remember",
+      "search.body": "Enter the fragment you remember, then narrow the results by type, source app, favorite, tag, or time",
+      "search.point1": "Text and rich-text keywords",
+      "search.point2": "Page titles, URLs, file names & paths",
+      "search.point3": "Type, source, favorites, tags & time",
+      "workflow.kicker": "Work your way",
+      "workflow.title": "Make vPaste feel natural to use",
+      "workflow.body": "Your theme, your shortcuts, your way of working",
+      "settings.behaviorBody": "Light or dark · English or Chinese",
+      "settings.experienceBody": "Link previews · Remember your place",
+      "settings.dataBody": "Storage location · Migration and cleanup",
+      "settings.shortcutsBody": "Call up the panel · Choose how to paste",
+      "alt.localArtwork": "A desktop archive of paper records beside a portable drive, illustrating local history and migration",
       "settings.behavior": "Interface & behavior",
       "settings.behavior1": "System, light, and dark themes",
       "settings.behavior2": "English and Simplified Chinese",
@@ -98,30 +116,48 @@
       "settings.data1": "Skip sensitive content and selected apps",
       "settings.data2": "Choose the history storage folder",
       "settings.data3": "Review storage and clean history by age",
-      "settings.data4": "Move complete history with .vphistory archives",
+      "settings.data4": "Move complete history between installations",
       "settings.shortcuts": "Keyboard workflow",
       "settings.shortcuts1": "Show or hide the panel from any app",
       "settings.shortcuts2": "Paste with formatting or as plain text",
       "settings.shortcuts3": "Select with arrows, Tab, and Alt",
       "settings.shortcuts4": "Search, preview, and open actions by keyboard",
-      "privacy.kicker": "Local by design, specific by default",
-      "privacy.title": "History stays on your device—and is encrypted there",
-      "privacy.body": "vPaste encrypts history on disk, skips clipboard content marked sensitive by the system, and can exclude copies from apps you choose. A complete .vphistory archive moves your history, images, rich formats, and tags to another installation",
-      "privacy.localDb": "XChaCha20-Poly1305 encrypted local history",
+      "privacy.kicker": "Local history, your control",
+      "privacy.title": "Stored on your device,\nnot uploaded to a server",
+      "privacy.body": "vPaste stores clipboard history locally without uploading it to a server. Exclude selected apps and sensitive content from capture; enabling link previews sends requests to the linked pages",
+      "privacy.localDb": "Clipboard history stored on your device",
       "privacy.control": "Sensitive-content and per-app exclusions",
+      "data.onDevice": "On your device",
+      "data.migrate": "Move your history",
+      "data.clean": "Clear older records",
+      "demo.older": "More history, still here",
+      "demo.keepFormat": "Headings, lists and tables stay intact",
+      "demo.plainText": "Paste as plain text when needed",
+      "demo.spacePreview": "Preview the selected item",
+      "demo.readme": "A clipboard workspace for text, images, links and files",
+      "demo.workNote": "Project notes",
+      "demo.projectNote": "Collected for this project",
+      "demo.dropHere": "Drop an image into your document",
+      "demo.saved": "Saved on this device",
+      "demo.manualMigration": "Manual migration",
+      "demo.exportImport": "Export an archive · Import on Windows or Mac",
+      "demo.pause": "Pause demo",
+      "demo.resume": "Play demo",
       "privacy.flowCopy": "Copy",
       "privacy.flowStore": "Check privacy",
-      "privacy.flowFind": "Encrypt locally",
+      "privacy.flowFind": "Store locally",
       "privacy.flowPaste": "Find & paste",
-      "source.kicker": "Claims you can inspect",
-      "source.title": "Read the code behind the product",
-      "source.body": "vPaste is GPL-3.0 open source. The desktop code, clipboard format matrix, platform notes, release definitions, and security policy are public for Windows and macOS",
+      "privacy.orbitLabel": "Local",
+      "privacy.orbitCore": "Clipboard history",
+      "source.kicker": "Open source makes the promise inspectable",
+      "source.title": "Open from source code to security policy",
+      "source.body": "vPaste is GPL-3.0 open source. Its Windows and macOS desktop code, platform integrations, release history, and security policy are open for anyone to inspect",
       "source.factOpen": "Auditable source",
-      "source.factLocal": "Local-first architecture",
-      "source.factPrivate": "Clipboard processing stays on your machine",
+      "source.factLocal": "Local history architecture",
+      "source.factPrivate": "Clipboard history is stored on your device",
       "source.factPlatforms": "Platform-specific clipboard handling",
-      "final.kicker": "Keep the preview, the source, and the format",
-      "final.title": "Bring it back in one shortcut",
+      "final.kicker": "Browse clipboard history as cards, call it up fast, paste in one step",
+      "final.title": "Your clipboard, one shortcut away",
       "product.all": "All",
       "product.favorites": "Favorites",
       "product.text": "Text",
@@ -137,9 +173,9 @@
       "product.timeHoursLong": "6 hours ago",
       "product.timeYesterday": "Yesterday",
       "product.textTitle": "vPaste",
-      "product.textDescription": "A polished visual clipboard, one shortcut away",
+      "product.textDescription": "Your clipboard, one shortcut away",
       "product.linkTitle": "Loxonl/vPaste-desktop",
-      "product.fileName": "product-brief.pdf",
+      "product.fileName": "C:/Demo/vPaste Intro.pdf",
       "product.filterState": "Showing image items",
       "product.word": "Microsoft Word",
       "product.wechat": "WeChat",
@@ -194,94 +230,111 @@
       "alt.main": "vPaste clipboard history window with typed tabs and recent clipboard items",
       "alt.shortcut": "vPaste appearing over the desktop",
       "alt.formats": "Abstract stack of clipboard content formats",
-      "alt.search": "Abstract optical object organizing content into searchable layers",
       "alt.tabs": "vPaste custom filter tabs",
       "alt.preview": "vPaste clipboard item preview",
       "alt.settings": "vPaste settings window",
       "alt.vault": "Abstract local data vault receiving clipboard layers",
-      "meta.title": "vPaste — A visual clipboard, one shortcut away",
-      "meta.description": "vPaste is a polished, local-first clipboard manager for Windows and macOS. Preserve rich text, preview images and links, search every format, and paste it back",
+      "meta.title": "vPaste — Your clipboard, one shortcut away",
+      "meta.description": "vPaste is a local clipboard manager for Windows and macOS that automatically organizes text, images, links, colors, and files into visual cards for fast search, preview, and reuse",
     },
     zh: {
+      "demo.light": "浅色",
+      "demo.dark": "深色",
+      "demo.backTop": "回到顶部",
+      "demo.noResults": "演示记录中没有匹配内容",
+      "demo.settings": "设置",
+      "alt.searchCapture": "vPaste 正式搜索界面：顶部展开搜索框，下方显示带关键词高亮的剪贴卡片",
+      "alt.settingsCapture": "vPaste 通用设置页，展开跟随系统、浅色模式和深色模式的主题菜单",
+      "demo.label": "交互演示",
+      "demo.preview": "功能示意",
       "a11y.skip": "跳到主要内容",
       "a11y.menu": "打开菜单",
       "a11y.closeMenu": "关闭菜单",
-      "nav.experience": "界面体验",
+      "a11y.primaryNav": "主要导航",
+      "a11y.home": "vPaste 首页",
+      "a11y.language": "语言",
+      "a11y.demoPlatform": "演示平台",
+      "a11y.projectFacts": "项目概况",
+      "a11y.privacyFlow": "本机剪贴处理流程",
+      "nav.experience": "一键呼出",
       "nav.formats": "内容格式",
-      "nav.workflow": "设置功能",
+      "nav.workflow": "个性设置",
       "nav.privacy": "隐私",
       "nav.source": "开源",
-      "hero.kicker": "让剪贴板历史清晰可见",
-      "hero.slogan": "优雅、直观的剪贴板，只差一个快捷键",
-      "hero.lede": "vPaste 将文本、富文本、图片、链接、颜色和文件整理成清晰的可视化卡片，配合克制而顺滑的动效。看清复制了什么，快速找到它，再按工作需要的格式粘贴回去",
+      "hero.kicker": "每次复制，都清晰可见",
+      "hero.slogan": "剪贴捷径，一键即达",
+      "hero.lede": "vPaste 将文本、图片、链接、颜色与文件自动分类为清晰的可视化卡片。随时呼出，快速浏览、搜索、预览，再一键粘贴",
       "hero.platforms": "Windows + macOS",
-      "hero.local": "本地优先设计",
+      "hero.local": "历史存于本机",
       "hero.license": "GPL-3.0 开源",
-      "action.repository": "前往 GitHub",
-      "action.releases": "查看 Releases",
-      "shortcut.kicker": "需要时出现，不打扰桌面",
-      "shortcut.title": "顺滑呼出，用完即走",
-      "shortcut.body": "紧凑面板以顺滑动效出现在当前应用上方，键盘和鼠标都能快速选中内容；完成粘贴后，焦点回到原来的工作",
+      "action.download": "下载 vPaste",
+      "action.repository": "查看源码",
+      "action.releases": "下载最新版本",
+      "shortcut.kicker": "从任意应用一键呼出",
+      "shortcut.title": "从容呼出，所选即达",
+      "shortcut.body": "随时呼出，选取内容。开启自动粘贴，直接回填原窗口；多屏跟随当前操作",
       "shortcut.press": "按下",
       "shortcut.canvasLabel": "你的桌面",
-      "usecases.kicker": "不只是一列复制记录",
-      "usecases.title": "粘贴之前，先知道它是什么",
-      "usecases.body": "每张卡片都展示真正有用的信息：内容预览、格式、来源应用和复制时间。即使历史越来越多，也不会变成一堵难以辨认的文字墙",
+      "usecases.kicker": "可视化剪贴历史",
+      "usecases.title": "复制了什么，一眼就知道",
+      "usecases.body": "类型、时间、来源应用和内容预览都在卡片上。历史再多，也能快速辨认和找回",
       "usecases.aria": "剪贴板用途场景",
-      "usecases.history": "找回被覆盖的复制内容",
-      "usecases.historyBody": "按时间排列的本地历史，完整收纳文本、图片、链接、颜色与文件",
-      "usecases.snippets": "按原格式恢复粘贴",
-      "usecases.snippetsBody": "支持时写回保存的 HTML 或 RTF，也可用快捷键直接粘贴为纯文本",
-      "usecases.search": "按记得的线索搜索",
-      "usecases.searchBody": "可匹配正文、链接标题、文件名与路径，以及来源应用",
-      "usecases.preview": "不打开文件也能预览",
-      "usecases.previewBody": "富文本、图片、链接和文件，粘贴前先确认真实内容",
-      "usecases.organize": "按真实工作场景归类",
-      "usecases.organizeBody": "按类型、应用、日期或收藏筛选，需要时再为单条记录添加标签",
-      "usecases.historyVisual": "本地历史，最近优先",
-      "usecases.historyVisualBody": "重复复制会回到最前面，不制造多余记录",
-      "usecases.snippetVisual": "富格式或纯文本粘贴",
-      "usecases.searchVisual": "搜索标题、路径、应用与正文",
-      "usecases.searchQuery": "发布 快捷键",
-      "usecases.placeholder": "图片占位",
-      "usecases.placeholderSize": "1600 × 1060 px",
-      "formats.kicker": "保留的不只是剪贴板文本",
-      "formats.title": "工作需要什么，就复制什么",
-      "formats.body": "vPaste 会为每类内容保留真正有用的细节：富文本样式、链接元数据、图片尺寸、文件路径，让它们可辨认、可预览、可搜索，也能按原本的类型恢复",
+      "usecases.history": "找回被覆盖的内容",
+      "usecases.historyBody": "文本、图片或文件按时间排列，打开面板即可取回",
+      "usecases.snippets": "保留原有格式",
+      "usecases.snippetsBody": "标题、列表和表格保留结构，也可按需要粘贴为纯文本",
+      "usecases.queue": "粘贴队列",
+      "usecases.queueBody": "连续复制入队，支持拖动排序和一键倒序；队列启用时，按 Ctrl / ⌘ + V 逐项粘贴",
+      "usecases.drag": "跨应用拖拽",
+      "usecases.dragBody": "将文本、链接、图片或文件拖入支持的应用，一条记录中的多个文件也能一起拖出",
+      "usecases.search": "搜索记得的线索",
+      "usecases.searchBody": "正文、网页标题、文件路径或来源应用，都能成为查找入口",
+      "usecases.preview": "粘贴前先预览",
+      "usecases.previewBody": "先确认富文本、图片、链接与文件内容，再决定如何使用",
+      "usecases.organize": "分类、标签与收藏",
+      "usecases.organizeBody": "按类型、应用、日期或收藏筛选，把常用内容留在手边",
+      "formats.kicker": "每种内容，都看得清楚",
+      "formats.title": "不同内容自有合适的卡片",
+      "formats.body": "文本、图片、链接、颜色和文件会自动分类，并保留辨认、搜索、预览与再次使用所需的信息",
       "formats.text": "文本",
-      "formats.textBody": "保存复制时的 HTML 或 RTF，让卡片尽量按当时的层级和样式预览，同时保留可搜索的纯文本后备",
-      "formats.textFeature1": "字体层级、表格与链接",
-      "formats.textFeature2": "HTML/RTF 与文本后备",
-      "formats.textFeature3": "富格式或纯文本粘贴",
+      "formats.textBody": "保留标题、列表和表格结构，可按原格式或纯文本粘贴",
+      "formats.textFeature1": "标题、表格与链接",
+      "formats.textFeature2": "正文关键词可搜索",
+      "formats.textFeature3": "原格式或纯文本粘贴",
       "formats.image": "图片",
-      "formats.imageBody": "列表加载持久缩略图，不必反复读取原图",
-      "formats.imageFeature1": "持久缩略图",
-      "formats.imageFeature2": "像素尺寸",
-      "formats.imageFeature3": "截图、网页与本地图片",
+      "formats.imageBody": "缩略图直接展示内容，可查看完整细节并导出复用",
+      "formats.imageFeature1": "完整图片预览",
+      "formats.imageFeature2": "分辨率与 GIF 识别",
+      "formats.imageFeature3": "导出为图片文件",
       "formats.link": "链接",
-      "formats.linkBody": "复制后立即入库，网页信息在后台补全，不阻塞记录",
-      "formats.linkFeature1": "网页标题",
-      "formats.linkFeature2": "预览图与网站图标",
-      "formats.linkFeature3": "完整 URL 可搜索",
+      "formats.linkBody": "自动补全网页标题与预览图，不必只靠网址辨认",
+      "formats.linkFeature1": "标题与预览图",
+      "formats.linkFeature2": "粘贴前查看页面",
+      "formats.linkFeature3": "标题和网址都可搜索",
       "formats.color": "颜色",
-      "formats.colorBody": "识别常见 CSS 颜色写法，并显示准确色值",
+      "formats.colorBody": "色块与数值同时可见，常用颜色格式可以快速转换",
       "formats.colorFeature1": "HEX / RGB / HSL",
       "formats.colorFeature2": "真实色块预览",
       "formats.colorFeature3": "一键转换颜色格式",
       "formats.file": "文件",
-      "formats.fileBody": "文件与文件夹仍按文件保存，不退化成路径文本",
-      "formats.fileFeature1": "名称、类型与路径",
-      "formats.fileFeature2": "单文件、文件夹或多选",
-      "formats.fileFeature3": "按文件列表恢复粘贴",
-      "search.kicker": "搜索被完整保留下来的细节",
-      "search.title": "记得正文、标题、路径或应用，就能找到",
-      "search.body": "搜索纯文本和富文本后备、缓存的链接标题、文件名与路径，以及来源应用；再用自定义标签按内容类型、应用、日期、收藏或记录标签筛选",
-      "search.point1": "正文与富文本纯文本后备",
-      "search.point2": "链接标题、文件名与路径",
-      "search.point3": "来源应用、日期、收藏与标签",
-      "workflow.kicker": "丰富控制，不堆叠复杂感",
-      "workflow.title": "让界面和操作适应你的工作方式",
-      "workflow.body": "选择主题与语言，决定 vPaste 记住哪些界面状态，设置隐私边界，并把高频操作留在键盘上",
+      "formats.fileBody": "保留文件、文件夹和多文件记录，稍后仍可预览、定位和再次发送",
+      "formats.fileFeature1": "单个、多个或文件夹",
+      "formats.fileFeature2": "常见内容预览",
+      "formats.fileFeature3": "打开位置或复制路径",
+      "search.kicker": "记得一点，就能找到",
+      "search.title": "记得什么就搜什么",
+      "search.body": "输入记得的片段，再按类型、来源应用、收藏、标签或时间缩小范围",
+      "search.point1": "文本与富文本关键词",
+      "search.point2": "网页标题、网址、文件名与路径",
+      "search.point3": "类型、来源、收藏、标签与时间",
+      "workflow.kicker": "按你的习惯工作",
+      "workflow.title": "把 vPaste 调成顺手的样子",
+      "workflow.body": "从主题到快捷键，调成自己顺手的样子",
+      "settings.behaviorBody": "深浅主题 · 中英双语",
+      "settings.experienceBody": "链接预览 · 记住上次位置",
+      "settings.dataBody": "存储位置 · 历史迁移与清理",
+      "settings.shortcutsBody": "呼出面板 · 按需选择粘贴格式",
+      "alt.localArtwork": "纸质记录收纳盒与便携硬盘，表达本地历史的保存与迁移",
       "settings.behavior": "界面与行为",
       "settings.behavior1": "跟随系统、浅色与深色主题",
       "settings.behavior2": "英文与简体中文界面",
@@ -294,30 +347,48 @@
       "settings.data1": "跳过敏感内容与指定应用",
       "settings.data2": "自行选择历史数据存储位置",
       "settings.data3": "统计空间并按时间清理历史",
-      "settings.data4": "通过 .vphistory 迁移完整历史",
+      "settings.data4": "在不同安装之间迁移完整历史",
       "settings.shortcuts": "键盘工作流",
       "settings.shortcuts1": "从任意应用呼出或收起面板",
       "settings.shortcuts2": "保留格式粘贴或粘贴为纯文本",
       "settings.shortcuts3": "方向键、Tab 与 Alt 快速选择",
       "settings.shortcuts4": "用键盘搜索、预览并打开操作菜单",
-      "privacy.kicker": "本地优先，也把边界说清楚",
-      "privacy.title": "历史留在设备上，并在本地加密",
-      "privacy.body": "vPaste 会加密保存在硬盘上的历史，跳过系统标记的敏感剪贴内容，也能排除你指定应用中的复制记录。更换设备时，可用完整的 .vphistory 归档迁移历史、图片、富格式和标签",
-      "privacy.localDb": "XChaCha20-Poly1305 本地加密历史",
+      "privacy.kicker": "本机存储，数据自主",
+      "privacy.title": "记录留在本机，\n不上传服务器",
+      "privacy.body": "vPaste 将剪贴历史保存在本机，不上传服务器。可排除指定应用和敏感内容，避免录入历史；开启链接预览时会请求链接指向的网页",
+      "privacy.localDb": "剪贴历史保存在你的设备上",
       "privacy.control": "敏感内容保护与指定应用排除",
+      "data.onDevice": "留在你的设备上",
+      "data.migrate": "迁移完整历史",
+      "data.clean": "按时间清理历史",
+      "demo.older": "更早的记录，也在这里",
+      "demo.keepFormat": "标题、列表与表格，保留原有格式",
+      "demo.plainText": "需要时，也能粘贴为纯文本",
+      "demo.spacePreview": "预览当前选中的内容",
+      "demo.readme": "收纳文本、图片、链接与文件的剪贴板工作台",
+      "demo.workNote": "项目笔记",
+      "demo.projectNote": "为这个项目收集的内容",
+      "demo.dropHere": "把图片拖入文档",
+      "demo.saved": "持续保存在本机",
+      "demo.manualMigration": "手动迁移",
+      "demo.exportImport": "导出归档 · 在 Windows 或 Mac 导入",
+      "demo.pause": "暂停演示",
+      "demo.resume": "播放演示",
       "privacy.flowCopy": "复制",
       "privacy.flowStore": "检查隐私规则",
-      "privacy.flowFind": "本地加密",
+      "privacy.flowFind": "本机保存",
       "privacy.flowPaste": "查找并粘贴",
-      "source.kicker": "每项宣传都可以检查",
-      "source.title": "直接查看产品背后的代码",
-      "source.body": "vPaste 以 GPL-3.0 开源。Windows 与 macOS 的桌面端代码、剪贴板格式矩阵、平台说明、发布定义和安全策略均可公开查阅",
+      "privacy.orbitLabel": "本机",
+      "privacy.orbitCore": "剪贴历史",
+      "source.kicker": "开源，也让承诺可核验",
+      "source.title": "从代码到安全策略全程公开",
+      "source.body": "vPaste 采用 GPL-3.0 开源。Windows 与 macOS 桌面端代码、平台适配、发布记录和安全策略均可公开查阅",
       "source.factOpen": "代码可审查",
-      "source.factLocal": "本地优先架构",
-      "source.factPrivate": "剪贴板处理留在你的设备上",
+      "source.factLocal": "本机历史架构",
+      "source.factPrivate": "剪贴历史保存在你的设备上",
       "source.factPlatforms": "针对平台处理原生剪贴格式",
-      "final.kicker": "把预览、来源和格式一起留下",
-      "final.title": "一个快捷键，把它找回来",
+      "final.kicker": "卡片浏览剪贴历史，快速呼出，一键粘贴",
+      "final.title": "剪贴捷径，一键即达",
       "product.all": "全部",
       "product.favorites": "收藏",
       "product.text": "文本",
@@ -333,9 +404,9 @@
       "product.timeHoursLong": "6 小时前",
       "product.timeYesterday": "昨天",
       "product.textTitle": "vPaste",
-      "product.textDescription": "优雅、直观的剪贴板，只差一个快捷键",
+      "product.textDescription": "剪贴捷径，一键即达",
       "product.linkTitle": "Loxonl/vPaste-desktop",
-      "product.fileName": "产品简报.pdf",
+      "product.fileName": "C:/Demo/vPaste Intro.pdf",
       "product.filterState": "正在显示图片内容",
       "product.word": "Microsoft Word",
       "product.wechat": "微信",
@@ -390,13 +461,12 @@
       "alt.main": "vPaste 主剪贴板历史窗口，展示类型标签和近期记录",
       "alt.shortcut": "vPaste 从桌面上方呼出",
       "alt.formats": "由多种剪贴板内容组成的抽象堆栈",
-      "alt.search": "将内容整理成可搜索层次的抽象光学物件",
       "alt.tabs": "vPaste 自定义筛选标签",
       "alt.preview": "vPaste 剪贴内容预览",
       "alt.settings": "vPaste 设置窗口",
       "alt.vault": "接收剪贴板内容的抽象本地数据仓",
-      "meta.title": "vPaste — 优雅、直观的剪贴板，只差一个快捷键",
-      "meta.description": "vPaste 是面向 Windows 与 macOS 的本地优先剪贴板管理器，可保留富文本格式、预览图片与链接、搜索多种内容，并按原类型恢复粘贴",
+      "meta.title": "vPaste — 剪贴捷径，一键即达",
+      "meta.description": "vPaste 是一款本机存储的 Windows 与 macOS 剪贴板管理器，用可视化卡片自动分类文本、图片、链接、颜色与文件，支持快速搜索、预览和再次粘贴",
     },
   };
 
@@ -447,8 +517,8 @@
     word: { color: "rgb(8, 66, 213)", textColor: "#fff" },
     wechat: { color: "rgb(6, 198, 98)", textColor: "#fff" },
     chrome: { color: "rgb(232, 64, 50)", textColor: "#fff" },
-    explorer: { color: "rgb(255, 207, 72)", textColor: "#1f2933" },
-    figma: { color: "rgb(30, 29, 29)", textColor: "#fff" },
+    explorer: { color: "#986100", textColor: "#fff" },
+    figma: { color: "#9f2d1e", textColor: "#fff" },
     excel: { color: "rgb(16, 124, 65)", textColor: "#fff" },
   };
 
@@ -463,10 +533,10 @@
 
   const historyCards = () => [
     productCard("text", "product.text", "product.timeSeconds", "word", "product.word", '<div class="vp-text-card"><strong data-i18n="product.textTitle">vPaste</strong><p data-i18n="product.textDescription">A polished visual clipboard, one shortcut away</p></div>'),
-    productCard("image", "product.images", "product.timeMinutes", "wechat", "product.wechat", '<img src="assets/format-stack.png" alt="" loading="lazy"/><span class="vp-image-size">1536 × 1024</span>'),
+    productCard("image", "product.images", "product.timeMinutes", "wechat", "product.wechat", '<img src="assets/format-stack.png" alt="" loading="lazy"/><span class="vp-image-size">1200 × 800</span>'),
     productCard("link", "product.links", "product.timeHours", "chrome", "product.chrome", `<div class="vp-link-card"><span class="vp-link-mark">${icons.github}</span><span class="vp-link-domain">github.com</span><strong data-i18n="product.linkTitle">Loxonl/vPaste-desktop</strong><small>github.com/Loxonl/vPaste-desktop</small></div>`),
-    productCard("file", "product.files", "product.timeHoursLong", "explorer", "product.explorer", `<div class="vp-file-preview">${icons.file}<strong data-i18n="product.fileName">product-brief.pdf</strong></div>`),
-    productCard("color", "product.colors", "product.timeTenHours", "figma", "product.figma", '<div class="vp-color-preview"><span>#0874E3</span></div>'),
+    productCard("file", "product.files", "product.timeHoursLong", "explorer", "product.explorer", `<div class="vp-file-preview"><div class="vp-file-type" aria-hidden="true"><img src="assets/pdf.svg" alt=""/><span>PDF</span></div><strong data-i18n="product.fileName">C:/Demo/vPaste Intro.pdf</strong></div>`),
+    productCard("color", "product.colors", "product.timeTenHours", "figma", "product.figma", '<div class="vp-color-preview"><span>#F24E1E</span></div>'),
     productCard("rich", "product.text", "product.timeYesterday", "excel", "product.excel", `
       <div class="vp-rich-card">
         <table>
@@ -490,15 +560,6 @@
       <div class="vp-card-rail">${historyCards()}</div>
     </div>`;
 
-  const useCasePlaceholder = () => `
-    <div class="vp-usecase-placeholder">
-      <span data-i18n="usecases.placeholder">IMAGE PLACEHOLDER</span>
-      <strong data-i18n="usecases.placeholderSize">1600 × 1060 px</strong>
-      <i></i><i></i>
-    </div>`;
-
-  const useCaseScenes = Array.from({ length: 5 }, () => useCasePlaceholder);
-
   const renderProductSurfaces = () => {
     document.querySelectorAll("[data-product-surface]").forEach((surface) => {
       surface.innerHTML = historySurface();
@@ -506,6 +567,13 @@
   };
 
   renderProductSurfaces();
+
+  const cardSamples = document.createElement("template");
+  cardSamples.innerHTML = historyCards();
+  const sampleCard = (type) => cardSamples.content.querySelector(`.vp-clip-card--${type}`)?.outerHTML || "";
+  document.querySelectorAll("[data-format-sample]").forEach((surface) => {
+    surface.innerHTML = sampleCard(surface.dataset.formatSample);
+  });
 
   const readStorage = (key) => {
     try {
@@ -562,6 +630,7 @@
     });
 
     if (persist) writeStorage(STORAGE_KEYS.language, nextLanguage);
+    document.dispatchEvent(new Event("vpaste:language"));
   };
 
   const setPlatform = (platform, animate = true) => {
@@ -606,78 +675,73 @@
 
   setPlatform(detectPlatform(), false);
 
-  const useCaseDeck = document.querySelector("[data-usecase-deck]");
   const useCaseVisual = document.querySelector("[data-usecase-visual]");
   const useCaseButtons = [...document.querySelectorAll("[data-usecase-button]")];
-  const useCaseProgress = document.querySelector("[data-usecase-progress]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let activeUseCase = 0;
-  let useCaseTimer = 0;
 
-  const renderUseCase = (index, animate = true) => {
-    if (!useCaseVisual || !useCaseScenes[index]) return;
-    activeUseCase = index;
+  const useCaseKeys = ["history", "snippets", "organize", "search", "preview", "queue", "drag"];
+  const sceneCards = (types) => `<div class="scene-cards vp-product-surface">${types.map(sampleCard).join("")}</div>`;
+  const useCaseScenes = [
+    () => `<div class="scene-history">${productBar()}${sceneCards(["text", "image", "link"])}</div>`,
+    () => `<div class="scene-formats">${sceneCards(["rich", "text"])}</div>`,
+    () => `<div class="scene-tags"><div class="scene-chips"><span>${icons.star}<b data-i18n="product.favorites">Favorites</b></span><span data-i18n="product.tagLaunch">Launch copy</span><span data-i18n="product.tagReference">References</span></div>${sceneCards(["text", "link"])}</div>`,
+    () => `<img class="scene-official-search" src="assets/product/search-${document.documentElement.dataset.language}.png" data-product-image="search" width="1560" height="528" loading="lazy" decoding="async" alt="" />`,
+    () => `<div class="scene-preview">${sceneCards(["rich"])}<span class="scene-preview-label" data-i18n="product.previewTitle">Content preview</span></div>`,
+    () => `<div class="scene-queue"><div class="scene-query"><img src="assets/vpaste-logo.png" width="24" height="24" alt=""/><b data-i18n="usecases.queue">Paste queue</b><span>03</span></div><ol><li><span>01</span><strong>vPaste</strong><small data-i18n="product.text">Text</small></li><li><span>02</span><strong>vpaste.app</strong><small data-i18n="product.links">Links</small></li><li><span>03</span><strong>vPaste Intro.pdf</strong><small data-i18n="product.files">Files</small></li></ol><div class="queue-shortcut"><kbd>Ctrl / ⌘ + V</kbd><span>→</span></div></div>`,
+    () => `<div class="scene-drag">${sceneCards(["text"])}<span class="drag-arrow" aria-hidden="true">↗</span><div class="drag-target"><span data-i18n="product.textTitle">vPaste</span><p data-i18n="product.textDescription">A polished visual clipboard, one shortcut away</p><i></i><i></i></div></div>`,
+  ];
+  const renderUseCase = (index) => {
+    if (!useCaseVisual) return;
     useCaseButtons.forEach((button, buttonIndex) => {
       button.setAttribute("aria-selected", String(buttonIndex === index));
       button.tabIndex = buttonIndex === index ? 0 : -1;
     });
-    const replaceScene = () => {
-      useCaseVisual.innerHTML = useCaseScenes[index]();
-      applyTranslations(useCaseVisual, translations[document.documentElement.dataset.language]);
-      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
-    };
-
-    if (animate && window.gsap && useCaseVisual.firstElementChild && !reduceMotion.matches) {
-      window.gsap.killTweensOf(useCaseVisual.firstElementChild);
-      window.gsap.to(useCaseVisual.firstElementChild, {
-        xPercent: -4,
-        autoAlpha: 0,
-        scale: 0.985,
-        duration: 0.24,
-        ease: "power2.in",
-        onComplete: () => {
-          replaceScene();
-          const scene = useCaseVisual.firstElementChild;
-          window.gsap.fromTo(scene, { xPercent: 5, autoAlpha: 0, scale: 0.985 }, { xPercent: 0, autoAlpha: 1, scale: 1, duration: 0.54, ease: "power3.out", clearProps: "transform,opacity,visibility" });
-          window.gsap.from(scene.querySelectorAll(".vp-usecase-placeholder > *"), { y: 12, autoAlpha: 0, stagger: 0.045, duration: 0.36, ease: "power2.out", delay: 0.08, clearProps: "transform,opacity,visibility" });
-        },
-      });
-    } else {
-      replaceScene();
+    useCaseVisual.setAttribute("aria-labelledby", `usecase-tab-${index}`);
+    useCaseVisual.innerHTML = `<div class="scene-illustration">${useCaseScenes[index]()}</div><div class="scene-caption"><h3 data-i18n="usecases.${useCaseKeys[index]}"></h3><p data-i18n="usecases.${useCaseKeys[index]}Body"></p></div>`;
+    applyTranslations(useCaseVisual, translations[document.documentElement.dataset.language]);
+    document.querySelector("[data-usecase-counter]").textContent = `0${index + 1} / 07`;
+    if (!reduceMotion.matches) {
+      useCaseVisual.getAnimations().forEach((animation) => animation.cancel());
+      useCaseVisual.animate([{ opacity: 0.45, transform: "translateY(12px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 350, easing: "cubic-bezier(.22,1,.36,1)" });
     }
-  };
-
-  const stopUseCaseTimer = () => {
-    window.clearInterval(useCaseTimer);
-    useCaseTimer = 0;
-    window.gsap?.killTweensOf(useCaseProgress);
-  };
-
-  const startUseCaseTimer = () => {
-    stopUseCaseTimer();
-    if (reduceMotion.matches || document.hidden) return;
-    if (useCaseProgress && window.gsap) {
-      window.gsap.fromTo(useCaseProgress, { scaleX: 0 }, { scaleX: 1, duration: 5, ease: "none", repeat: -1 });
-    }
-    useCaseTimer = window.setInterval(() => renderUseCase((activeUseCase + 1) % useCaseScenes.length), 5000);
   };
 
   useCaseButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
       renderUseCase(index);
-      startUseCaseTimer();
+      if (!document.body.classList.contains("journey-enhanced")) {
+        button.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "nearest", inline: "center" });
+      }
+    });
+    button.addEventListener("keydown", (event) => {
+      const lastIndex = useCaseButtons.length - 1;
+      let nextIndex = null;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = index === lastIndex ? 0 : index + 1;
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = index === 0 ? lastIndex : index - 1;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = lastIndex;
+      if (nextIndex === null) return;
+      event.preventDefault();
+      renderUseCase(nextIndex);
+      useCaseButtons[nextIndex].focus();
+      useCaseButtons[nextIndex].scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "nearest", inline: "center" });
     });
   });
-  useCaseDeck?.addEventListener("mouseenter", stopUseCaseTimer);
-  useCaseDeck?.addEventListener("mouseleave", startUseCaseTimer);
-  useCaseDeck?.addEventListener("focusin", stopUseCaseTimer);
-  useCaseDeck?.addEventListener("focusout", (event) => {
-    if (!useCaseDeck.contains(event.relatedTarget)) startUseCaseTimer();
+  renderUseCase(0);
+  document.addEventListener("vpaste:feature", (event) => {
+    const index = event.detail;
+    if (Number.isInteger(index) && index >= 0 && index < useCaseButtons.length) renderUseCase(index);
   });
-  document.addEventListener("visibilitychange", () => document.hidden ? stopUseCaseTimer() : startUseCaseTimer());
-  reduceMotion.addEventListener?.("change", startUseCaseTimer);
-  renderUseCase(0, false);
-  startUseCaseTimer();
+
+  // These are captures of the official client renderer, not invented website controls.
+  const updateProductImages = () => {
+    const language = document.documentElement.dataset.language;
+    document.querySelectorAll("[data-product-image]").forEach((image) => {
+      image.src = `assets/product/${image.dataset.productImage}-${language}.png`;
+    });
+  };
+  document.addEventListener("vpaste:language", updateProductImages);
+  updateProductImages();
 
   const siteHeader = document.querySelector("[data-site-header]");
   const menuButton = document.querySelector("[data-menu-button]");
@@ -705,180 +769,43 @@
 
   siteMenu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
+    if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
+      closeMenu();
+      menuButton.focus();
+    }
   });
   window.addEventListener("resize", () => {
     if (window.innerWidth > 900) closeMenu();
   });
 
   const updateHeader = () => siteHeader?.classList.toggle("is-scrolled", window.scrollY > 12);
-  updateHeader();
-  window.addEventListener("scroll", updateHeader, { passive: true });
-
-  const initializeMotion = () => {
-    if (!window.gsap || !window.ScrollTrigger) return;
-
-    const { gsap, ScrollTrigger } = window;
-    gsap.registerPlugin(ScrollTrigger);
-    const motionContext = gsap.context(() => {
-      const media = gsap.matchMedia();
-
-      gsap.to(".scroll-progress span", {
-        scaleX: 1,
-        ease: "none",
-        scrollTrigger: {
-          start: 0,
-          end: "max",
-          scrub: 0.2,
-        },
-      });
-
-      media.add("(prefers-reduced-motion: no-preference)", () => {
-        const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-        heroTimeline
-          .from(".site-nav > *", { y: -16, autoAlpha: 0, duration: 0.55, stagger: 0.08 })
-          .from("[data-hero-copy]", { y: 28, autoAlpha: 0, duration: 0.72, stagger: 0.08 }, "-=0.24")
-          .from("[data-hero-product]", { y: 64, autoAlpha: 0, scale: 0.98, duration: 0.78 }, "-=0.34")
-          .from("[data-hero-product] .vp-clip-card", {
-            x: 36,
-            y: 12,
-            autoAlpha: 0,
-            scale: 0.94,
-            duration: 0.38,
-            stagger: 0.065,
-            ease: "back.out(1.45)",
-            clearProps: "transform,opacity,visibility",
-          }, "-=0.42");
-
-        return () => heroTimeline.kill();
-      });
-
-      media.add("(prefers-reduced-motion: reduce)", () => {
-        gsap.set([".site-nav > *", "[data-hero-copy]", "[data-hero-product]", "[data-hero-product] .vp-clip-card"], { clearProps: "all" });
-      });
-
-      media.add("(min-width: 901px) and (prefers-reduced-motion: no-preference)", () => {
-        const shortcutTimeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: ".shortcut-section",
-            start: "top top",
-            end: "+=820",
-            pin: "[data-shortcut-pin]",
-            pinSpacing: true,
-            scrub: 0.9,
-            anticipatePin: 1,
-          },
-        });
-
-        shortcutTimeline
-          .fromTo("[data-shortcut-window]", { yPercent: 145, autoAlpha: 0, scale: 0.94 }, { yPercent: 0, autoAlpha: 1, scale: 1, duration: 1.4, ease: "power3.out" })
-          .from(".shortcut-pulse span", { scaleY: 0, transformOrigin: "bottom", stagger: 0.08, duration: 0.35 }, "-=0.5")
-          .to("[data-shortcut-window]", { yPercent: 132, autoAlpha: 0.25, scale: 0.96, duration: 1.2, ease: "power2.in" }, "+=0.45");
-
-        gsap.from("[data-format-art] img", {
-          rotate: 4,
-          y: 70,
-          scale: 0.92,
-          autoAlpha: 0,
-          duration: 1.1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: "[data-format-art]", start: "top 82%" },
-        });
-
-        gsap.from("[data-search-art] img", {
-          x: -90,
-          rotate: -3,
-          autoAlpha: 0,
-          duration: 1.1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: "[data-search-art]", start: "top 82%" },
-        });
-
-        gsap.from("[data-privacy-visual] > img", {
-          x: 80,
-          scale: 0.94,
-          autoAlpha: 0,
-          duration: 1.1,
-          ease: "power3.out",
-          scrollTrigger: { trigger: "[data-privacy-visual]", start: "top 80%" },
-        });
-
-        return () => shortcutTimeline.scrollTrigger?.kill();
-      });
-
-      media.add("(prefers-reduced-motion: no-preference)", () => {
-        ScrollTrigger.batch(".format-item", {
-          start: "top 88%",
-          once: true,
-          onEnter: (elements) => gsap.from(elements, { autoAlpha: 0, duration: 0.58, stagger: 0.07, ease: "power2.out" }),
-        });
-
-        const useCaseIntro = gsap.timeline({
-          scrollTrigger: { trigger: "[data-usecase-deck]", start: "top 82%", once: true },
-        });
-        useCaseIntro
-          .from("[data-usecase-button]", { x: -24, autoAlpha: 0, duration: 0.5, stagger: 0.07, ease: "power2.out" })
-          .from("[data-usecase-stage]", { x: 42, autoAlpha: 0, scale: 0.985, duration: 0.72, ease: "power3.out" }, "-=0.4")
-          .from("[data-usecase-stage] .vp-usecase-placeholder", { y: 18, autoAlpha: 0, duration: 0.42, ease: "power2.out" }, "-=0.34");
-
-        ScrollTrigger.batch(".settings-catalog article, .source-facts > div", {
-          start: "top 88%",
-          once: true,
-          onEnter: (elements) => gsap.from(elements, { y: 28, autoAlpha: 0, duration: 0.56, stagger: 0.08, ease: "power2.out" }),
-        });
-
-        gsap.from(".feature-list li", {
-          x: 22,
-          autoAlpha: 0,
-          duration: 0.46,
-          stagger: 0.08,
-          ease: "power2.out",
-          scrollTrigger: { trigger: ".feature-list", start: "top 88%", once: true },
-        });
-
-        gsap.utils.toArray(".section-copy").forEach((copy) => {
-          if (copy.closest(".hero")) return;
-          gsap.from(copy.children, {
-            y: 24,
-            autoAlpha: 0,
-            duration: 0.62,
-            stagger: 0.08,
-            ease: "power2.out",
-            scrollTrigger: { trigger: copy, start: "top 86%", once: true },
-          });
-        });
-
-        const privacyPath = document.querySelector("[data-privacy-path]");
-        if (privacyPath) {
-          const length = privacyPath.getTotalLength();
-          gsap.set(privacyPath, { strokeDasharray: length, strokeDashoffset: length });
-          gsap.to(privacyPath, {
-            strokeDashoffset: 0,
-            duration: 1.6,
-            ease: "power2.inOut",
-            scrollTrigger: { trigger: privacyPath, start: "top 88%", once: true },
-          });
-          gsap.from(".privacy-path circle", {
-            scale: 0,
-            transformOrigin: "center",
-            duration: 0.36,
-            stagger: 0.18,
-            ease: "back.out(2)",
-            scrollTrigger: { trigger: privacyPath, start: "top 88%", once: true },
-          });
-        }
-      });
-
-      window.addEventListener("pagehide", () => {
-        media.revert();
-        motionContext.revert();
-      }, { once: true });
+  const sectionLinks = [...document.querySelectorAll("[data-section-link]")];
+  const updateActiveSection = () => {
+    if (document.body.classList.contains("story-motion")) return;
+    const anchorLine = (siteHeader?.offsetHeight || 72) + 120;
+    let activeLink = null;
+    sectionLinks.forEach((link) => {
+      const section = document.querySelector(link.getAttribute("href"));
+      if (section && section.getBoundingClientRect().top <= anchorLine) activeLink = link;
     });
-
-    const refresh = () => ScrollTrigger.refresh();
-    if (document.fonts?.ready) document.fonts.ready.then(refresh);
-    window.addEventListener("load", refresh, { once: true });
+    sectionLinks.forEach((link) => {
+      const isActive = link === activeLink;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
   };
+  const updatePageChrome = () => {
+    updateHeader();
+    updateActiveSection();
+  };
+  updatePageChrome();
+  window.addEventListener("scroll", updatePageChrome, { passive: true });
+  document.addEventListener("vpaste:language", updatePageChrome);
 
-  initializeMotion();
+  // Scroll choreography is owned by motion-concepts.js.
+  window.vpasteSite = {
+    translate: (root) => applyTranslations(root, translations[document.documentElement.dataset.language]),
+    useCaseScene: (index) => useCaseScenes[index](),
+  };
 })();

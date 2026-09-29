@@ -3,44 +3,49 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>vPaste — A visual clipboard, one shortcut away</title>
+    <title>vPaste — Your clipboard, one shortcut away</title>
     <meta
       name="description"
-      content="vPaste is a polished, local-first clipboard manager for Windows and macOS. Preserve rich text, preview images and links, search every format, and paste it back"
+      content="vPaste is a local clipboard manager for Windows and macOS that automatically organizes text, images, links, colors, and files into visual cards for fast search, preview, and reuse"
     />
-    <meta name="theme-color" content="#f4f5f6" />
+    <meta name="theme-color" content="#edf3f5" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="vPaste" />
-    <meta property="og:description" content="Preserve rich text, preview images and links, search every format, and paste it back" />
+    <meta property="og:description" content="Visual clipboard history, one shortcut away" />
     <meta property="og:image" content="assets/product-main.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="assets/vpaste-logo.png" />
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="field-notes.css" />
+    <link rel="stylesheet" href="motion-concepts.css" />
+    <link rel="stylesheet" href="product-demos.css" />
+    <script defer src="assets/vendor/gsap-3.15.0.min.js"></script>
     <script defer src="site.js"></script>
+    <script defer src="story-icons.js"></script>
+    <script defer src="product-demos.js"></script>
+    <script defer src="motion-concepts.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content" data-i18n="a11y.skip">Skip to content</a>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
     <header class="site-header" data-site-header>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a class="brand" href="#top" aria-label="vPaste home">
+      <nav class="site-nav" aria-label="Primary navigation" data-i18n-aria="a11y.primaryNav">
+        <a class="brand" href="#top" aria-label="vPaste home" data-i18n-aria="a11y.home">
           <img src="assets/vpaste-logo-master.svg" width="1024" height="1024" alt="" />
           <span>vPaste</span>
         </a>
 
         <div class="nav-links" id="site-menu" data-site-menu>
-          <a href="#experience" data-i18n="nav.experience">Experience</a>
-          <a href="#formats" data-i18n="nav.formats">Formats</a>
-          <a href="#workflow" data-i18n="nav.workflow">Workflow</a>
-          <a href="#privacy" data-i18n="nav.privacy">Privacy</a>
-          <a href="#open-source" data-i18n="nav.source">Open source</a>
+          <a href="#experience" data-i18n="nav.experience" data-section-link>One shortcut</a>
+          <a href="#formats" data-i18n="nav.formats" data-section-link>Formats</a>
+          <a href="#workflow" data-i18n="nav.workflow" data-section-link>Customize</a>
+          <a href="#privacy" data-i18n="nav.privacy" data-section-link>Privacy</a>
+          <a href="#open-source" data-i18n="nav.source" data-section-link>Open source</a>
         </div>
 
         <div class="nav-actions">
-          <div class="language-switch" role="group" aria-label="Language">
+          <div class="language-switch" role="group" aria-label="Language" data-i18n-aria="a11y.language">
             <button type="button" data-language-button="en" aria-pressed="true">EN</button>
             <button type="button" data-language-button="zh" aria-pressed="false">中</button>
           </div>
@@ -60,36 +65,35 @@
     <main id="main-content">
       <section class="hero" id="top">
         <div class="hero-copy page-shell">
-          <div class="hero-index" data-hero-copy>
-            <span>01</span>
-            <span data-i18n="hero.kicker">Clipboard history, made visual</span>
-          </div>
+          <p class="hero-edition" data-hero-copy><span>VP / 001</span><span data-i18n="hero.kicker">Every copy, clearly visible</span></p>
           <div class="hero-title" data-hero-copy>
             <img src="assets/vpaste-logo.png" width="1024" height="1024" alt="" />
-            <h1>vPaste</h1>
+            <span>vPaste</span>
           </div>
-          <p class="hero-slogan" data-hero-copy data-i18n="hero.slogan">A polished clipboard, one shortcut away</p>
+          <h1 class="hero-slogan" data-hero-copy data-i18n="hero.slogan">Your clipboard, one shortcut away</h1>
           <p class="hero-lede" data-hero-copy data-i18n="hero.lede">
-            vPaste turns text, rich content, images, links, colors, and files into clear visual cards with smooth, focused motion. See what you copied, find it fast, and paste it back in the format the work expects
+            vPaste automatically sorts text, images, links, colors, and files into clear visual cards. Call it up anytime to browse, search, preview, and paste again
           </p>
           <div class="hero-actions" data-hero-copy>
-            <a class="button button--dark" href="https://github.com/Loxonl/vPaste-desktop" target="_blank" rel="noreferrer">
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.7c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"/><path d="M8 19c-3 .9-3-1.5-4-2"/></svg>
-              <span data-i18n="action.repository">View on GitHub</span>
+            <a class="button button--dark" href="https://github.com/Loxonl/vPaste-desktop/releases" target="_blank" rel="noreferrer">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+              <span data-i18n="action.download">Download vPaste</span>
             </a>
-            <a class="button button--light" href="https://github.com/Loxonl/vPaste-desktop/releases" target="_blank" rel="noreferrer">
-              <span data-i18n="action.releases">Browse releases</span>
+            <a class="button button--light" href="https://github.com/Loxonl/vPaste-desktop" target="_blank" rel="noreferrer">
+              <span data-i18n="action.repository">View source</span>
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
           </div>
           <div class="hero-meta" data-hero-copy>
             <span><i class="status-dot status-dot--blue"></i><span data-i18n="hero.platforms">Windows + macOS</span></span>
-            <span><i class="status-dot status-dot--green"></i><span data-i18n="hero.local">Local-first by design</span></span>
+            <span><i class="status-dot status-dot--green"></i><span data-i18n="hero.local">History stored locally</span></span>
             <span><i class="status-dot status-dot--yellow"></i><span data-i18n="hero.license">GPL-3.0 open source</span></span>
           </div>
         </div>
 
         <figure class="hero-product page-shell" data-hero-product>
+          <div class="folio-label"><span>00 / vPaste</span><span data-i18n="hero.platforms">Windows + macOS</span></div>
+          <div class="hero-product-mat">
           <div
             class="product-shot product-shot--hero vp-product-surface"
             data-product-surface="history"
@@ -97,17 +101,19 @@
             aria-label="Current vPaste clipboard history window"
             data-i18n-aria="alt.main"
           ></div>
+          </div>
+          <figcaption class="folio-caption"><span data-i18n="hero.local">History stored locally</span><a href="#experience" class="explore-link"><span data-i18n="nav.experience">One shortcut</span><span aria-hidden="true">↓</span></a></figcaption>
         </figure>
       </section>
 
       <section class="shortcut-section section" id="experience">
         <div class="shortcut-pin page-shell" data-shortcut-pin>
           <div class="section-copy shortcut-copy">
-            <p class="eyebrow"><span>02</span><span data-i18n="shortcut.kicker">Polished, not persistent</span></p>
-            <h2 data-i18n="shortcut.title">Slides in when needed. Gets out of the way</h2>
-            <p data-i18n="shortcut.body">The compact panel appears above your current app with smooth motion, keeps keyboard and mouse selection close, then returns focus after you paste</p>
+            <p class="eyebrow"><span>01</span><span data-i18n="shortcut.kicker">One shortcut from any app</span></p>
+            <h2 data-i18n="shortcut.title">Call it up. Pick one. Carry on</h2>
+            <p data-i18n="shortcut.body">Call up your history and choose an item. Auto-paste sends it back to your app and closes the panel. Multi-display setups follow your active screen</p>
 
-            <div class="platform-switch" role="group" aria-label="Demo platform">
+            <div class="platform-switch" role="group" aria-label="Demo platform" data-i18n-aria="a11y.demoPlatform">
               <button type="button" data-platform-button="windows" aria-pressed="true">
                 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 5.5 10.5 4v7H3zM12 3.7 21 2v9h-9zM3 12.5h7.5v7L3 18zM12 12.5h9V22l-9-1.7z"/></svg>
                 <span>Windows</span>
@@ -127,10 +133,11 @@
           <div class="shortcut-stage" data-shortcut-stage>
             <div class="shortcut-desktop" data-platform-desktop>
               <div class="desktop-platform desktop-platform--windows" aria-hidden="true">
-                <div class="windows-wallmark"><i></i><i></i><i></i><i></i></div>
+                <img class="desktop-wallpaper" data-artwork-src="assets/artwork/desktop-windows.webp" width="1200" height="751" decoding="async" alt="" />
                 <div class="windows-taskbar"><span class="windows-start"></span><i></i><i></i><i></i><b>10:24</b></div>
               </div>
               <div class="desktop-platform desktop-platform--macos" aria-hidden="true">
+                <img class="desktop-wallpaper" data-artwork-src="assets/artwork/desktop-macos.webp" width="1200" height="751" decoding="async" alt="" />
                 <div class="mac-menu"><span>vPaste</span><div><i></i><i></i><b>10:24</b></div></div>
                 <div class="mac-dock"><i></i><i></i><i></i><i></i><i></i></div>
               </div>
@@ -155,32 +162,38 @@
       <section class="usecases-section section" id="use-cases">
         <div class="page-shell">
           <div class="usecases-heading section-copy">
-            <p class="eyebrow"><span>03</span><span data-i18n="usecases.kicker">See more than a list of copies</span></p>
-            <h2 data-i18n="usecases.title">Know what it is before you paste</h2>
-            <p data-i18n="usecases.body">Every card shows useful context—content preview, format, source app, and time—so history stays readable instead of becoming a wall of text</p>
+            <p class="eyebrow"><span>02</span><span data-i18n="usecases.kicker">Visual clipboard history</span></p>
+            <h2 data-i18n="usecases.title">See what you copied at a glance</h2>
+            <p data-i18n="usecases.body">Type, time, source app, and a useful preview live on every card. Even a long history stays easy to recognize and recover</p>
           </div>
 
           <div class="usecase-deck" data-usecase-deck>
             <div class="usecase-list" role="tablist" aria-label="Clipboard use cases" data-i18n-aria="usecases.aria">
-              <button type="button" role="tab" aria-selected="true" data-usecase-button="0">
-                <span>01</span><strong data-i18n="usecases.history">Recover overwritten copies</strong><small data-i18n="usecases.historyBody">Recent-first local history brings back text, images, links, colors, and files</small>
+              <button id="usecase-tab-0" type="button" role="tab" aria-selected="true" aria-controls="usecase-panel" data-usecase-button="0">
+                <span>01</span><strong data-i18n="usecases.history">Recover overwritten items</strong><small data-i18n="usecases.historyBody">Text, images, and files stay ordered by time and ready to use again</small>
               </button>
-              <button type="button" role="tab" aria-selected="false" data-usecase-button="1">
-                <span>02</span><strong data-i18n="usecases.snippets">Restore the original format</strong><small data-i18n="usecases.snippetsBody">Paste stored HTML or RTF where supported, or use the plain-text shortcut</small>
+              <button id="usecase-tab-1" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="1">
+                <span>02</span><strong data-i18n="usecases.snippets">Keep the original format</strong><small data-i18n="usecases.snippetsBody">Preserve headings, lists, and tables, or paste as plain text when needed</small>
               </button>
-              <button type="button" role="tab" aria-selected="false" data-usecase-button="2">
-                <span>03</span><strong data-i18n="usecases.search">Search what you remember</strong><small data-i18n="usecases.searchBody">Match text, link titles, file names and paths, or source apps</small>
+              <button id="usecase-tab-2" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="2">
+                <span>03</span><strong data-i18n="usecases.organize">Filter, tag, and favorite</strong><small data-i18n="usecases.organizeBody">Filter by type, app, date, or favorite and keep reusable items close</small>
               </button>
-              <button type="button" role="tab" aria-selected="false" data-usecase-button="3">
-                <span>04</span><strong data-i18n="usecases.preview">Preview without opening</strong><small data-i18n="usecases.previewBody">Inspect rich text, images, links, and files before they leave history</small>
+              <button id="usecase-tab-3" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="3">
+                <span>04</span><strong data-i18n="usecases.search">Search the clue you remember</strong><small data-i18n="usecases.searchBody">Text, page titles, file paths, and source apps can all lead you back</small>
               </button>
-              <button type="button" role="tab" aria-selected="false" data-usecase-button="4">
-                <span>05</span><strong data-i18n="usecases.organize">Group by real context</strong><small data-i18n="usecases.organizeBody">Filter by type, app, date, or favorite, then add record tags when needed</small>
+              <button id="usecase-tab-4" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="4">
+                <span>05</span><strong data-i18n="usecases.preview">Preview before you paste</strong><small data-i18n="usecases.previewBody">Check rich text, images, links, and files before deciding how to use them</small>
+              </button>
+              <button id="usecase-tab-5" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="5">
+                <span>06</span><strong data-i18n="usecases.queue">Paste queue</strong><small data-i18n="usecases.queueBody">Collect copies in a queue, drag to reorder or reverse the list, then paste items one by one with Ctrl / ⌘ + V while the queue is active</small>
+              </button>
+              <button id="usecase-tab-6" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="6">
+                <span>07</span><strong data-i18n="usecases.drag">Cross-app drag and drop</strong><small data-i18n="usecases.dragBody">Drag text, links, images, or files into compatible apps, including multiple files from one record</small>
               </button>
             </div>
             <div class="usecase-stage" data-usecase-stage>
-              <div class="usecase-visual" data-usecase-visual role="tabpanel" aria-live="polite"></div>
-              <div class="usecase-progress" aria-hidden="true"><span data-usecase-progress></span></div>
+              <div class="folio-label"><span data-i18n="demo.preview">Feature preview</span><span data-usecase-counter>01 / 07</span></div>
+              <div id="usecase-panel" class="usecase-visual" data-usecase-visual role="tabpanel" aria-labelledby="usecase-tab-0" aria-live="polite" tabindex="0"></div>
             </div>
           </div>
         </div>
@@ -190,79 +203,73 @@
         <div class="page-shell">
           <div class="formats-intro">
             <div class="section-copy">
-              <p class="eyebrow"><span>04</span><span data-i18n="formats.kicker">Keep more than clipboard text</span></p>
-              <h2 data-i18n="formats.title">Copy whatever the work requires</h2>
-              <p data-i18n="formats.body">vPaste stores each content type with the details needed to recognize, preview, search, and restore it—from rich formatting and link metadata to image dimensions and file paths</p>
+              <p class="eyebrow"><span>03</span><span data-i18n="formats.kicker">Every format, easy to see</span></p>
+              <h2 data-i18n="formats.title">The right card for every kind of content</h2>
+              <p data-i18n="formats.body">Text, images, links, colors, and files are sorted automatically, with the context you need to recognize, search, preview, and reuse them</p>
             </div>
-            <div class="formats-art" data-format-art>
-              <img src="assets/format-stack.png" width="1536" height="1024" alt="Abstract stack of clipboard content formats" data-i18n-alt="alt.formats" loading="lazy" decoding="async" />
-            </div>
+            <div class="format-index" aria-hidden="true"><span> Aa </span><span> ↗ </span><span> # </span><span> 01—05 </span></div>
           </div>
 
           <div class="format-grid" data-format-grid>
             <article class="format-item format-item--text">
+              <div class="format-sample vp-product-surface" data-format-sample="text" aria-hidden="true"></div>
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
               <h3 data-i18n="formats.text">Text</h3>
-              <p data-i18n="formats.textBody">Keep copied HTML or RTF so cards preserve hierarchy, tables, links, and styling in preview, with a searchable plain-text fallback</p>
+              <p data-i18n="formats.textBody">Keep headings, lists, and tables intact, then paste with the original formatting or as plain text</p>
               <ol class="format-feature-slots"><li><span>01</span><strong data-i18n="formats.textFeature1">Layout, tables &amp; links</strong></li><li><span>02</span><strong data-i18n="formats.textFeature2">HTML / RTF + fallback</strong></li><li><span>03</span><strong data-i18n="formats.textFeature3">Rich or plain-text paste</strong></li></ol>
             </article>
             <article class="format-item format-item--image">
+              <div class="format-sample vp-product-surface" data-format-sample="image" aria-hidden="true"></div>
               <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
               <h3 data-i18n="formats.image">Images</h3>
-              <p data-i18n="formats.imageBody">Preview the image without loading the original into the list</p>
+              <p data-i18n="formats.imageBody">See the image in the card, inspect full detail, and export it whenever you need the file</p>
               <ol class="format-feature-slots"><li><span>01</span><strong data-i18n="formats.imageFeature1">Persistent thumbnail</strong></li><li><span>02</span><strong data-i18n="formats.imageFeature2">Pixel dimensions</strong></li><li><span>03</span><strong data-i18n="formats.imageFeature3">Screenshots, web &amp; local</strong></li></ol>
             </article>
             <article class="format-item format-item--link">
+              <div class="format-sample vp-product-surface" data-format-sample="link" aria-hidden="true"></div>
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.1-1.1"/></svg>
               <h3 data-i18n="formats.link">Links</h3>
-              <p data-i18n="formats.linkBody">Fetch page metadata in the background without delaying capture</p>
+              <p data-i18n="formats.linkBody">Add page titles and preview images automatically, so a link is more than a bare URL</p>
               <ol class="format-feature-slots"><li><span>01</span><strong data-i18n="formats.linkFeature1">Page title</strong></li><li><span>02</span><strong data-i18n="formats.linkFeature2">Preview image + icon</strong></li><li><span>03</span><strong data-i18n="formats.linkFeature3">Full URL searchable</strong></li></ol>
             </article>
             <article class="format-item format-item--color">
+              <div class="format-sample vp-product-surface" data-format-sample="color" aria-hidden="true"></div>
               <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22a10 10 0 1 1 10-10c0 5.5-4 6-5.5 6h-1.2c-1.1 0-1.8 1.2-1.2 2.1.6.9-.1 1.9-2.1 1.9Z"/></svg>
               <h3 data-i18n="formats.color">Colors</h3>
-              <p data-i18n="formats.colorBody">Recognize common CSS colors and show the exact value</p>
+              <p data-i18n="formats.colorBody">See the swatch and its value together, then convert between common color formats</p>
               <ol class="format-feature-slots"><li><span>01</span><strong data-i18n="formats.colorFeature1">HEX / RGB / HSL</strong></li><li><span>02</span><strong data-i18n="formats.colorFeature2">Live color swatch</strong></li><li><span>03</span><strong data-i18n="formats.colorFeature3">One-click conversion</strong></li></ol>
             </article>
             <article class="format-item format-item--file">
+              <div class="format-sample vp-product-surface" data-format-sample="file" aria-hidden="true"></div>
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5Z"/><path d="M14 2v6h6"/></svg>
               <h3 data-i18n="formats.file">Files</h3>
-              <p data-i18n="formats.fileBody">Keep files and folders as files—not text paths</p>
+              <p data-i18n="formats.fileBody">Keep files, folders, and multi-file copies ready to preview, locate, or send again</p>
               <ol class="format-feature-slots"><li><span>01</span><strong data-i18n="formats.fileFeature1">Name, type &amp; path</strong></li><li><span>02</span><strong data-i18n="formats.fileFeature2">Single, folder or batch</strong></li><li><span>03</span><strong data-i18n="formats.fileFeature3">Paste back as file list</strong></li></ol>
             </article>
           </div>
 
-          <div class="search-feature">
-            <div class="search-art" data-search-art>
-              <img src="assets/search-prism.png" width="1536" height="1024" alt="Abstract optical object organizing content into searchable layers" data-i18n-alt="alt.search" loading="lazy" decoding="async" />
-            </div>
-            <div class="section-copy search-copy">
-              <p class="eyebrow"><span>05</span><span data-i18n="search.kicker">Search the details that survived</span></p>
-            <h2 data-i18n="search.title">Remember a word, a title, a path, or an app</h2>
-            <p data-i18n="search.body">Search plain and rich text, cached link titles, file names and paths, and source apps. Build tabs that filter by content type, app, date, favorites, or record tags</p>
-              <ul class="feature-list">
-                <li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span data-i18n="search.point1">Text and rich-text fallback</span></li>
-                <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></svg><span data-i18n="search.point2">Link titles, file names, and paths</span></li>
-                <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5h6M4 12h10M4 19h16"/><circle cx="16" cy="5" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="8" cy="19" r="2"/></svg><span data-i18n="search.point3">Source app, date, favorites, and tags</span></li>
-              </ul>
-            </div>
-          </div>
         </div>
       </section>
 
       <section class="workflow-section section" id="workflow">
         <div class="page-shell">
           <div class="workflow-heading section-copy">
-            <p class="eyebrow"><span>06</span><span data-i18n="workflow.kicker">Control without clutter</span></p>
-            <h2 data-i18n="workflow.title">Tune the interface to the way you work</h2>
-            <p data-i18n="workflow.body">Choose the theme and language, decide what vPaste remembers, set privacy boundaries, and keep frequent actions on the keyboard</p>
+            <p class="eyebrow"><span>05</span><span data-i18n="workflow.kicker">Work your way</span></p>
+            <h2 data-i18n="workflow.title">Make vPaste feel natural to use</h2>
+            <p data-i18n="workflow.body">Your theme, your shortcuts, your way of working</p>
           </div>
 
+          <div class="workflow-composition">
+          <figure class="settings-preview official-shot" data-settings-preview>
+            <div class="folio-label"><span>vPaste / 1.6</span><span data-i18n="demo.settings">Settings</span></div>
+            <img src="assets/product/settings-theme-en.png" width="1230" height="1080" data-product-image="settings-theme" data-i18n-alt="alt.settingsCapture" alt="vPaste General settings with the System, Light and Dark theme menu open" />
+          </figure>
           <div class="settings-catalog" data-settings-catalog>
-            <article><span>01</span><h3 data-i18n="settings.behavior">Interface &amp; behavior</h3><ul><li data-i18n="settings.behavior1">System, light, and dark themes</li><li data-i18n="settings.behavior2">English and Simplified Chinese</li><li data-i18n="settings.behavior3">Startup, tray, and background behavior</li></ul></article>
-            <article><span>02</span><h3 data-i18n="settings.experience">Clipboard experience</h3><ul><li data-i18n="settings.experience1">Rich link titles and preview images</li><li data-i18n="settings.experience2">Remember search, tab, and scroll position</li><li data-i18n="settings.experience3">Source app names and icons</li></ul></article>
-            <article><span>03</span><h3 data-i18n="settings.data">Data &amp; privacy</h3><ul><li data-i18n="settings.data1">Skip sensitive content and selected apps</li><li data-i18n="settings.data2">Choose the history storage folder</li><li data-i18n="settings.data3">Review storage and clean history by age</li><li data-i18n="settings.data4">Move complete history with .vphistory archives</li></ul></article>
-            <article><span>04</span><h3 data-i18n="settings.shortcuts">Keyboard workflow</h3><ul><li data-i18n="settings.shortcuts1">Show or hide the panel from any app</li><li data-i18n="settings.shortcuts2">Paste with formatting or as plain text</li><li data-i18n="settings.shortcuts3">Select with arrows, Tab, and Alt</li><li data-i18n="settings.shortcuts4">Search, preview, and open actions by keyboard</li></ul></article>
+            <article><span>01</span><h3 data-i18n="settings.behavior">Interface &amp; behavior</h3><p data-i18n="settings.behaviorBody">Light or dark · English or Chinese</p></article>
+            <article><span>02</span><h3 data-i18n="settings.experience">Clipboard experience</h3><p data-i18n="settings.experienceBody">Link previews · Remember your place</p></article>
+            <article><span>03</span><h3 data-i18n="settings.data">Data &amp; privacy</h3><p data-i18n="settings.dataBody">Storage location · Migration and cleanup</p></article>
+            <article><span>04</span><h3 data-i18n="settings.shortcuts">Keyboard workflow</h3><p data-i18n="settings.shortcutsBody">Call up the panel · Choose how to paste</p></article>
+          </div>
           </div>
         </div>
       </section>
@@ -270,29 +277,22 @@
       <section class="privacy-section section" id="privacy">
         <div class="page-shell privacy-layout">
           <div class="section-copy privacy-copy">
-            <p class="eyebrow eyebrow--light"><span>07</span><span data-i18n="privacy.kicker">Local by design, specific by default</span></p>
-            <h2 data-i18n="privacy.title">History stays on your device—and is encrypted there</h2>
-            <p data-i18n="privacy.body">vPaste encrypts history on disk, skips clipboard content marked sensitive by the system, and can exclude copies from apps you choose. A complete .vphistory archive moves your history, images, rich formats, and tags to another installation</p>
+            <p class="eyebrow eyebrow--light"><span>06</span><span data-i18n="privacy.kicker">Local history, your control</span></p>
+            <h2 data-i18n="privacy.title">Stored on your device,<br />not uploaded to a server</h2>
+            <p data-i18n="privacy.body">vPaste stores clipboard history locally without uploading it to a server. Exclude selected apps and sensitive content from capture; enabling link previews sends requests to the linked pages</p>
             <div class="privacy-points">
-              <span><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h.01M7 12h.01M7 16h.01M11 8h6M11 12h6M11 16h6"/></svg><span data-i18n="privacy.localDb">XChaCha20-Poly1305 encrypted local history</span></span>
+              <span><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h.01M7 12h.01M7 16h.01M11 8h6M11 12h6M11 16h6"/></svg><span data-i18n="privacy.localDb">Clipboard history stored on your device</span></span>
               <span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 14v5h14v-5"/></svg><span data-i18n="privacy.control">Sensitive-content and per-app exclusions</span></span>
             </div>
           </div>
 
           <div class="privacy-visual" data-privacy-visual>
-            <img src="assets/local-vault.png" width="1536" height="1024" alt="Abstract local data vault receiving clipboard layers" data-i18n-alt="alt.vault" loading="lazy" decoding="async" />
-            <svg class="privacy-path" viewBox="0 0 620 160" aria-hidden="true">
-              <path data-privacy-path d="M25 80 C130 80 120 28 230 28 S340 132 450 132 515 80 595 80"/>
-              <circle cx="25" cy="80" r="8"/>
-              <circle cx="230" cy="28" r="8"/>
-              <circle cx="450" cy="132" r="8"/>
-              <circle cx="595" cy="80" r="8"/>
-            </svg>
-            <div class="privacy-flow-labels" aria-hidden="true">
-              <span data-i18n="privacy.flowCopy">Copy</span>
-              <span data-i18n="privacy.flowStore">Check privacy</span>
-              <span data-i18n="privacy.flowFind">Encrypt locally</span>
-              <span data-i18n="privacy.flowPaste">Find &amp; paste</span>
+            <div class="local-archive" aria-hidden="true"><div class="archive-sheet"><span>01</span><i></i><i></i><i></i></div><div class="archive-sheet"><span>02</span><i></i><i></i><i></i></div><div class="archive-folder"><img src="assets/vpaste-tray.svg" width="64" height="64" alt="" /><span data-i18n="privacy.orbitLabel">Local</span><strong data-i18n="privacy.orbitCore">Clipboard history</strong><small>~/ vPaste</small></div></div>
+            <div class="privacy-orbit" aria-label="Local clipboard flow" data-i18n-aria="a11y.privacyFlow">
+              <div class="privacy-orbit__step privacy-orbit__step--copy"><span>01</span><strong data-i18n="privacy.flowCopy">Copy</strong></div>
+              <div class="privacy-orbit__step privacy-orbit__step--check"><span>02</span><strong data-i18n="privacy.flowStore">Check privacy</strong></div>
+              <div class="privacy-orbit__step privacy-orbit__step--encrypt"><span>03</span><strong data-i18n="privacy.flowFind">Store locally</strong></div>
+              <div class="privacy-orbit__step privacy-orbit__step--paste"><span>04</span><strong data-i18n="privacy.flowPaste">Find &amp; paste</strong></div>
             </div>
           </div>
         </div>
@@ -301,17 +301,17 @@
       <section class="source-section section" id="open-source">
         <div class="page-shell source-layout">
           <div class="section-copy source-copy">
-            <p class="eyebrow"><span>08</span><span data-i18n="source.kicker">Claims you can inspect</span></p>
-            <h2 data-i18n="source.title">Read the code behind the product</h2>
-            <p data-i18n="source.body">vPaste is GPL-3.0 open source. The desktop code, clipboard format matrix, platform notes, release definitions, and security policy are public for Windows and macOS</p>
+            <p class="eyebrow"><span>07</span><span data-i18n="source.kicker">Open source makes the promise inspectable</span></p>
+            <h2 data-i18n="source.title">Open from source code to security policy</h2>
+            <p data-i18n="source.body">vPaste is GPL-3.0 open source. Its Windows and macOS desktop code, platform integrations, release history, and security policy are open for anyone to inspect</p>
             <div class="source-actions">
-              <a class="button button--dark" href="https://github.com/Loxonl/vPaste-desktop" target="_blank" rel="noreferrer"><span data-i18n="action.repository">View on GitHub</span></a>
-              <a class="button button--light" href="https://github.com/Loxonl/vPaste-desktop/releases" target="_blank" rel="noreferrer"><span data-i18n="action.releases">Browse releases</span></a>
+              <a class="button button--dark" href="https://github.com/Loxonl/vPaste-desktop" target="_blank" rel="noreferrer"><span data-i18n="action.repository">View source</span></a>
+              <a class="button button--light" href="https://github.com/Loxonl/vPaste-desktop/releases" target="_blank" rel="noreferrer"><span data-i18n="action.releases">Download latest release</span></a>
             </div>
           </div>
-          <div class="source-facts" aria-label="Project facts">
+          <div class="source-facts" aria-label="Project facts" data-i18n-aria="a11y.projectFacts">
             <div><span>01</span><strong>GPL-3.0</strong><small data-i18n="source.factOpen">Auditable source</small></div>
-            <div><span>02</span><strong data-i18n="source.factLocal">Local-first architecture</strong><small data-i18n="source.factPrivate">Clipboard processing stays on your machine</small></div>
+            <div><span>02</span><strong data-i18n="source.factLocal">Local history architecture</strong><small data-i18n="source.factPrivate">Clipboard history is stored on your device</small></div>
             <div><span>03</span><strong>Windows + macOS</strong><small data-i18n="source.factPlatforms">Platform-specific clipboard handling</small></div>
           </div>
         </div>
@@ -321,16 +321,16 @@
         <div class="page-shell final-cta-inner">
           <span class="final-cta-logo" aria-hidden="true"></span>
           <div>
-          <p data-i18n="final.kicker">Keep the preview, the source, and the format</p>
-          <h2 data-i18n="final.title">Bring it back in one shortcut</h2>
+          <p data-i18n="final.kicker">Browse clipboard history as cards, call it up fast, paste in one step</p>
+          <h2 data-i18n="final.title">Your clipboard, one shortcut away</h2>
           </div>
-          <a class="button button--light" href="https://github.com/Loxonl/vPaste-desktop" target="_blank" rel="noreferrer">
-            <span data-i18n="action.repository">View on GitHub</span>
+          <a class="button button--light" href="https://github.com/Loxonl/vPaste-desktop/releases" target="_blank" rel="noreferrer">
+            <span data-i18n="action.download">Download vPaste</span>
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
         </div>
       </section>
     </main>
-
+    <footer class="site-footer page-shell"><a class="brand" href="#top"><img src="assets/vpaste-logo-master.svg" width="28" height="28" alt="" /><span>vPaste</span></a><span>Windows / macOS · GPL-3.0</span><a href="#top" class="back-top"><span data-i18n="demo.backTop">Back to top</span> ↑</a></footer>
   </body>
 </html>
