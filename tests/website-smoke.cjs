@@ -59,12 +59,10 @@ async function layout(page) {
           await page.locator('[data-platform-button="macos"]').click();
           assert.equal(await page.locator("html").getAttribute("data-platform"), "macos");
           await page.locator('[data-platform-button="windows"]').click();
-          if (width <= 900) {
-            await page.locator("[data-menu-button]").click();
-            assert.equal(await page.locator("[data-menu-button]").getAttribute("aria-expanded"), "true");
-            await page.keyboard.press("Escape");
-            assert.equal(await page.locator("[data-menu-button]").getAttribute("aria-expanded"), "false");
-          }
+          assert.equal(await page.locator("[data-menu-button], .site-header [data-section-link]").count(), 0);
+          assert(await page.locator(".nav-github").isVisible());
+          assert.equal(await page.locator(".nav-github").getAttribute("aria-label"), "GitHub");
+          assert(await page.locator(".nav-github svg").evaluate(svg => svg.getBoundingClientRect().width >= 16), "The compact GitHub icon must not collapse inside its padding");
           await layout(page);
           console.log("PASS", variant, width, language, "content, screenshots, seven illustrations, platform, navigation");
         }

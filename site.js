@@ -40,7 +40,7 @@
       "action.repository": "View source",
       "action.releases": "Download latest release",
       "shortcut.kicker": "One shortcut from any app",
-      "shortcut.title": "Call it up. Pick one. Carry on",
+      "shortcut.title": "Open your history, paste into any app",
       "shortcut.body": "Call up your history and choose an item. Auto-paste sends it back to your app and closes the panel. Multi-display setups follow your active screen",
       "shortcut.press": "Press",
       "shortcut.canvasLabel": "Your desktop",
@@ -48,20 +48,20 @@
       "usecases.title": "See what you copied at a glance",
       "usecases.body": "Type, time, source app, and a useful preview live on every card. Even a long history stays easy to recognize and recover",
       "usecases.aria": "Clipboard use cases",
-      "usecases.history": "Recover overwritten items",
-      "usecases.historyBody": "Text, images, and files stay ordered by time and ready to use again",
+      "usecases.history": "Keep a running clipboard history",
+      "usecases.historyBody": "Each copy is saved in time order, including text, images, links, and files",
       "usecases.snippets": "Keep the original format",
       "usecases.snippetsBody": "Preserve headings, lists, and tables, or paste as plain text when needed",
       "usecases.queue": "Paste queue",
-      "usecases.queueBody": "Collect copies in a queue, drag to reorder or reverse the list, then paste items one by one with Ctrl / ⌘ + V while the queue is active",
+      "usecases.queueBody": "Copy an email, address, and postal code, then fill each field in order with Ctrl / ⌘ + V while the queue is active",
       "usecases.drag": "Cross-app drag and drop",
       "usecases.dragBody": "Drag text, links, images, or files into compatible apps, including multiple files from one record",
-      "usecases.search": "Search the clue you remember",
-      "usecases.searchBody": "Text, page titles, file paths, and source apps can all lead you back",
+      "usecases.search": "Search across your history",
+      "usecases.searchBody": "Search by text, page title, file path, or source app",
       "usecases.preview": "Preview before you paste",
       "usecases.previewBody": "Check rich text, images, links, and files before deciding how to use them",
       "usecases.organize": "Filter, tag, and favorite",
-      "usecases.organizeBody": "Filter by type, app, date, or favorite and keep reusable items close",
+      "usecases.organizeBody": "Filter by type, app, or date; add tags and favorites to group frequently used items",
       "formats.kicker": "Every format, easy to see",
       "formats.title": "The right card for every kind of content",
       "formats.body": "Text, images, links, colors, and files are sorted automatically, with the context you need to recognize, search, preview, and reuse them",
@@ -99,10 +99,10 @@
       "workflow.kicker": "Work your way",
       "workflow.title": "Make vPaste feel natural to use",
       "workflow.body": "Your theme, your shortcuts, your way of working",
-      "settings.behaviorBody": "Light or dark · English or Chinese",
-      "settings.experienceBody": "Link previews · Remember your place",
-      "settings.dataBody": "Storage location · Migration and cleanup",
-      "settings.shortcutsBody": "Call up the panel · Choose how to paste",
+      "settings.behaviorBody": "Follow your system or choose light or dark, with English and Chinese interfaces",
+      "settings.experienceBody": "Show link titles and images, and remember your search, tab, and scroll position",
+      "settings.dataBody": "Choose a storage folder, clean up old records, or migrate your complete history",
+      "settings.shortcutsBody": "Set your panel shortcut and use the keyboard to search, preview, and choose a paste format",
       "alt.localArtwork": "A desktop archive of paper records beside a portable drive, illustrating local history and migration",
       "settings.behavior": "Interface & behavior",
       "settings.behavior1": "System, light, and dark themes",
@@ -127,6 +127,11 @@
       "privacy.body": "vPaste stores clipboard history locally without uploading it to a server. Exclude selected apps and sensitive content from capture; enabling link previews sends requests to the linked pages",
       "privacy.localDb": "Clipboard history stored on your device",
       "privacy.control": "Sensitive-content and per-app exclusions",
+      "privacy.feature1": "Clipboard history stays local, never uploaded",
+      "privacy.feature2": "Exclude sensitive content and selected apps",
+      "privacy.feature3": "Choose storage location and clear older records",
+      "privacy.feature4": "Move complete history between Windows and Mac",
+      "privacy.feature5": "Optional link previews request the linked page",
       "data.onDevice": "On your device",
       "data.migrate": "Move your history",
       "data.clean": "Clear older records",
@@ -140,7 +145,16 @@
       "demo.dropHere": "Drop an image into your document",
       "demo.saved": "Saved on this device",
       "demo.manualMigration": "Manual migration",
-      "demo.exportImport": "Export an archive · Import on Windows or Mac",
+      "demo.exportImport": "Migrate your history between Windows and Mac",
+      "demo.formTitle": "Shipping details",
+      "demo.email": "Email",
+      "demo.address1": "Address line 1",
+      "demo.address2": "Address line 2",
+      "demo.postal": "Postal code",
+      "demo.queueNext": "Next up",
+      "demo.queueEmpty": "Queue empty",
+      "demo.queueCopy": "Copy into the queue",
+      "demo.queuePaste": "Paste into each field",
       "demo.pause": "Pause demo",
       "demo.resume": "Play demo",
       "privacy.flowCopy": "Copy",
@@ -271,7 +285,7 @@
       "action.repository": "查看源码",
       "action.releases": "下载最新版本",
       "shortcut.kicker": "从任意应用一键呼出",
-      "shortcut.title": "从容呼出，所选即达",
+      "shortcut.title": "快捷呼出，直接粘贴",
       "shortcut.body": "随时呼出，选取内容。开启自动粘贴，直接回填原窗口；多屏跟随当前操作",
       "shortcut.press": "按下",
       "shortcut.canvasLabel": "你的桌面",
@@ -279,20 +293,20 @@
       "usecases.title": "复制了什么，一眼就知道",
       "usecases.body": "类型、时间、来源应用和内容预览都在卡片上。历史再多，也能快速辨认和找回",
       "usecases.aria": "剪贴板用途场景",
-      "usecases.history": "找回被覆盖的内容",
-      "usecases.historyBody": "文本、图片或文件按时间排列，打开面板即可取回",
+      "usecases.history": "持续记录复制历史",
+      "usecases.historyBody": "每次复制自动保存，文本、图片、链接与文件按时间排列",
       "usecases.snippets": "保留原有格式",
       "usecases.snippetsBody": "标题、列表和表格保留结构，也可按需要粘贴为纯文本",
       "usecases.queue": "粘贴队列",
-      "usecases.queueBody": "连续复制入队，支持拖动排序和一键倒序；队列启用时，按 Ctrl / ⌘ + V 逐项粘贴",
+      "usecases.queueBody": "依次复制邮箱、地址和邮编，启用队列后按 Ctrl / ⌘ + V，按顺序填入各个表单项",
       "usecases.drag": "跨应用拖拽",
       "usecases.dragBody": "将文本、链接、图片或文件拖入支持的应用，一条记录中的多个文件也能一起拖出",
-      "usecases.search": "搜索记得的线索",
-      "usecases.searchBody": "正文、网页标题、文件路径或来源应用，都能成为查找入口",
+      "usecases.search": "搜索历史记录",
+      "usecases.searchBody": "输入正文、网页标题、文件路径或来源应用，查找对应记录",
       "usecases.preview": "粘贴前先预览",
       "usecases.previewBody": "先确认富文本、图片、链接与文件内容，再决定如何使用",
       "usecases.organize": "分类、标签与收藏",
-      "usecases.organizeBody": "按类型、应用、日期或收藏筛选，把常用内容留在手边",
+      "usecases.organizeBody": "按类型、应用或日期筛选，用标签和收藏整理常用内容",
       "formats.kicker": "每种内容，都看得清楚",
       "formats.title": "不同内容自有合适的卡片",
       "formats.body": "文本、图片、链接、颜色和文件会自动分类，并保留辨认、搜索、预览与再次使用所需的信息",
@@ -330,10 +344,10 @@
       "workflow.kicker": "按你的习惯工作",
       "workflow.title": "把 vPaste 调成顺手的样子",
       "workflow.body": "从主题到快捷键，调成自己顺手的样子",
-      "settings.behaviorBody": "深浅主题 · 中英双语",
-      "settings.experienceBody": "链接预览 · 记住上次位置",
-      "settings.dataBody": "存储位置 · 历史迁移与清理",
-      "settings.shortcutsBody": "呼出面板 · 按需选择粘贴格式",
+      "settings.behaviorBody": "外观可跟随系统或选择深浅主题，支持中文与英文界面",
+      "settings.experienceBody": "显示链接标题与缩略图，记住上次的搜索、标签和滚动位置",
+      "settings.dataBody": "自选存储目录，按时间清理旧记录，也能迁移完整历史",
+      "settings.shortcutsBody": "自定义呼出快捷键，用键盘搜索、预览，并选择粘贴格式",
       "alt.localArtwork": "纸质记录收纳盒与便携硬盘，表达本地历史的保存与迁移",
       "settings.behavior": "界面与行为",
       "settings.behavior1": "跟随系统、浅色与深色主题",
@@ -358,6 +372,11 @@
       "privacy.body": "vPaste 将剪贴历史保存在本机，不上传服务器。可排除指定应用和敏感内容，避免录入历史；开启链接预览时会请求链接指向的网页",
       "privacy.localDb": "剪贴历史保存在你的设备上",
       "privacy.control": "敏感内容保护与指定应用排除",
+      "privacy.feature1": "剪贴历史保存在本机，不上传服务器",
+      "privacy.feature2": "可排除敏感内容与指定应用",
+      "privacy.feature3": "自选存储位置，按时间清理历史",
+      "privacy.feature4": "完整历史可在 Windows 与 Mac 间迁移",
+      "privacy.feature5": "链接预览开启时才请求对应网页",
       "data.onDevice": "留在你的设备上",
       "data.migrate": "迁移完整历史",
       "data.clean": "按时间清理历史",
@@ -371,7 +390,16 @@
       "demo.dropHere": "把图片拖入文档",
       "demo.saved": "持续保存在本机",
       "demo.manualMigration": "手动迁移",
-      "demo.exportImport": "导出归档 · 在 Windows 或 Mac 导入",
+      "demo.exportImport": "在 Windows 与 Mac 之间迁移完整历史",
+      "demo.formTitle": "收件信息",
+      "demo.email": "电子邮箱",
+      "demo.address1": "地址 1",
+      "demo.address2": "地址 2",
+      "demo.postal": "邮编",
+      "demo.queueNext": "下一项",
+      "demo.queueEmpty": "队列为空",
+      "demo.queueCopy": "依次复制入队",
+      "demo.queuePaste": "按顺序填入表单",
       "demo.pause": "暂停演示",
       "demo.resume": "播放演示",
       "privacy.flowCopy": "复制",
@@ -687,7 +715,7 @@
     () => `<div class="scene-tags"><div class="scene-chips"><span>${icons.star}<b data-i18n="product.favorites">Favorites</b></span><span data-i18n="product.tagLaunch">Launch copy</span><span data-i18n="product.tagReference">References</span></div>${sceneCards(["text", "link"])}</div>`,
     () => `<img class="scene-official-search" src="assets/product/search-${document.documentElement.dataset.language}.png" data-product-image="search" width="1560" height="528" loading="lazy" decoding="async" alt="" />`,
     () => `<div class="scene-preview">${sceneCards(["rich"])}<span class="scene-preview-label" data-i18n="product.previewTitle">Content preview</span></div>`,
-    () => `<div class="scene-queue"><div class="scene-query"><img src="assets/vpaste-logo.png" width="24" height="24" alt=""/><b data-i18n="usecases.queue">Paste queue</b><span>03</span></div><ol><li><span>01</span><strong>vPaste</strong><small data-i18n="product.text">Text</small></li><li><span>02</span><strong>vpaste.app</strong><small data-i18n="product.links">Links</small></li><li><span>03</span><strong>vPaste Intro.pdf</strong><small data-i18n="product.files">Files</small></li></ol><div class="queue-shortcut"><kbd>Ctrl / ⌘ + V</kbd><span>→</span></div></div>`,
+    () => `<div class="scene-queue"><div class="scene-query"><img src="assets/vpaste-logo.png" width="24" height="24" alt=""/><b data-i18n="usecases.queue">Paste queue</b><span>4 / 100</span></div><ol>${["hello@example.com", "18 Market Street", "Suite 240", "94105"].map((value, i) => `<li><span aria-hidden="true">⠿</span><strong>${value}</strong><small data-i18n="${i ? "product.text" : "demo.queueNext"}"></small></li>`).join("")}</ol><div class="queue-shortcut"><kbd>Ctrl / ⌘ + V</kbd><span data-i18n="demo.queuePaste"></span></div></div>`,
     () => `<div class="scene-drag">${sceneCards(["text"])}<span class="drag-arrow" aria-hidden="true">↗</span><div class="drag-target"><span data-i18n="product.textTitle">vPaste</span><p data-i18n="product.textDescription">A polished visual clipboard, one shortcut away</p><i></i><i></i></div></div>`,
   ];
   const renderUseCase = (index) => {
@@ -744,64 +772,9 @@
   updateProductImages();
 
   const siteHeader = document.querySelector("[data-site-header]");
-  const menuButton = document.querySelector("[data-menu-button]");
-  const siteMenu = document.querySelector("[data-site-menu]");
-
-  const closeMenu = () => {
-    menuButton?.setAttribute("aria-expanded", "false");
-    siteMenu?.classList.remove("is-open");
-    document.body.classList.remove("menu-open");
-    const menuLabel = menuButton?.querySelector(".sr-only");
-    if (menuLabel) menuLabel.textContent = translations[document.documentElement.dataset.language]["a11y.menu"];
-  };
-
-  menuButton?.addEventListener("click", () => {
-    const willOpen = menuButton.getAttribute("aria-expanded") !== "true";
-    menuButton.setAttribute("aria-expanded", String(willOpen));
-    siteMenu?.classList.toggle("is-open", willOpen);
-    document.body.classList.toggle("menu-open", willOpen);
-    const menuLabel = menuButton.querySelector(".sr-only");
-    if (menuLabel) {
-      const dictionary = translations[document.documentElement.dataset.language];
-      menuLabel.textContent = dictionary[willOpen ? "a11y.closeMenu" : "a11y.menu"];
-    }
-  });
-
-  siteMenu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
-      closeMenu();
-      menuButton.focus();
-    }
-  });
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) closeMenu();
-  });
-
   const updateHeader = () => siteHeader?.classList.toggle("is-scrolled", window.scrollY > 12);
-  const sectionLinks = [...document.querySelectorAll("[data-section-link]")];
-  const updateActiveSection = () => {
-    if (document.body.classList.contains("story-motion")) return;
-    const anchorLine = (siteHeader?.offsetHeight || 72) + 120;
-    let activeLink = null;
-    sectionLinks.forEach((link) => {
-      const section = document.querySelector(link.getAttribute("href"));
-      if (section && section.getBoundingClientRect().top <= anchorLine) activeLink = link;
-    });
-    sectionLinks.forEach((link) => {
-      const isActive = link === activeLink;
-      link.classList.toggle("is-active", isActive);
-      if (isActive) link.setAttribute("aria-current", "location");
-      else link.removeAttribute("aria-current");
-    });
-  };
-  const updatePageChrome = () => {
-    updateHeader();
-    updateActiveSection();
-  };
-  updatePageChrome();
-  window.addEventListener("scroll", updatePageChrome, { passive: true });
-  document.addEventListener("vpaste:language", updatePageChrome);
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
 
   // Scroll choreography is owned by motion-concepts.js.
   window.vpasteSite = {

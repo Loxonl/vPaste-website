@@ -6,7 +6,7 @@ The user selected A (mist-blue). Both old comparison URLs now resolve to the sam
 
 ## A persistent subject, complete transitions
 
-One original app window and six original cards remain on a fixed desktop canvas. The desktop expands behind it, matching the app's full width and bottom edge. The same cards are filtered, searched, previewed, queued, dragged, extracted and returned. The official settings page expands from the top-right gear, above the original app. The subject never cross-fades away.
+One original app window and six original cards remain on a fixed desktop canvas. The desktop expands behind it, matching the app's full width and bottom edge. The same cards are filtered, searched, previewed, dragged, extracted and returned. A separate paste queue demonstrates collecting four fictional address fields and filling a form in order. The official settings page expands from the top-right gear, above the original app. The subject never cross-fades away.
 
 The GSAP timeline is paused at 17 complete states across seven chapters:
 
@@ -27,13 +27,17 @@ Arrow/Page keys, Space, Home/End, previous/next controls and direct chapter/use-
 ## Visual and content changes
 
 - Decorative chapter and feature ordinals are replaced by locally bundled Lucide icons
-- Queue positions and meaningful product counts remain
+- Meaningful product counts remain; queue rows use the client's drag handles and “Next up” label, not invented card-number badges
 - Search expands the original toolbar's field and filters its existing cards into three matching records; there is no second search chapter or nested app screenshot
 - The real settings image and its four-category descriptions share one scene
 - The public-facing sample-data caption is removed; screenshot provenance remains in `assets/product/README.md`
 - Two compact AI-generated WebP wallpapers total approximately 61 KiB and load only when their desktop platform is requested; prompts and provenance are in `assets/artwork/README.md`
-- The local-data scene uses a DOM/SVG loop: records land on disk, then a manually exported archive moves between Windows and macOS; no cloud sync is implied
-- Settings descriptions are condensed to one line per category; the shortcut paragraph is also shorter
+- The local-data scene animates the original six cards into a compact Windows icon, then moves a manual migration archive between Windows and macOS icons; no new illustrations or cloud sync are used
+- Five short privacy statements replace the mixed paragraph/points layout
+- Settings descriptions give one concrete, moderately detailed sentence per category
+- Seven feature captions have a separate vertical band below the section introduction, and extracted format cards sit closer to the copy
+- All six cards participate in a short formatting wave; selected tabs use accent text and a bottom underline
+- The header keeps the brand, language and GitHub controls; chapter navigation lives only in the bottom wayfinder
 - The repeated feature index is removed
 - Open-source facts, download actions and the footer conclude the same canvas
 - Primary app artwork remains the supplied PNG; header/footer share the brand master
@@ -41,6 +45,8 @@ Arrow/Page keys, Space, Home/End, previous/next controls and direct chapter/use-
 - Marketing claims and English/Chinese content remain otherwise intact
 
 Lucide SVG paths are vendored from version 0.468.0. Attribution is in `assets/lucide-LICENSE.txt`.
+
+The tab selection and queue list are simplified from the client at commit `054def6` (2026-09-29): `src/clipboard/ClipboardHeader.tsx`, `Clipboard.module.css`, `PasteQueue.tsx`, `PasteQueue.module.css`, and `pasteQueueState.ts`. The queue header, 100-item capacity, drag handles, reverse control and next-item label follow those sources. Address data is fictional and uses the reserved `example.com` domain; no private clipboard records are included.
 
 ## Responsive and accessible fallback
 
@@ -56,6 +62,7 @@ Serve locally at port 8765. Set `PLAYWRIGHT_MODULE` if Playwright is outside the
 node tests/website-smoke.cjs
 node tests/scene-motion.cjs
 node tests/product-demos.cjs
+node tests/detail-refinement.cjs
 ```
 
 The older motion/palette/preview entry points delegate to the selected-A runner.

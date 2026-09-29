@@ -19,10 +19,12 @@
     <link rel="stylesheet" href="field-notes.css" />
     <link rel="stylesheet" href="motion-concepts.css" />
     <link rel="stylesheet" href="product-demos.css" />
+    <link rel="stylesheet" href="background-studies.css" />
     <script defer src="assets/vendor/gsap-3.15.0.min.js"></script>
     <script defer src="site.js"></script>
     <script defer src="story-icons.js"></script>
     <script defer src="product-demos.js"></script>
+    <script defer src="background-studies.js"></script>
     <script defer src="motion-concepts.js"></script>
   </head>
   <body>
@@ -36,28 +38,15 @@
           <span>vPaste</span>
         </a>
 
-        <div class="nav-links" id="site-menu" data-site-menu>
-          <a href="#experience" data-i18n="nav.experience" data-section-link>One shortcut</a>
-          <a href="#formats" data-i18n="nav.formats" data-section-link>Formats</a>
-          <a href="#workflow" data-i18n="nav.workflow" data-section-link>Customize</a>
-          <a href="#privacy" data-i18n="nav.privacy" data-section-link>Privacy</a>
-          <a href="#open-source" data-i18n="nav.source" data-section-link>Open source</a>
-        </div>
-
         <div class="nav-actions">
           <div class="language-switch" role="group" aria-label="Language" data-i18n-aria="a11y.language">
             <button type="button" data-language-button="en" aria-pressed="true">EN</button>
             <button type="button" data-language-button="zh" aria-pressed="false">中</button>
           </div>
-          <a class="button button--compact button--dark nav-github" href="https://github.com/Loxonl/vPaste-desktop" target="_blank" rel="noreferrer">
+          <a class="button button--compact button--dark nav-github" href="https://github.com/Loxonl/vPaste-desktop" aria-label="GitHub" target="_blank" rel="noreferrer">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7A5.4 5.4 0 0 0 19.4 4 5 5 0 0 0 19.3.5S18.2.1 15 1.8a13.4 13.4 0 0 0-7 0C4.8.1 3.7.5 3.7.5A5 5 0 0 0 3.6 4a5.4 5.4 0 0 0-1.4 3.7c0 5.4 3.5 6.6 6.8 7A4.8 4.8 0 0 0 8 18v4"/><path d="M8 19c-3 .9-3-1.5-4-2"/></svg>
             <span>GitHub</span>
           </a>
-          <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-button>
-            <span class="sr-only" data-i18n="a11y.menu">Open menu</span>
-            <svg class="menu-open-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-            <svg class="menu-close-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m18 6-12 12M6 6l12 12"/></svg>
-          </button>
         </div>
       </nav>
     </header>
@@ -110,7 +99,7 @@
         <div class="shortcut-pin page-shell" data-shortcut-pin>
           <div class="section-copy shortcut-copy">
             <p class="eyebrow"><span>01</span><span data-i18n="shortcut.kicker">One shortcut from any app</span></p>
-            <h2 data-i18n="shortcut.title">Call it up. Pick one. Carry on</h2>
+            <h2 data-i18n="shortcut.title">Open your history, paste into any app</h2>
             <p data-i18n="shortcut.body">Call up your history and choose an item. Auto-paste sends it back to your app and closes the panel. Multi-display setups follow your active screen</p>
 
             <div class="platform-switch" role="group" aria-label="Demo platform" data-i18n-aria="a11y.demoPlatform">
@@ -170,22 +159,22 @@
           <div class="usecase-deck" data-usecase-deck>
             <div class="usecase-list" role="tablist" aria-label="Clipboard use cases" data-i18n-aria="usecases.aria">
               <button id="usecase-tab-0" type="button" role="tab" aria-selected="true" aria-controls="usecase-panel" data-usecase-button="0">
-                <span>01</span><strong data-i18n="usecases.history">Recover overwritten items</strong><small data-i18n="usecases.historyBody">Text, images, and files stay ordered by time and ready to use again</small>
+                <span>01</span><strong data-i18n="usecases.history">Keep a running clipboard history</strong><small data-i18n="usecases.historyBody">Each copy is saved in time order, including text, images, links, and files</small>
               </button>
               <button id="usecase-tab-1" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="1">
                 <span>02</span><strong data-i18n="usecases.snippets">Keep the original format</strong><small data-i18n="usecases.snippetsBody">Preserve headings, lists, and tables, or paste as plain text when needed</small>
               </button>
               <button id="usecase-tab-2" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="2">
-                <span>03</span><strong data-i18n="usecases.organize">Filter, tag, and favorite</strong><small data-i18n="usecases.organizeBody">Filter by type, app, date, or favorite and keep reusable items close</small>
+                <span>03</span><strong data-i18n="usecases.organize">Filter, tag, and favorite</strong><small data-i18n="usecases.organizeBody">Filter by type, app, or date; add tags and favorites to group frequently used items</small>
               </button>
               <button id="usecase-tab-3" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="3">
-                <span>04</span><strong data-i18n="usecases.search">Search the clue you remember</strong><small data-i18n="usecases.searchBody">Text, page titles, file paths, and source apps can all lead you back</small>
+                <span>04</span><strong data-i18n="usecases.search">Search across your history</strong><small data-i18n="usecases.searchBody">Search by text, page title, file path, or source app</small>
               </button>
               <button id="usecase-tab-4" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="4">
                 <span>05</span><strong data-i18n="usecases.preview">Preview before you paste</strong><small data-i18n="usecases.previewBody">Check rich text, images, links, and files before deciding how to use them</small>
               </button>
               <button id="usecase-tab-5" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="5">
-                <span>06</span><strong data-i18n="usecases.queue">Paste queue</strong><small data-i18n="usecases.queueBody">Collect copies in a queue, drag to reorder or reverse the list, then paste items one by one with Ctrl / ⌘ + V while the queue is active</small>
+                <span>06</span><strong data-i18n="usecases.queue">Paste queue</strong><small data-i18n="usecases.queueBody">Copy an email, address, and postal code, then fill each field in order with Ctrl / ⌘ + V while the queue is active</small>
               </button>
               <button id="usecase-tab-6" type="button" role="tab" aria-selected="false" aria-controls="usecase-panel" data-usecase-button="6">
                 <span>07</span><strong data-i18n="usecases.drag">Cross-app drag and drop</strong><small data-i18n="usecases.dragBody">Drag text, links, images, or files into compatible apps, including multiple files from one record</small>
@@ -265,10 +254,10 @@
             <img src="assets/product/settings-theme-en.png" width="1230" height="1080" data-product-image="settings-theme" data-i18n-alt="alt.settingsCapture" alt="vPaste General settings with the System, Light and Dark theme menu open" />
           </figure>
           <div class="settings-catalog" data-settings-catalog>
-            <article><span>01</span><h3 data-i18n="settings.behavior">Interface &amp; behavior</h3><p data-i18n="settings.behaviorBody">Light or dark · English or Chinese</p></article>
-            <article><span>02</span><h3 data-i18n="settings.experience">Clipboard experience</h3><p data-i18n="settings.experienceBody">Link previews · Remember your place</p></article>
-            <article><span>03</span><h3 data-i18n="settings.data">Data &amp; privacy</h3><p data-i18n="settings.dataBody">Storage location · Migration and cleanup</p></article>
-            <article><span>04</span><h3 data-i18n="settings.shortcuts">Keyboard workflow</h3><p data-i18n="settings.shortcutsBody">Call up the panel · Choose how to paste</p></article>
+            <article><span>01</span><h3 data-i18n="settings.behavior">Interface &amp; behavior</h3><p data-i18n="settings.behaviorBody">Follow your system or choose light or dark, with English and Chinese interfaces</p></article>
+            <article><span>02</span><h3 data-i18n="settings.experience">Clipboard experience</h3><p data-i18n="settings.experienceBody">Show link titles and images, and remember your search, tab, and scroll position</p></article>
+            <article><span>03</span><h3 data-i18n="settings.data">Data &amp; privacy</h3><p data-i18n="settings.dataBody">Choose a storage folder, clean up old records, or migrate your complete history</p></article>
+            <article><span>04</span><h3 data-i18n="settings.shortcuts">Keyboard workflow</h3><p data-i18n="settings.shortcutsBody">Set your panel shortcut and use the keyboard to search, preview, and choose a paste format</p></article>
           </div>
           </div>
         </div>

@@ -46,16 +46,16 @@ const pose = (page, selector) => page.locator(selector).evaluate(el => ({
     await page.waitForTimeout(1000);
     assert(await page.evaluate(() => {
       const tab = document.querySelector(".demo-tab-active").getBoundingClientRect();
-      const ring = document.querySelector(".demo-spotlight").getBoundingClientRect();
+      const ring = document.querySelector(".demo-tab-indicator").getBoundingClientRect();
       return Math.abs(tab.left + tab.width / 2 - ring.left - ring.width / 2) < 2;
     }), "Changing language recomputes the real tab positions");
     await feature(page, 3);
     await page.waitForTimeout(2000);
     assert.equal(await page.locator(".app-content .vp-clip-card").evaluateAll(cards => cards.filter(c => Number(getComputedStyle(c).opacity) > .9).length), 3);
     await feature(page, 5);
-    await page.waitForTimeout(4800);
-    assert.equal(await page.locator(".demo-queue-status b").textContent(), "0");
-    assert.equal(await page.locator(".demo-paste-rows p").evaluateAll(rows => rows.filter(row => getComputedStyle(row).visibility === "visible").length), 3);
+    await page.waitForTimeout(8300);
+    assert.equal(await page.locator("[data-queue-count]").textContent(), "0");
+    assert.equal(await page.locator(".demo-form-value").evaluateAll(rows => rows.filter(row => getComputedStyle(row).visibility === "visible").length), 4);
     await feature(page, 6);
     await page.waitForTimeout(3000);
     assert.equal((await pose(page, ".demo-dropzone img")).opacity, "1", "Dragging delivers the image into the receiving document");

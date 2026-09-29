@@ -106,9 +106,9 @@ async function chapter(page, index) {
       if (i === 0) assert(await page.locator(".history-continuation").isVisible());
       if (i === 2) assert(await page.evaluate(() => {
         const tab = document.querySelector(".demo-tab-active").getBoundingClientRect();
-        const focus = document.querySelector(".demo-spotlight").getBoundingClientRect();
+        const focus = document.querySelector(".demo-tab-indicator").getBoundingClientRect();
         return Math.abs((tab.left + tab.right) / 2 - (focus.left + focus.right) / 2) < 2;
-      }), "The focus ring follows the actual toolbar tab");
+      }), "The underline follows the actual toolbar tab");
       if (i === 3) {
         assert(await page.locator(".demo-search-field").isVisible());
         assert.equal(await page.locator(".app-content .vp-clip-card").evaluateAll(cards => cards.filter(c => Number(getComputedStyle(c).opacity) > .9).length), 3);
@@ -121,7 +121,8 @@ async function chapter(page, index) {
         await page.waitForTimeout(5800);
         assert.equal(await page.locator(".demo-preview-link").evaluate(el => getComputedStyle(el).display), "block");
       }
-      if (i === 5 || i === 6) assert(await page.locator(".demo-receiver").evaluate(el => el.getBoundingClientRect().bottom < document.querySelector(".app-actor").getBoundingClientRect().top));
+      if (i === 5) assert(await page.locator(".demo-queue-window, .demo-form").evaluateAll(windows => windows.every(el => el.getBoundingClientRect().bottom < document.querySelector(".app-actor").getBoundingClientRect().top)));
+      if (i === 6) assert(await page.locator(".demo-receiver").evaluate(el => el.getBoundingClientRect().bottom < document.querySelector(".app-actor").getBoundingClientRect().top));
       await page.locator("[data-demo-pause]").click();
       assert.equal(await page.locator("[data-demo-pause]").getAttribute("aria-pressed"), "true");
       await page.locator("[data-demo-pause]").click();
@@ -136,6 +137,7 @@ async function chapter(page, index) {
       await settle(page);
       assert.equal(await step(page), i + 9);
       assert.notEqual(await page.locator(".app-content .vp-clip-card").nth(i).evaluate(el => getComputedStyle(el).transform), "matrix(1, 0, 0, 1, 0, 0)");
+      if (i === 0) await screenshot(page, "format-text");
     }
     for (const language of ["zh", "en"]) {
       await page.locator(`[data-language-button="${language}"]`).click();
@@ -145,6 +147,7 @@ async function chapter(page, index) {
         for (const [index, name] of [[4, "settings"], [5, "local-data"], [6, "closing"]]) {
           await chapter(page, index);
           if (index === 4) {
+            assert(await page.locator(".app-content .vp-clip-card").evaluateAll(cards => cards.every(card => gsap.getProperty(card, "scaleX") === 1)), "Settings keeps the original cards at their normal size, including after a storage loop");
             assert.equal(await page.locator(".settings-sheet img").count(), 1);
             assert.equal(await page.locator("#workflow .settings-catalog article").count(), 4);
             assert.equal(await page.locator("#workflow .settings-catalog li").count(), 0);

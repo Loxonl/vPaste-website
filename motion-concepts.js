@@ -8,6 +8,7 @@
   const desktop = main.querySelector("[data-platform-desktop]");
   desktop.querySelector("[data-shortcut-window]").remove(); // One main window, never a second desktop replica.
   const platforms = main.querySelector(".platform-switch");
+  const platformIcon = name => platforms.querySelector(`[data-platform-button="${name}"] svg`).outerHTML;
   const shortcut = main.querySelector(".shortcut-key");
   const actions = main.querySelector(".hero-actions");
   const metadata = main.querySelector(".hero-meta");
@@ -56,12 +57,13 @@
             <div class="settings-details"></div>
           </section>
           <section id="privacy" class="chapter-copy chapter-copy--privacy">
-            <div class="chapter-heading">${heading("privacy", "hard-drive")}<div class="story-points">${tr("privacy.localDb", "p")}${tr("privacy.control", "p")}</div></div>
+            <div class="chapter-heading"><p class="story-kicker">${icon("hard-drive")}${tr("privacy.kicker")}</p>${tr("privacy.title", "h2")}<ul class="privacy-features">${["cloud-off", "shield-check", "folder-open", "arrow-right-left", "link"].map((name, i) => `<li>${icon(name)}${tr("privacy.feature" + (i + 1))}</li>`).join("")}</ul></div>
             <figure class="data-visual">
               <div class="local-pipeline" aria-hidden="true">
-                <div class="local-device local-device--windows"><div class="local-device-title">${icon("monitor")}Windows</div><div class="local-inbox">${["type", "image", "link"].map(name => `<span class="local-record">${icon(name)}</span>`).join("")}${icon("hard-drive")}${tr("demo.saved", "strong")}</div><div class="local-records">${["vPaste", "design.png", "github.com"].map(text => `<div class="stored-record"><i></i>${text}</div>`).join("")}</div></div>
-                <div class="migration-path">${icon("arrow-right-left")}${tr("demo.manualMigration")}<span class="migration-bundle">${icon("archive")}</span></div>
-                <div class="local-device local-device--mac"><div class="local-device-title">${icon("monitor")}macOS</div><div class="local-inbox">${icon("database-backup")}${tr("data.migrate", "strong")}</div><div class="import-records"><span>vPaste</span><span>design.png</span><span>github.com</span></div></div>
+                <div class="local-device local-device--windows"><div class="local-device-icon">${platformIcon("windows")}</div><strong>Windows</strong><span class="local-save-mark">${icon("check")}</span></div>
+                <div class="migration-path">${icon("arrow-right-left")}${tr("demo.manualMigration")}</div>
+                <div class="local-device local-device--mac"><div class="local-device-icon">${platformIcon("macos")}</div><strong>macOS</strong><span class="local-save-mark">${icon("check")}</span></div>
+                <span class="migration-bundle">${icon("archive")}</span>
               </div>
               <figcaption class="data-actions"><span>${icon("hard-drive")}${tr("demo.saved")}</span><span>${icon("arrow-right-left")}${tr("demo.exportImport")}</span></figcaption>
             </figure>
@@ -101,6 +103,7 @@
 
   main.replaceChildren(story);
   window.vpasteSite.translate(main);
+  const backgroundStudy = window.createBackgroundStudy();
   const loadArtwork = (image, lazy = false) => {
     if (!image || image.hasAttribute("src")) return;
     image.loading = lazy ? "lazy" : "eager";
@@ -181,10 +184,10 @@
     const poses = [
       { x: 570, y: 385, scale: .71, rotation: -rotation },
       { x: 575, y: 449.98, scale: 765 / 1120, rotation: 0 },
-      { x: 440, y: 390, scale: .8, rotation: 0 },
+      { x: 440, y: 430, scale: .8, rotation: 0 },
       { x: 155, y: 160, scale: .84, rotation: 0 },
       { x: 680, y: 645, scale: .56, rotation: 0 },
-      { x: 95, y: 188, scale: .32, rotation: 0 },
+      { x: 95, y: 210, scale: .67, rotation: 0 },
       { x: 825, y: 375, scale: .45, rotation: -rotation },
     ];
     const layoutWorld = () => {
@@ -217,7 +220,7 @@
     features.forEach((key, index) => {
       const at = featureStart + index * featureStep;
       if (index) timeline.to(featureTrack, { x: -index * 840, duration: .26 }, at - .28);
-      if (index === 4) timeline.to(actor, { x: 450, y: 565, scale: .78, duration: .28 }, at - .3);
+      if (index === 4) timeline.to(actor, { x: 450, y: 600, scale: .78, duration: .28 }, at - .3);
       timeline.addLabel("feature-" + key, at);
     });
     transition(3, 4.55);
@@ -227,7 +230,7 @@
       const at = formatStart + index * .5;
       // Translate the ORIGINAL card out of its slot. No clone or cross-fade is used.
       const pose = poses[3];
-      const target = { x: 980, y: 470 };
+      const target = { x: 830, y: 470 };
       const x = (target.x - pose.x) / pose.scale - card.offsetLeft;
       const y = (target.y - pose.y) / pose.scale - card.offsetTop;
       timeline.set(card, { zIndex: 12 }, at);
@@ -255,12 +258,6 @@
       let next = 0;
       [ .96, 1.96, 4.96, 8.05, 9.61, 10.91 ].forEach((threshold) => { if (time >= threshold) next++; });
       story.dataset.chapter = String(next);
-      const section = [null, "#experience", null, "#formats", "#workflow", "#privacy", "#open-source"][next];
-      document.querySelectorAll("[data-section-link]").forEach((link) => {
-        const selected = link.getAttribute("href") === section;
-        link.classList.toggle("is-active", selected);
-        if (selected) link.setAttribute("aria-current", "location"); else link.removeAttribute("aria-current");
-      });
       if (active !== next) {
         active = next;
         prepareArtwork(next);
@@ -305,7 +302,7 @@
     const stopLoops = () => { demos.stop(); localLoop?.stop(); localLoop = null; pauseButton.hidden = true; delete story.dataset.demo; };
     const startLoops = () => {
       if (step >= 2 && step <= 8) { demos.enter(step - 2); story.dataset.demo = String(step - 2); }
-      if (step === 15) localLoop = window.createLocalHistoryLoop(dataVisual);
+      if (step === 15) localLoop = window.createLocalHistoryLoop({ root: dataVisual, actor, cards });
       pauseButton.hidden = !(step >= 2 && step <= 8) && step !== 15;
       pauseLoops();
     };
@@ -327,6 +324,7 @@
       const directJump = Math.abs(index - step) > 1 && !sameChapter;
       const previousChapter = Number(story.dataset.chapter);
       const targetChapter = chapterTimes.reduce((chapter, time, i) => time <= stops[index] ? i : chapter, 0);
+      backgroundStudy?.go({ progress: stops[index] / duration, chapter: targetChapter, duration: sameChapter ? .85 : 1.35 });
       step = index;
       prepareArtwork(targetChapter);
       story.dataset.transitioning = "true";
@@ -420,10 +418,12 @@
       timeline.time(stops[step]);
     }
     updateState();
+    backgroundStudy?.go({ progress: timeline.time() / duration, chapter: Number(story.dataset.chapter) });
     startLoops();
     announce();
     return () => {
       jumpTo = null;
+      backgroundStudy?.settle();
       transitionTween?.kill();
       stopLoops();
       demos.destroy();

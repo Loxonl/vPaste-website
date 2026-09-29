@@ -12,17 +12,13 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
   continuation.className = "history-continuation";
   continuation.innerHTML = `<b aria-hidden="true">···</b>${tr("demo.older")}`;
   app.append(continuation);
-  cards.forEach((card, index) => {
-    const badge = document.createElement("span");
-    badge.className = "demo-queue-badge";
-    badge.textContent = String(index === 0 ? 1 : index === 2 ? 2 : 3);
-    card.append(badge);
-  });
+  // Public, fictional form data; the independent queue follows the client's list layout.
+  const formFields = [["email", "hello@example.com"], ["address1", "18 Market Street"], ["address2", "Suite 240"], ["postal", "94105"]];
   const overlays = document.createElement("div");
   overlays.className = "product-overlays";
   overlays.innerHTML = `
     <div class="demo-format-note">${icon("text-cursor-input")}${tr("demo.keepFormat")}<kbd>Ctrl / ⌘ + Shift + V</kbd>${tr("demo.plainText")}</div>
-    <div class="demo-spotlight" aria-hidden="true"></div>
+    <div class="demo-tab-indicator" aria-hidden="true"></div>
     <div class="demo-keypress"><kbd>Space</kbd>${tr("demo.spacePreview")}</div>
     <div class="demo-preview-window" aria-hidden="true">
       <div class="demo-window-title">${icon("scan-eye")}${tr("product.previewTitle")}<span>×</span></div>
@@ -31,9 +27,14 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
     </div>
     <div class="demo-receiver" aria-hidden="true">
       <div class="demo-window-title">${icon("file")}${tr("demo.workNote")}<span>− &nbsp; □ &nbsp; ×</span></div>
-      <div class="demo-note"><h3 data-i18n="demo.projectNote"></h3><div class="demo-paste-rows"><p>vPaste</p><p>github.com/Loxonl/vPaste-desktop</p><p>vPaste Intro.pdf</p></div><div class="demo-dropzone">${icon("image")}${tr("demo.dropHere")}<img src="assets/format-stack.png" alt="" loading="lazy" /></div></div>
+      <div class="demo-note"><h3 data-i18n="demo.projectNote"></h3><div class="demo-dropzone">${icon("image")}${tr("demo.dropHere")}<img src="assets/format-stack.png" alt="" loading="lazy" /></div></div>
     </div>
-    <div class="demo-queue-status">${icon("list-ordered")}${tr("usecases.queue")}<b>3</b><kbd>Ctrl / ⌘ + V</kbd></div>
+    <div class="demo-queue-window" aria-hidden="true">
+      <div class="demo-queue-header"><span>×</span><div>${tr("usecases.queue", "strong")}<small><b data-queue-count>0</b> / 100</small></div><span class="demo-queue-tools">${icon("arrow-right-left")}<b>···</b></span></div>
+      <div class="demo-queue-list">${formFields.map(([, value]) => `<div class="demo-queue-row"><span class="demo-queue-grip">⠿</span>${icon("type")}<div><strong>${value}</strong><small>${tr("demo.queueNext", "span", "demo-queue-next")}${tr("product.text", "span", "demo-queue-type")}</small></div></div>`).join("")}<div class="demo-queue-empty">${icon("check")}${tr("demo.queueEmpty")}</div></div>
+      <div class="demo-queue-workflow" data-phase="copy"><kbd>Ctrl / ⌘ + <b>C</b></kbd>${tr("demo.queueCopy", "span", "demo-copy-label")}${tr("demo.queuePaste", "span", "demo-paste-label")}</div>
+    </div>
+    <div class="demo-form" aria-hidden="true"><div class="demo-window-title">${icon("file")}${tr("demo.formTitle")}<span>− &nbsp; □ &nbsp; ×</span></div><div class="demo-form-fields">${formFields.map(([key, value]) => `<div class="demo-form-field">${tr("demo." + key, "small")}<div><span class="demo-form-value">${value}</span><i></i></div></div>`).join("")}</div></div>
     <img class="demo-drag-ghost" src="assets/format-stack.png" alt="" loading="lazy" />
     <span class="demo-pointer" aria-hidden="true">${icon("mouse-pointer-2")}</span>`;
   actor.append(overlays);
@@ -48,7 +49,7 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
     active = -1;
     delete actor.dataset.demo;
     tabs.forEach(tab => tab.classList.remove("demo-tab-active"));
-    cards.forEach(card => card.classList.remove("demo-selected", "demo-queued"));
+    cards.forEach(card => card.classList.remove("demo-selected"));
   };
   const enter = index => {
     restore();
@@ -59,23 +60,26 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
       const pointer = overlays.querySelector(".demo-pointer");
       const popup = overlays.querySelector(".demo-preview-window");
       const key = overlays.querySelector(".demo-keypress kbd");
-      const rows = [...overlays.querySelectorAll(".demo-paste-rows p")];
       const receiver = overlays.querySelector(".demo-receiver");
       const select = selected => cards.forEach((card, i) => card.classList.toggle("demo-selected", i === selected));
       loop = gsap.timeline({ repeat: -1, repeatDelay: .7, defaults: { ease: "sine.inOut" } });
       if (index === 0) {
         loop.to(rail, { x: -45, duration: 2.2 }, .6).to(rail, { x: 0, duration: 2.2 }, 4.2);
       } else if (index === 1) {
-        select(5);
-        loop.to(cards[5], { y: -16, scale: 1.06, duration: .75 }, .3).to(cards[5], { y: 0, scale: 1, duration: .75 }, 3.8);
+        cards.forEach((card, i) => {
+          const at = .2 + i * .16;
+          loop.to(card, { y: -14, scale: 1.035, duration: .32 }, at)
+            .to(card, { y: 0, scale: 1, duration: .38 }, at + .32);
+        });
       } else if (index === 2) {
-        const spotlight = overlays.querySelector(".demo-spotlight");
+        const indicator = overlays.querySelector(".demo-tab-indicator");
+        gsap.set(indicator, { x: tabs[0].offsetLeft + 10, scaleX: tabs[0].offsetWidth - 20, transformOrigin: "0 50%" });
         // These are the real type tabs and original records, not a second filter mockup.
-        [[2, [0, 5]], [3, [1]], [4, [2]]].forEach(([tabIndex, visible], phase) => {
+        [[2, [0, 5]], [3, [1]], [4, [2]], [1, [0, 2]]].forEach(([tabIndex, visible], phase) => {
           const at = phase * 2.6;
           const tab = tabs[tabIndex];
           loop.call(() => tabs.forEach((item, i) => item.classList.toggle("demo-tab-active", i === tabIndex)), [], at);
-          loop.to(spotlight, { x: tab.offsetLeft - 4, width: tab.offsetWidth + 8, duration: .5 }, at);
+          loop.to(indicator, { x: tab.offsetLeft + 10, scaleX: tab.offsetWidth - 20, duration: .5 }, at);
           cards.forEach((card, i) => {
             const order = visible.indexOf(i);
             loop.to(card, { x: order < 0 ? 0 : 16 + order * 182 - card.offsetLeft, y: order < 0 ? 14 : 0, opacity: order < 0 ? 0 : 1, duration: .6 }, at + .25);
@@ -107,21 +111,43 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
           loop.to(popup, { scale: .93, y: 18, autoAlpha: 0, duration: .4 }, at + 3.7);
         });
       } else if (index === 5) {
-        [0, 2, 3].forEach(i => cards[i].classList.add("demo-queued"));
-        const count = overlays.querySelector(".demo-queue-status b");
-        const pasteKey = overlays.querySelector(".demo-queue-status kbd");
-        gsap.set(rows, { autoAlpha: 0, y: 10 });
-        loop.set(count, { textContent: "3" }, 0);
-        [0, 2, 3].forEach((cardIndex, i) => {
-          const at = .5 + i * 1.6;
-          loop.call(() => select(cardIndex), [], at);
-          loop.to(pasteKey, { y: 3, backgroundColor: "#c8dfef", duration: .14 }, at + .25);
-          loop.to(pasteKey, { y: 0, backgroundColor: "#ffffff", duration: .2 }, at + .42);
-          loop.to(rows[i], { autoAlpha: 1, y: 0, duration: .45 }, at + .4);
-          loop.set(count, { textContent: String(2 - i) }, at + .7);
-          loop.to(cards[cardIndex].querySelector(".demo-queue-badge"), { scale: 0, duration: .25 }, at + .7);
+        const rows = [...overlays.querySelectorAll(".demo-queue-row")];
+        const fields = [...overlays.querySelectorAll(".demo-form-field")];
+        const values = overlays.querySelectorAll(".demo-form-value");
+        const count = overlays.querySelector("[data-queue-count]");
+        const empty = overlays.querySelector(".demo-queue-empty");
+        const workflow = overlays.querySelector(".demo-queue-workflow");
+        const pasteKey = workflow.querySelector("kbd");
+        const nextRow = index => rows.forEach((row, i) => row.classList.toggle("is-next", i === index));
+        gsap.set(rows, { autoAlpha: 0, y: 12 });
+        gsap.set(values, { autoAlpha: 0, y: 5 });
+        gsap.set(empty, { autoAlpha: 0 });
+        loop.set(rows, { autoAlpha: 0, x: 0, y: 12 }, 0).set(values, { autoAlpha: 0, y: 5 }, 0).set(empty, { autoAlpha: 0 }, 0);
+        loop.set(count, { textContent: "0" }, 0).set(pasteKey.querySelector("b"), { textContent: "C" }, 0);
+        loop.call(() => { workflow.dataset.phase = "copy"; nextRow(0); fields.forEach(field => field.classList.remove("is-current")); }, [], 0);
+        rows.forEach((row, i) => {
+          const at = .3 + i * .45;
+          loop.to(pasteKey, { y: 3, backgroundColor: "#dcebf4", duration: .12 }, at);
+          loop.to(pasteKey, { y: 0, backgroundColor: "#ffffff", duration: .2 }, at + .12);
+          loop.to(row, { autoAlpha: 1, y: 0, duration: .3 }, at);
+          loop.set(count, { textContent: String(i + 1) }, at + .3);
         });
-        loop.to({}, { duration: 1.8 });
+        loop.set(pasteKey.querySelector("b"), { textContent: "V" }, 2.7);
+        loop.call(() => { workflow.dataset.phase = "paste"; }, [], 2.7);
+        rows.forEach((row, i) => {
+          const at = 3 + i * 1.35;
+          loop.call(() => fields.forEach((field, n) => field.classList.toggle("is-current", n === i)), [], at);
+          loop.to(pasteKey, { y: 3, backgroundColor: "#dcebf4", duration: .14 }, at + .1);
+          loop.to(pasteKey, { y: 0, backgroundColor: "#ffffff", duration: .2 }, at + .26);
+          loop.to(values[i], { autoAlpha: 1, y: 0, duration: .4 }, at + .25);
+          loop.to(row, { x: 20, autoAlpha: 0, duration: .3 }, at + .4);
+          loop.to(rows.slice(i + 1), { y: -(i + 1) * row.offsetHeight, duration: .35 }, at + .55);
+          loop.set(count, { textContent: String(rows.length - i - 1) }, at + .65);
+          loop.call(() => nextRow(i + 1), [], at + .65);
+        });
+        loop.to(empty, { autoAlpha: 1, duration: .3 }, 7.9);
+        loop.call(() => fields.forEach(field => field.classList.remove("is-current")), [], 8.2);
+        loop.to({}, { duration: 1.3 });
       } else if (index === 6) {
         select(1);
         const ghost = overlays.querySelector(".demo-drag-ghost");
@@ -146,31 +172,54 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
     stop: restore,
     pause: paused => loop?.paused(paused),
     replayPreview: () => { if (active === 4) loop?.restart(); },
-    destroy: () => { restore(); overlays.remove(); search.remove(); continuation.remove(); cards.forEach(card => card.querySelector(".demo-queue-badge").remove()); },
+    destroy: () => { restore(); overlays.remove(); search.remove(); continuation.remove(); },
   };
 };
 
-window.createLocalHistoryLoop = (root) => {
+window.createLocalHistoryLoop = ({ root, actor, cards }) => {
   let loop;
+  const originalPoses = cards.map(card => Object.fromEntries(["x", "y", "scaleX", "scaleY", "opacity", "visibility"].map(key => [key, gsap.getProperty(card, key)])));
   const context = gsap.context(() => {
-    const packets = root.querySelectorAll(".local-record");
+    const windows = root.querySelector(".local-device--windows .local-device-icon");
+    const mac = root.querySelector(".local-device--mac .local-device-icon");
     const bundle = root.querySelector(".migration-bundle");
-    const saved = root.querySelectorAll(".stored-record");
+    const marks = root.querySelectorAll(".local-save-mark");
+    const destination = windows.getBoundingClientRect();
+    const actorScale = actor.getBoundingClientRect().width / actor.offsetWidth;
+    const pipeline = root.querySelector(".local-pipeline");
+    const pipelineRect = pipeline.getBoundingClientRect();
+    const worldScale = pipelineRect.width / pipeline.offsetWidth;
+    const macRect = mac.getBoundingClientRect();
+    const bundleStart = (destination.left + destination.width / 2 - pipelineRect.left) / worldScale;
+    const bundleEnd = (macRect.left + macRect.width / 2 - pipelineRect.left) / worldScale;
     loop = gsap.timeline({ repeat: -1, repeatDelay: 1, defaults: { ease: "sine.inOut" } });
-    gsap.set(packets, { x: -65, y: -75, autoAlpha: 0 });
-    gsap.set(bundle, { x: 0, autoAlpha: 0 });
-    gsap.set(saved, { scaleX: 0, transformOrigin: "0 50%" });
-    packets.forEach((packet, i) => {
-      loop.fromTo(packet, { x: -65, y: -75, autoAlpha: 0 }, { x: 0, y: 0, autoAlpha: 1, duration: .65 }, i * .9);
-      loop.to(packet, { y: 65, autoAlpha: 0, duration: .45 }, i * .9 + .65);
-      loop.to(saved[i], { scaleX: 1, duration: .35 }, i * .9 + .8);
+    gsap.set(bundle, { x: bundleStart, xPercent: -50, autoAlpha: 0 });
+    gsap.set(marks, { scale: .6, autoAlpha: 0 });
+    loop.set(marks, { scale: .6, autoAlpha: 0 }, 0);
+    cards.forEach((card, i) => {
+      const rect = card.getBoundingClientRect();
+      const x = (destination.left + destination.width / 2 - rect.left - rect.width / 2) / actorScale;
+      const y = (destination.top + destination.height / 2 - rect.top - rect.height / 2) / actorScale;
+      const at = .3 + i * .2;
+      loop.to(card, { x, y, scale: .06, duration: 1, ease: "power2.inOut" }, at);
+      loop.to(card, { autoAlpha: 0, duration: .18 }, at + .85);
     });
+    loop.to(windows, { scale: 1.1, duration: .35 }, 1.1).to(windows, { scale: 1, duration: .4 }, 2.3);
+    loop.to(marks[0], { scale: 1, autoAlpha: 1, duration: .4 }, 2.4);
+    // Saving copies does not remove the original history from the window.
+    loop.set(cards, { x: 0, y: 0, scale: 1 }, 2.8).to(cards, { autoAlpha: 1, duration: .65, stagger: .08 }, 2.8);
     loop.to(bundle, { autoAlpha: 1, duration: .2 }, 3.6);
-    loop.to(bundle, { x: 360, duration: 1.6 }, 3.9);
-    loop.to(root.querySelector(".local-device--mac"), { borderColor: "#386c8c", duration: .3 }, 5.3);
-    loop.to({}, { duration: 1.1 });
-    loop.to(bundle, { x: 0, duration: 1.6 }, 6.7);
+    loop.to(bundle, { x: bundleEnd, duration: 1.6 }, 3.9);
+    loop.to(marks[1], { scale: 1, autoAlpha: 1, duration: .4 }, 5.3);
+    loop.to(bundle, { x: bundleStart, duration: 1.6 }, 6.7);
     loop.to(bundle, { autoAlpha: 0, duration: .3 }, 8.4);
   }, root);
-  return { pause: paused => loop.paused(paused), stop: () => context.revert() };
+  return {
+    pause: paused => loop.paused(paused),
+    stop: () => {
+      context.revert();
+      // Later reset keyframes also touch these shared cards: restore their exact entry poses.
+      cards.forEach((card, i) => gsap.set(card, originalPoses[i]));
+    },
+  };
 };
