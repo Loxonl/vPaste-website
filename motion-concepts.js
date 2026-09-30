@@ -1,108 +1,17 @@
 (() => {
   "use strict";
+  // Do not lock scrolling if one of the enhancement scripts could not be loaded.
+  if (!window.vpasteSite || !window.vpasteIcon || !window.createBackgroundStudy || !window.createProductDemos || !window.createLocalHistoryLoop) return;
   document.documentElement.dataset.concept = "a";
   const icon = window.vpasteIcon;
-  document.body.classList.add("reconstructed-site");
-  const main = document.querySelector("main");
-  const app = main.querySelector("[data-hero-product] .vp-product-surface");
-  const desktop = main.querySelector("[data-platform-desktop]");
-  desktop.querySelector("[data-shortcut-window]").remove(); // One main window, never a second desktop replica.
-  const platforms = main.querySelector(".platform-switch");
-  const platformIcon = name => platforms.querySelector(`[data-platform-button="${name}"] svg`).outerHTML;
-  const shortcut = main.querySelector(".shortcut-key");
-  const actions = main.querySelector(".hero-actions");
-  const metadata = main.querySelector(".hero-meta");
-  const settingsImage = main.querySelector("[data-settings-preview] img");
-  const source = main.querySelector("#open-source");
-  const footer = document.querySelector(".site-footer");
-  const catalog = main.querySelector(".settings-catalog");
+  const story = document.querySelector(".continuous-story");
+  const app = story.querySelector(".story-product");
+  const desktop = story.querySelector("[data-platform-desktop]");
+  const platforms = story.querySelector(".platform-switch");
   const sectionIds = ["top", "experience", "use-cases", "formats", "workflow", "privacy", "open-source"];
-  const sectionIcons = ["monitor", "keyboard", "history", "files", "settings-2", "hard-drive", "code-xml"];
-  const featureIcons = ["history", "text-cursor-input", "tags", "search", "scan-eye", "list-ordered", "mouse-pointer-2"];
-  const formatIcons = { text: "type", image: "image", link: "link", file: "file", color: "palette" };
   const formats = ["text", "image", "link", "file", "color"];
   const features = ["history", "snippets", "organize", "search", "preview", "queue", "drag"];
   const tr = (key, tag = "span", cls = "") => `<${tag} class="${cls}" data-i18n="${key}"></${tag}>`;
-  const heading = (prefix, name) => `<p class="story-kicker">${icon(name)}${tr(prefix + ".kicker")}</p>${tr(prefix + ".title", "h2")}${tr(prefix + ".body", "p", "story-description")}`;
-  const story = document.createElement("div");
-  story.className = "continuous-story";
-  story.innerHTML = `
-    <div class="story-stage">
-      <div class="story-world">
-        <div class="world-lines" aria-hidden="true"></div>
-        <div class="desktop-holder"></div>
-        <div class="app-actor"><div class="app-content"></div></div>
-        <div class="story-copies">
-          <section id="top" class="chapter-copy chapter-copy--intro">
-            <div class="intro-heading"><p class="story-kicker"><b>vPaste</b>${tr("hero.kicker")}</p>${tr("hero.slogan", "h1")}${tr("hero.lede", "p", "story-description")}<div data-story-actions></div></div>
-            <div class="intro-colophon" data-story-meta></div>
-          </section>
-          <section id="experience" class="chapter-copy chapter-copy--desktop">
-            <div class="chapter-heading">${heading("shortcut", "keyboard")}<div data-story-platforms></div></div>
-            <div class="desktop-note" aria-hidden="true">⌘ / Alt + V</div>
-          </section>
-          <section id="use-cases" class="chapter-copy chapter-copy--history">
-            <div class="chapter-heading">${heading("usecases", "history")}</div>
-            <nav class="feature-select">${features.map((key, i) => `<button type="button" data-feature-jump="${i}">${icon(featureIcons[i])}${tr("usecases." + key)}</button>`).join("")}</nav>
-            <div class="feature-gallery"><div class="feature-track">${features.map((key, i) => `<figure class="feature-example" data-feature-example="${i}"><div class="feature-art">${window.vpasteSite.useCaseScene(i)}</div><figcaption>${icon(featureIcons[i])}${tr("usecases." + key, "h3")}${tr("usecases." + key + "Body", "p")}</figcaption></figure>`).join("")}</div></div>
-          </section>
-          <section id="formats" class="chapter-copy chapter-copy--formats">
-            <div class="chapter-heading">${heading("formats", "files")}</div>
-            <div class="format-notes-viewport"><div class="format-notes-track">${formats.map((type, i) => `<article data-format-note="${type}">${icon(formatIcons[type])}${tr("formats." + type, "h3")}${tr("formats." + type + "Body", "p")}<ul>${[1, 2, 3].map((n) => `<li>${tr("formats." + type + "Feature" + n)}</li>`).join("")}</ul></article>`).join("")}</div></div>
-            <nav class="format-select" aria-label="Content formats">${formats.map((type, i) => `<button type="button" data-format-jump="${i}">${icon(formatIcons[type])}${tr("formats." + type)}</button>`).join("")}</nav>
-          </section>
-          <section id="workflow" class="chapter-copy chapter-copy--settings">
-            <div class="chapter-heading">${heading("workflow", "settings-2")}</div>
-            <figure class="settings-sheet"></figure>
-            <div class="settings-details"></div>
-          </section>
-          <section id="privacy" class="chapter-copy chapter-copy--privacy">
-            <div class="chapter-heading"><p class="story-kicker">${icon("hard-drive")}${tr("privacy.kicker")}</p>${tr("privacy.title", "h2")}<ul class="privacy-features">${["cloud-off", "shield-check", "folder-open", "arrow-right-left", "link"].map((name, i) => `<li>${icon(name)}${tr("privacy.feature" + (i + 1))}</li>`).join("")}</ul></div>
-            <figure class="data-visual">
-              <div class="local-pipeline" aria-hidden="true">
-                <div class="local-device local-device--windows"><div class="local-device-icon">${platformIcon("windows")}</div><strong>Windows</strong><span class="local-save-mark">${icon("check")}</span></div>
-                <div class="migration-path">${icon("arrow-right-left")}${tr("demo.manualMigration")}</div>
-                <div class="local-device local-device--mac"><div class="local-device-icon">${platformIcon("macos")}</div><strong>macOS</strong><span class="local-save-mark">${icon("check")}</span></div>
-                <span class="migration-bundle">${icon("archive")}</span>
-              </div>
-              <figcaption class="data-actions"><span>${icon("hard-drive")}${tr("demo.saved")}</span><span>${icon("arrow-right-left")}${tr("demo.exportImport")}</span></figcaption>
-            </figure>
-          </section>
-          <section id="open-source" class="chapter-copy chapter-copy--closing">
-            <div class="closing-copy"><p class="story-kicker">${icon("code-xml")}${tr("source.kicker")}</p>${tr("final.title", "h2")}${tr("source.title", "h3")}${tr("source.body", "p", "story-description")}<div class="closing-actions"></div></div>
-            <img class="closing-logo" src="assets/vpaste-logo.png" width="120" height="120" alt="" />
-            <div class="closing-facts"></div>
-            <div class="closing-footer-slot"></div>
-          </section>
-        </div>
-      </div>
-      <nav class="story-wayfinder" aria-label="Product chapters">
-        <span class="story-status" aria-live="polite"></span>
-        <div class="chapter-links">${sectionIds.map((id, i) => `<a href="#${id}" data-chapter-link="${i}">${icon(sectionIcons[i])}</a>`).join("")}</div>
-        <div class="story-controls"><button type="button" data-demo-pause hidden>${tr("demo.pause")}</button><button type="button" data-story-prev>${icon("chevron-left")}</button><button type="button" data-story-next>${icon("chevron-right")}</button></div>
-      </nav>
-    </div>`;
-  app.className = "story-product vp-product-surface";
-  app.removeAttribute("data-hero-product");
-  story.querySelector(".app-content").append(app);
-  story.querySelector(".desktop-holder").append(desktop);
-  story.querySelector(".settings-sheet").prepend(settingsImage);
-  story.querySelector(".settings-details").append(catalog);
-  catalog.querySelectorAll("article > span").forEach((label, i) => { label.innerHTML = icon(["settings-2", "history", "hard-drive", "keyboard"][i]); });
-  const sourceFacts = source.querySelector(".source-facts");
-  sourceFacts.querySelectorAll(":scope > div > span").forEach((label, i) => { label.innerHTML = icon(["code-xml", "hard-drive", "monitor"][i]); });
-  story.querySelector(".closing-facts").append(sourceFacts);
-  const closingActions = actions.cloneNode(true);
-  closingActions.querySelectorAll("svg").forEach((svg, i) => { svg.outerHTML = icon(i ? "code-xml" : "download"); });
-  story.querySelector(".closing-actions").append(closingActions);
-  footer.className = "closing-footer";
-  story.querySelector(".closing-footer-slot").append(footer);
-  story.querySelector("[data-story-platforms]").append(platforms, shortcut);
-  story.querySelector("[data-story-actions]").append(actions);
-  story.querySelector("[data-story-meta]").append(metadata);
-
-  main.replaceChildren(story);
-  window.vpasteSite.translate(main);
   const backgroundStudy = window.createBackgroundStudy();
   const loadArtwork = (image, lazy = false) => {
     if (!image || image.hasAttribute("src")) return;
@@ -110,6 +19,7 @@
     image.src = image.dataset.artworkSrc;
   };
   const prepareArtwork = (chapter) => {
+    if (chapter === 4) window.vpasteSite.loadProductImages(story.querySelector(".settings-sheet"));
     if (chapter === 1) loadArtwork(desktop.querySelector(`.desktop-platform--${document.documentElement.dataset.platform} img`));
   };
   platforms.addEventListener("click", () => {
@@ -147,7 +57,6 @@
     if (featureButton) {
       const index = Number(featureButton.dataset.featureJump);
       if (jumpTo) jumpTo(featureStart + index * featureStep);
-      else story.querySelectorAll(".feature-example")[index].scrollIntoView({ behavior: "auto", block: "center" });
     }
     const anchor = event.target.closest('a[href^="#"]');
     if (!anchor || !jumpTo) return;
@@ -163,7 +72,7 @@
   }
   const { gsap } = window;
   const media = gsap.matchMedia();
-  media.add("(min-width: 980px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)", () => {
+  media.add("(min-width: 1100px) and (min-height: 720px) and (prefers-reduced-motion: no-preference)", () => {
     document.body.classList.add("story-motion");
     document.documentElement.classList.add("story-paged");
     scrollTo({ top: 0, behavior: "instant" });
@@ -313,7 +222,8 @@
       story.dataset.step = String(step);
       story.dataset.transitioning = String(!!transitionTween);
       const chapter = Number(story.dataset.chapter);
-      story.querySelector(".story-status").textContent = panels[chapter].querySelector("h1, h2").textContent;
+      const detail = chapter === 2 ? story.querySelectorAll(".feature-example h3")[step - 2]?.textContent : chapter === 3 ? story.querySelectorAll("[data-format-note] h3")[step - 9]?.textContent : null;
+      story.querySelector(".story-status").textContent = detail || panels[chapter].querySelector("h1, h2").textContent;
     };
     const go = (index) => {
       index = Math.max(0, Math.min(stops.length - 1, index));
@@ -371,8 +281,8 @@
     };
     const keyboard = (event) => {
       if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.repeat ||
-          event.target.closest("input, textarea, select, button, [contenteditable=true]") ||
-          (event.code === "Space" && event.target.closest("a"))) return;
+          event.target.closest("input, textarea, select, [contenteditable=true]") ||
+          (event.code === "Space" && event.target.closest("a, button"))) return;
       let index;
       if (event.code === "Space" && step === 6 && !transitionTween) {
         event.preventDefault();

@@ -1,0 +1,14 @@
+{
+  "name": "vpaste-website",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-site.cjs",
+    "assets:optimize": "node scripts/optimize-assets.cjs",
+    "assets:cover": "node scripts/build-share-cover.cjs",
+    "test": "node tests/final-design.cjs && node tests/website-smoke.cjs && node tests/selected-background.cjs && node tests/detail-refinement.cjs && node tests/scene-motion.cjs && node tests/site-optimization.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "sharp": "0.35.4"
+  }
+}

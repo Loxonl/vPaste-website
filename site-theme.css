@@ -1,0 +1,120 @@
+/* Brand and reading roles; the selected C + E layout and product geometry stay intact. */
+/* Final Electric white tokens are static: no palette selection or JS color flash. */
+html[data-palette="1"] {
+  --paper: #fafcff;
+  --ink: #163a70;
+  --muted: #4d6588;
+  --ink-soft: #4d6588;
+  --blue-deep: #075be8;
+  --accent: #0b86ff;
+  --blue: #075be8;
+  --surface: #ffffff;
+  --line: #cbdcf4;
+  --line-strong: #a6bfe5;
+  --palette-glyph: #3684ff;
+  --palette-wash: none;
+  --palette-masthead: #075be8;
+  --palette-brand-ink: #ffffff;
+  --palette-rail: #075be8;
+  --palette-rail-ink: #eff6ff;
+  --palette-active: #ffffff;
+  --palette-active-ink: #0750bb;
+  --palette-action: #075be8;
+  --palette-action-ink: #ffffff;
+  --palette-action-hover: #064ac1;
+  --palette-plate: #eaf3ff;
+  --palette-plate-ink: #1767d6;
+  --palette-language: #ffffff;
+  --palette-language-selected: #075be8;
+  --palette-language-ink: #ffffff;
+  --palette-focus: #075be8;
+}
+html[data-palette] body.reconstructed-site { background-color: var(--paper); background-image: var(--palette-wash); background-attachment: fixed; }
+html[data-palette] .site-nav > .brand { background: var(--palette-masthead); color: var(--palette-brand-ink); }
+html[data-palette] .site-nav > .brand img { opacity: 1; filter: none; }
+html[data-palette][data-palette-logo="white"] .site-nav > .brand img { filter: brightness(0) invert(1); }
+html[data-palette] .nav-github { color: var(--blue-deep); border-color: var(--line-strong); background: var(--palette-language); }
+html[data-palette] .language-switch { border-color: var(--line-strong); background: var(--palette-language); }
+html[data-palette] .language-switch a { color: var(--muted); }
+html[data-palette] .language-switch a[aria-current="page"] { background: var(--palette-language-selected); color: var(--palette-language-ink); }
+html[data-palette] .story-motion .story-wayfinder { color: var(--palette-rail-ink); background: var(--palette-rail); }
+html[data-palette] .story-wayfinder :is(a, button) { color: var(--palette-rail-ink); }
+html[data-palette] .story-wayfinder a[aria-current],
+html[data-palette] .story-wayfinder :is(a, button):hover:not(:disabled) { color: var(--palette-active-ink); background: var(--palette-active); border-color: var(--palette-active); }
+html[data-palette] .story-wayfinder :is(a, button):focus-visible { outline-color: var(--palette-rail-ink); }
+html[data-palette] .button--dark { color: var(--palette-action-ink); background: var(--palette-action); border-color: transparent; }
+html[data-palette] .button--dark:hover { color: var(--palette-action-ink); background: var(--palette-action-hover); }
+html[data-palette] .button--light { color: var(--blue-deep); border-color: var(--line-strong); background: transparent; }
+html[data-palette] .button--light:hover { color: var(--ink); background: var(--surface); }
+html[data-palette] .story-kicker b { color: var(--blue-deep); }
+html[data-palette] .story-kicker > .story-icon { color: var(--accent); }
+html[data-palette] .feature-select button[aria-pressed="true"] { color: var(--blue-deep); background: var(--surface); }
+html[data-palette] .format-select button[aria-pressed="true"], html[data-palette] .format-select button:hover { color: var(--palette-action-ink); background: var(--palette-action); border-color: transparent; }
+html[data-palette] .local-device-icon, html[data-palette] .migration-bundle { background: var(--palette-plate); border-color: var(--line-strong); color: var(--palette-plate-ink); }
+html[data-palette] .local-device-icon svg { fill: var(--palette-plate-ink); }
+html[data-palette] .local-save-mark { background: var(--blue); }
+html[data-palette] .platform-switch { background: var(--palette-language); border-color: var(--line-strong); }
+html[data-palette] .platform-switch button { color: var(--muted); }
+html[data-palette] .platform-switch button[aria-pressed="true"] { background: var(--palette-language-selected); color: var(--palette-language-ink); }
+html[data-palette] .shortcut-key { color: var(--muted); }
+html[data-palette] .closing-footer { color: var(--muted); border-color: var(--line-strong); }
+html[data-palette] .closing-footer .brand { color: var(--ink); }
+html[data-palette] .app-actor { --ink: #243e4b; --muted: #566f7a; --surface: #f9fcfc; --accent: #386c8c; --blue: #386c8c; }
+html[data-palette] .desktop-holder { --ink: #243e4b; }
+html[data-palette] :is(.history-continuation, .demo-format-note, .demo-keypress) { color: var(--palette-caption); }
+html[data-palette="1"] { --palette-caption: #50698c; }
+html[data-palette] .feature-art { --ink: #243e4b; --muted: #566f7a; --surface: #f9fcfc; color: #243e4b; background: #edf3f5; }
+html[data-palette] ::selection { background: #c4e0ff; color: #123b75; }
+html[data-palette] :focus-visible { outline-color: var(--palette-focus); }
+
+/* Marketing copy uses screen-size roles, not the product illustration's scale.
+   16px body follows USWDS guidance; compact labels and captions have separate roles.
+   rem units retain browser font preferences. Native product UI is intentionally excluded. */
+.reconstructed-site {
+  --type-body: 1rem;
+  --type-label: .875rem;
+  --type-caption: .75rem;
+}
+.story-motion .story-world { --copy-scale: var(--world-scale, 1); }
+.reconstructed-site .chapter-copy .story-description,
+.reconstructed-site .feature-example figcaption p,
+.reconstructed-site .format-notes-track article > p {
+  font-size: calc(var(--type-body) / var(--copy-scale, 1));
+  line-height: 1.65;
+}
+.reconstructed-site .chapter-copy .button,
+.reconstructed-site .feature-select button,
+.reconstructed-site .format-select button,
+.reconstructed-site .platform-switch button,
+.reconstructed-site .shortcut-key,
+.reconstructed-site .settings-details .settings-catalog p,
+.reconstructed-site .privacy-features li,
+.reconstructed-site .format-notes-track article li {
+  font-size: calc(var(--type-label) / var(--copy-scale, 1));
+  line-height: 1.5;
+}
+.reconstructed-site .settings-details .settings-catalog h3,
+.reconstructed-site .closing-facts .source-facts strong {
+  font-size: calc(var(--type-body) / var(--copy-scale, 1));
+}
+.reconstructed-site .story-kicker,
+.reconstructed-site .chapter-copy .hero-meta,
+.reconstructed-site .closing-facts .source-facts small,
+.reconstructed-site .closing-footer,
+.reconstructed-site .closing-footer > span,
+.reconstructed-site .local-device strong,
+.reconstructed-site .migration-path,
+.reconstructed-site .data-actions {
+  font-size: calc(var(--type-caption) / var(--copy-scale, 1));
+  line-height: 1.5;
+}
+.reconstructed-site .nav-github { font-size: var(--type-label); }
+.reconstructed-site .language-switch a,
+.reconstructed-site .story-status,
+.reconstructed-site .story-controls [data-demo-pause] { font-size: var(--type-caption); }
+.reconstructed-site .chapter-copy .button,
+.reconstructed-site .feature-select button,
+.reconstructed-site .format-select button,
+.reconstructed-site .chapter-copy .platform-switch button {
+  min-height: calc(44px / var(--copy-scale, 1));
+}

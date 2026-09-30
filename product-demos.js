@@ -17,17 +17,17 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
   const overlays = document.createElement("div");
   overlays.className = "product-overlays";
   overlays.innerHTML = `
-    <div class="demo-format-note">${icon("text-cursor-input")}${tr("demo.keepFormat")}<kbd>Ctrl / ⌘ + Shift + V</kbd>${tr("demo.plainText")}</div>
+    <div class="demo-format-note">${icon("text-cursor-input")}${tr("demo.keepFormat")}<kbd>Shift + Enter</kbd>${tr("demo.plainText")}</div>
     <div class="demo-tab-indicator" aria-hidden="true"></div>
     <div class="demo-keypress"><kbd>Space</kbd>${tr("demo.spacePreview")}</div>
     <div class="demo-preview-window" aria-hidden="true">
       <div class="demo-window-title">${icon("scan-eye")}${tr("product.previewTitle")}<span>×</span></div>
-      <div class="demo-preview-image"><img src="assets/format-stack.png" alt="" loading="lazy" /><small>1200 × 800</small></div>
-      <div class="demo-preview-link"><div class="demo-url">github.com/Loxonl/vPaste-desktop</div><div class="demo-readme"><img src="assets/vpaste-logo.png" width="45" height="45" alt="" /><h3>vPaste</h3>${tr("product.textDescription", "p")}<div>Windows / macOS <span>GPL-3.0</span></div><hr />${tr("demo.readme", "p")}</div></div>
+      <div class="demo-preview-image"><img src="/assets/format-stack.webp" alt="" loading="lazy" /><small>1200 × 800</small></div>
+      <div class="demo-preview-link"><div class="demo-url">github.com/Loxonl/vPaste-desktop</div><div class="demo-readme"><img src="/assets/vpaste-logo.webp" width="45" height="45" alt="" /><h3>vPaste</h3>${tr("product.textDescription", "p")}<div>Windows / macOS <span>GPL-3.0</span></div><hr />${tr("demo.readme", "p")}</div></div>
     </div>
     <div class="demo-receiver" aria-hidden="true">
       <div class="demo-window-title">${icon("file")}${tr("demo.workNote")}<span>− &nbsp; □ &nbsp; ×</span></div>
-      <div class="demo-note"><h3 data-i18n="demo.projectNote"></h3><div class="demo-dropzone">${icon("image")}${tr("demo.dropHere")}<img src="assets/format-stack.png" alt="" loading="lazy" /></div></div>
+      <div class="demo-note"><h3 data-i18n="demo.projectNote"></h3><div class="demo-dropzone">${icon("image")}${tr("demo.dropHere")}<img src="/assets/format-stack-small.webp" alt="" loading="lazy" /></div></div>
     </div>
     <div class="demo-queue-window" aria-hidden="true">
       <div class="demo-queue-header"><span>×</span><div>${tr("usecases.queue", "strong")}<small><b data-queue-count>0</b> / 100</small></div><span class="demo-queue-tools">${icon("arrow-right-left")}<b>···</b></span></div>
@@ -35,7 +35,7 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
       <div class="demo-queue-workflow" data-phase="copy"><kbd>Ctrl / ⌘ + <b>C</b></kbd>${tr("demo.queueCopy", "span", "demo-copy-label")}${tr("demo.queuePaste", "span", "demo-paste-label")}</div>
     </div>
     <div class="demo-form" aria-hidden="true"><div class="demo-window-title">${icon("file")}${tr("demo.formTitle")}<span>− &nbsp; □ &nbsp; ×</span></div><div class="demo-form-fields">${formFields.map(([key, value]) => `<div class="demo-form-field">${tr("demo." + key, "small")}<div><span class="demo-form-value">${value}</span><i></i></div></div>`).join("")}</div></div>
-    <img class="demo-drag-ghost" src="assets/format-stack.png" alt="" loading="lazy" />
+    <img class="demo-drag-ghost" src="/assets/format-stack-small.webp" alt="" loading="lazy" />
     <span class="demo-pointer" aria-hidden="true">${icon("mouse-pointer-2")}</span>`;
   actor.append(overlays);
   translate(actor);

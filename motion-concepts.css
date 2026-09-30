@@ -149,10 +149,10 @@ body { overflow-x: clip; }
 .story-motion .chapter-copy--privacy .story-description { font-size: 13px; }
 
 /* No pinning/long scroll for touch-sized screens or reduced-motion readers. */
-@media (min-width: 980px) {
+@media (min-width: 1100px) {
   body:not(.story-motion) .story-world { max-width: 1280px; margin: auto; padding-top: 120px; }
 }
-@media (max-width: 979px), (max-height: 619px) {
+@media (max-width: 1099px), (max-height: 719px) {
   .reconstructed-site .site-nav { width: calc(100% - 40px); }
   .continuous-story { padding-top: 72px; }
   .chapter-copy h1 { font-size: clamp(40px, 7vw, 65px); }
@@ -215,11 +215,12 @@ body { overflow-x: clip; }
 .story-motion .feature-example figcaption { padding-left: 24px; border-left: 1px solid var(--line); }
 .story-motion .feature-example h3 { font-size: 27px; }
 .story-motion .feature-example figcaption p { font-size: 17px; }
-.story-motion .chapter-copy--history .chapter-heading { top: 45px; }
+.story-motion .chapter-copy--history .chapter-heading { top: 15px; }
 .story-motion .feature-select { position: absolute; top: 310px; left: 80px; width: 305px; display: grid; gap: 7px; margin: 0; }
 .story-motion .feature-select button { font-size: 14px; padding: 12px; }
 .story-motion .feature-select button[aria-pressed="true"] { box-shadow: inset 3px 0 var(--accent); }
 .story-motion .format-notes-viewport { top: 470px; }
+.story-motion .format-notes-track article > p { max-width: 100%; }
 
 /* Screenshot and the complete settings copy form one contiguous chapter. */
 .settings-details .settings-catalog { margin-top: 28px; gap: 30px 24px; border: 0; }
@@ -232,7 +233,7 @@ body { overflow-x: clip; }
 .story-motion .chapter-copy--settings h2 { font-size: 46px; }
 .story-motion .chapter-copy--settings .story-description { font-size: 14px; }
 .story-motion .settings-details { position: absolute; top: 330px; left: 80px; width: 525px; }
-html[data-language="en"] .story-motion .settings-details { top: 330px; }
+html[data-language="en"] .story-motion .settings-details { top: 365px; }
 .story-motion .settings-details .settings-catalog { margin: 0; }
 
 /* Fine-line mist-blue direction. */
@@ -241,7 +242,7 @@ html[data-language="en"] .story-motion .settings-details { top: 330px; }
 .story-motion .world-lines span { font-family: var(--mono); font-weight: 300; font-size: 210px; opacity: .42; }
 .story-motion .intro-heading h1 { font-size: 76px; font-weight: 520; }
 .feature-select button { border-radius: 22px; }
-@media (max-width: 979px), (max-height: 619px) {
+@media (max-width: 1099px), (max-height: 719px) {
   .feature-art { min-height: 240px; }
   .feature-example { padding: 20px; }
   .feature-example figcaption { max-width: 600px; }
@@ -312,7 +313,7 @@ html.story-paged, .story-paged body { height: 100%; overflow: hidden; overscroll
 .story-motion .closing-facts { position: absolute; left: 80px; right: 80px; top: 610px; margin: 0; }
 .story-motion .closing-footer-slot { position: absolute; left: 80px; right: 80px; top: 745px; }
 
-@media (max-width: 979px), (max-height: 619px) {
+@media (max-width: 1099px), (max-height: 719px) {
   .closing-copy h2 { font-size: 42px; }
   .data-visual { width: 100%; }
 }
@@ -322,6 +323,21 @@ html.story-paged, .story-paged body { height: 100%; overflow: hidden; overscroll
   .closing-copy h3 { font-size: 22px; }
   .closing-footer { flex-wrap: wrap; }
   .closing-footer > span { width: 100%; order: 3; font-size: 9px; }
+}
+
+/* Keep the illustration's proportions without shrinking reading copy on laptops. */
+.deferred-image:not([src]) { display: none; }
+html:not([data-enhanced]) :is(.feature-select, .platform-switch) { display: none; }
+.settings-sheet { aspect-ratio: 1230 / 1080; }
+.story-motion .chapter-copy--settings .settings-details { top: 315px; }
+.story-motion .settings-details .settings-catalog { gap: 16px 24px; }
+.story-motion .settings-details .settings-catalog article { padding: 10px 0; }
+.story-motion .settings-details .settings-catalog p { line-height: 1.65; }
+.story-motion .settings-details .settings-catalog h3 { margin: 6px 0 8px; }
+body:not(.story-motion) .feature-art:has(.deferred-image) { min-height: 180px; }
+@media (max-width: 600px) {
+  .feature-example { padding: 16px 0; gap: 16px; }
+  .settings-details .settings-catalog { gap: 12px; }
 }
 
 

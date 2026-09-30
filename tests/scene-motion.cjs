@@ -3,7 +3,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
 const base = process.env.SITE_URL || "http://127.0.0.1:8765";
-const output = path.resolve(__dirname, "../visual-experiments/selected-a");
+const output = path.resolve(__dirname, "../test-results/selected-a");
 const settle = async page => {
   await page.waitForTimeout(80);
   await page.waitForFunction(() => document.querySelector(".continuous-story").dataset.transitioning === "false", { timeout: 5000 });
@@ -20,7 +20,7 @@ async function chapter(page, index) {
   fs.mkdirSync(output, { recursive: true });
   const artworkBytes = ["local-history", "desktop-windows", "desktop-macos"].reduce((total, name) => total + fs.statSync(path.resolve(__dirname, `../assets/artwork/${name}.webp`)).size, 0);
   assert(artworkBytes < 80 * 1024, "All generated delivery images together must stay below 80 KiB");
-  const browser = await chromium.launch({ channel: "msedge", headless: true });
+  const browser = await chromium.launch({ ...(process.platform === "win32" ? { channel: "msedge" } : {}), headless: true });
   const errors = [];
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 980 }, locale: "zh-CN" });

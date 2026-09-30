@@ -1,14 +1,14 @@
 /* Interactions belong to the original app. Preview/receiving windows sit above it. */
 .reconstructed-site .site-nav { grid-template-columns: 1fr auto; }
 .reconstructed-site .nav-github { display: inline-flex; }
-.story-motion .feature-gallery { position: absolute; left: 440px; top: 265px; width: 840px; height: 112px; overflow: hidden; border: 0; border-radius: 0; background: transparent; }
-.story-motion .feature-example { display: block; flex: 0 0 840px; width: 840px; height: 112px; padding: 0; }
+.story-motion .feature-gallery { position: absolute; left: 440px; top: 265px; width: 840px; height: 145px; overflow: hidden; border: 0; border-radius: 0; background: transparent; }
+.story-motion .feature-example { display: block; flex: 0 0 840px; width: 840px; height: 145px; padding: 0; }
 .story-motion .feature-select { top: 265px; }
 .story-motion .feature-example .feature-art { display: none; }
 .story-motion .feature-example figcaption { padding: 0; border: 0; }
 .story-motion .feature-example figcaption > .story-icon { display: none; }
 .story-motion .feature-example h3 { margin: 0 0 10px; font-size: 27px; }
-.story-motion .feature-example figcaption p { max-width: 790px; font-size: 16px; line-height: 1.75; }
+.story-motion .feature-example figcaption p { max-width: 840px; }
 .story-motion .settings-sheet { width: 610px; }
 .story-controls [data-demo-pause] { width: auto; padding-inline: 13px; font: 11px var(--mono); border-radius: 20px; }
 .story-controls [hidden] { display: none; }
@@ -96,6 +96,7 @@
 /* The original cards feed compact local destinations; archives move manually in either direction. */
 .privacy-features { display: grid; gap: 0; margin: 28px 0 0; padding: 0; list-style: none; }
 .privacy-features li { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; line-height: 1.7; }
+.story-motion .privacy-features li { padding-block: 10px; line-height: 1.6; }
 .privacy-features .story-icon { width: 18px; height: 18px; margin-top: 3px; color: var(--accent); }
 .local-pipeline { position: relative; display: flex; justify-content: space-between; align-items: flex-start; padding: 0 30px 15px; color: var(--ink); }
 .local-device { position: relative; width: 112px; text-align: center; }

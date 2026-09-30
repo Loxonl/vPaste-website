@@ -1,13 +1,8 @@
 // Local static/reduced-motion, content and accessibility smoke checks.
 const assert = require("node:assert/strict");
-const fs = require("node:fs");
-const path = require("node:path");
-const vm = require("node:vm");
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
 const base = process.env.SITE_URL || "http://127.0.0.1:8765";
-const source = fs.readFileSync(path.resolve(__dirname, "../site.js"), "utf8");
-const start = source.indexOf("const translations = ") + "const translations = ".length;
-const translations = vm.runInNewContext("(" + source.slice(start, source.indexOf("\n  };", start) + 4) + ")");
+const translations = require("../site-copy.js");
 const issues = [];
 
 async function layout(page) {
@@ -29,7 +24,7 @@ async function layout(page) {
 }
 
 (async () => {
-  const browser = await chromium.launch({ channel: "msedge", headless: true });
+  const browser = await chromium.launch({ ...(process.platform === "win32" ? { channel: "msedge" } : {}), headless: true });
   try {
     for (const variant of ["a", "b"]) {
       for (const width of [375, 768, 1440]) {
@@ -48,7 +43,8 @@ async function layout(page) {
         for (const language of ["zh", "en"]) {
           await page.locator('[data-language-button="' + language + '"]').click();
           assert.equal(await page.locator("#search, .capture-slot").count(), 0);
-          assert.equal(await page.locator(".settings-sheet img").getAttribute("src"), "assets/product/settings-theme-" + language + ".png");
+          await page.locator(".settings-sheet").scrollIntoViewIfNeeded();
+          await page.waitForFunction(language => document.querySelector(".settings-sheet img").getAttribute("src") === "/assets/product/settings-theme-" + language + ".webp", language);
           assert.equal(await page.locator(".format-notes-track article").count(), 5);
           for (let i = 0; i < 7; i++) {
             assert(await page.locator(".feature-example h3").nth(i).innerText());

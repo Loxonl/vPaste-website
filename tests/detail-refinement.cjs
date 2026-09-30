@@ -9,7 +9,7 @@ async function jump(page, selector) {
 }
 
 (async () => {
-  const browser = await chromium.launch({ channel: "msedge", headless: true });
+  const browser = await chromium.launch({ ...(process.platform === "win32" ? { channel: "msedge" } : {}), headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 980 }, locale: "zh-CN" });
     const errors = [];

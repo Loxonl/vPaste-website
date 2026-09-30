@@ -8,4 +8,6 @@ Source: the unmodified frontend in `vPaste-clean-public`, version 1.6.0, commit 
 
 These are renderer captures, not screenshots of a native desktop session. No real clipboard database, user history, credentials, or personal paths were loaded. Website ornament and framing are outside the captured image; UI pixels have not been retouched.
 
+The production `.webp` variants are resized/re-encoded from these PNG sources by `scripts/optimize-assets.cjs`. Their interface content is unchanged; originals are retained for future exports.
+
 To reproduce, start the public client Vite server at `http://127.0.0.1:1426` and run `node tests/capture-product.cjs` from the website directory. Set `PRODUCT_URL` for another client preview URL and `PLAYWRIGHT_MODULE` for a nonstandard Playwright installation. The script requires the Chromium `msedge` channel.

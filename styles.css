@@ -351,7 +351,9 @@ svg {
   background: rgba(255, 255, 255, 0.72);
 }
 
-.language-switch button {
+.language-switch :is(button, a) {
+  display: grid;
+  place-items: center;
   width: 44px;
   height: 40px;
   padding: 0;
@@ -365,7 +367,7 @@ svg {
   transition: color 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
 }
 
-.language-switch button[aria-pressed="true"] {
+.language-switch :is(button[aria-pressed="true"], a[aria-current="page"]) {
   background: var(--surface);
   color: var(--ink);
   box-shadow: 0 2px 8px rgba(17, 24, 32, 0.09);
@@ -3025,7 +3027,7 @@ html[data-platform="macos"] .desktop-platform--macos {
     font-size: 17px;
   }
 
-  .language-switch button {
+  .language-switch :is(button, a) {
     width: 44px;
     height: 44px;
   }
