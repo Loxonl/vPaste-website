@@ -40,6 +40,8 @@ npm test
 
 Windows 上使用 Edge；其他系统使用 Playwright Chromium。Mac 平台识别测试是 Chromium 模拟，不等于已完成 macOS Safari 或真实触控板测试
 
+搜索与预览演示按客户端 `054def6` 的 `src/clipboard/Clipboard.module.css`、`Preview.tsx`、`Preview.module.css` 和 `src/ui/tokens.css` 核对：搜索按钮后间隔 7px、输入框 276×32px，展开时推动标签；预览为无标题栏的独立窗口，含右上角固定按钮、图片内容区或链接地址栏与网页内容区。官网按舞台空间缩放展示，链接文档使用公开的示意内容，不访问用户的历史记录。`tests/product-window-fidelity.cjs` 验证几何关系、窗口结构及响应式清理
+
 ## 图片与性能
 
 ```sh

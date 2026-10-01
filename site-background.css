@@ -5,8 +5,9 @@ html[data-backdrop] main { position: relative; z-index: 1; }
 html[data-backdrop] .world-lines { display: none; }
 html[data-background-layout="cutout"] .site-header { background: transparent; border-bottom: 0; }
 html[data-background-layout="cutout"] .site-nav { width: 100%; padding-right: 28px; }
-html[data-background-layout="cutout"] .site-nav > .brand { width: 205px; height: 72px; padding-left: 28px; font-size: 26px; font-weight: 550; border-radius: 0 0 18px 0; }
-html[data-background-layout="cutout"] .site-nav > .brand img { width: 28px; height: 28px; }
+html[data-background-layout="cutout"] .site-nav > .brand { width: 205px; height: 72px; padding: 0; justify-content: center; gap: 10px; border-radius: 0 0 18px 0; }
+html[data-background-layout="cutout"] .site-nav > .brand img { width: 40px; height: 40px; }
+html[data-background-layout="cutout"] .site-nav > .brand span { font-size: 26px; }
 html[data-background-layout="cutout"] .nav-github { border: 1px solid; border-radius: 5px; }
 html[data-background-layout="cutout"] .language-switch { border-radius: 5px; }
 html[data-background-layout="cutout"] .story-motion .story-wayfinder { left: 0; right: 0; bottom: 0; height: 62px; padding: 0 30px; border: 0; }
@@ -15,7 +16,9 @@ html[data-background-layout="cutout"] .closing-footer { border-top: 2px solid; p
 @media (max-width: 1099px), (max-height: 719px) {
   .study-backdrop { opacity: .7; }
   html[data-background-layout="cutout"] .site-nav { padding-right: 16px; }
-  html[data-background-layout="cutout"] .site-nav > .brand { width: 150px; padding-left: 20px; font-size: 22px; }
+  html[data-background-layout="cutout"] .site-nav > .brand { width: 150px; gap: 8px; }
+  html[data-background-layout="cutout"] .site-nav > .brand img { width: 36px; height: 36px; }
+  html[data-background-layout="cutout"] .site-nav > .brand span { font-size: 24px; }
   html[data-background-layout="cutout"] .closing-footer { border-top-width: 1px; }
   html[data-backdrop] .continuous-story { padding-top: 110px; }
 }

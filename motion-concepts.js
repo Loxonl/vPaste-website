@@ -129,7 +129,8 @@
     features.forEach((key, index) => {
       const at = featureStart + index * featureStep;
       if (index) timeline.to(featureTrack, { x: -index * 840, duration: .26 }, at - .28);
-      if (index === 4) timeline.to(actor, { x: 450, y: 600, scale: .78, duration: .28 }, at - .3);
+      if (index === 4) timeline.to(actor, { x: 450, y: 620, scale: .65, duration: .28 }, at - .3);
+      if (index === 5) timeline.to(actor, { x: 450, y: 600, scale: .78, duration: .28 }, at - .3);
       timeline.addLabel("feature-" + key, at);
     });
     transition(3, 4.55);

@@ -4,10 +4,15 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
   const tabs = [...app.querySelectorAll(".vp-app-tab")];
   const bar = app.querySelector(".vp-app-bar");
   const rail = app.querySelector(".vp-card-rail");
+  const searchButton = bar.querySelector(".vp-app-icon-button");
+  const searchLayout = document.createElement("div");
+  searchLayout.className = "demo-search-layout";
   const search = document.createElement("div");
   search.className = "demo-search-field";
+  search.setAttribute("aria-hidden", "true");
   search.innerHTML = '<span>vPaste</span><i></i>';
-  bar.append(search);
+  searchButton.replaceWith(searchLayout);
+  searchLayout.append(searchButton, search);
   const continuation = document.createElement("div");
   continuation.className = "history-continuation";
   continuation.innerHTML = `<b aria-hidden="true">···</b>${tr("demo.older")}`;
@@ -21,9 +26,11 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
     <div class="demo-tab-indicator" aria-hidden="true"></div>
     <div class="demo-keypress"><kbd>Space</kbd>${tr("demo.spacePreview")}</div>
     <div class="demo-preview-window" aria-hidden="true">
-      <div class="demo-window-title">${icon("scan-eye")}${tr("product.previewTitle")}<span>×</span></div>
-      <div class="demo-preview-image"><img src="/assets/format-stack.webp" alt="" loading="lazy" /><small>1200 × 800</small></div>
-      <div class="demo-preview-link"><div class="demo-url">github.com/Loxonl/vPaste-desktop</div><div class="demo-readme"><img src="/assets/vpaste-logo.webp" width="45" height="45" alt="" /><h3>vPaste</h3>${tr("product.textDescription", "p")}<div>Windows / macOS <span>GPL-3.0</span></div><hr />${tr("demo.readme", "p")}</div></div>
+      <span class="demo-preview-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v6l3 3v2H6v-2l3-3Z"/><path d="M8 3h8M12 14v7"/></svg></span>
+      <div class="demo-preview-content">
+        <div class="demo-preview-image"><div class="demo-preview-image-stage"><img src="/assets/format-stack.webp" width="960" height="640" alt="" loading="lazy" /></div></div>
+        <div class="demo-preview-link"><div class="demo-preview-link-stage"><div class="demo-url"><span>https://github.com/Loxonl/vPaste-desktop</span></div><div class="demo-preview-document"><div class="demo-readme"><img src="/assets/vpaste-logo.webp" width="45" height="45" alt="" /><h3>vPaste</h3>${tr("product.textDescription", "p")}<div>Windows / macOS <span>GPL-3.0</span></div><hr />${tr("demo.readme", "p")}</div></div></div></div>
+      </div>
     </div>
     <div class="demo-receiver" aria-hidden="true">
       <div class="demo-window-title">${icon("file")}${tr("demo.workNote")}<span>− &nbsp; □ &nbsp; ×</span></div>
@@ -88,9 +95,11 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
         loop.to({}, { duration: 1.5 });
       } else if (index === 3) {
         select(0);
-        gsap.set(search, { scaleX: 0, transformOrigin: "0 50%" });
+        // Clipboard.module.css: reserve 316px, keep the 276px input 7px after the button.
+        gsap.set(search, { autoAlpha: 0 });
         gsap.set(search.querySelector("span"), { clipPath: "inset(0 100% 0 0)" });
-        loop.to(search, { scaleX: 1, duration: .5 }, .1);
+        loop.to(searchLayout, { width: 316, duration: .28 }, .1);
+        loop.to(search, { autoAlpha: 1, duration: .28 }, .12);
         loop.to(search.querySelector("span"), { clipPath: "inset(0 0% 0 0)", duration: .65, ease: "steps(6)" }, .6);
         cards.forEach((card, i) => {
           const order = [0, 2, 5].indexOf(i);
@@ -101,14 +110,15 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
       } else if (index === 4) {
         const image = overlays.querySelector(".demo-preview-image");
         const link = overlays.querySelector(".demo-preview-link");
-        gsap.set(popup, { scale: .88, y: 25, autoAlpha: 0, transformOrigin: "30% 100%" });
+        // The native neutral preview fades in without stretching its content or a fake title bar.
+        gsap.set(popup, { autoAlpha: 0 });
         [[1, image, link], [2, link, image]].forEach(([selected, show, hide], phase) => {
           const at = phase * 4.4;
           loop.call(() => select(selected), [], at);
           loop.set(show, { display: "block" }, at).set(hide, { display: "none" }, at);
           loop.to(key, { y: 3, backgroundColor: "#c8dfef", duration: .13 }, at + .5).to(key, { y: 0, backgroundColor: "#ffffff", duration: .2 }, at + .7);
-          loop.to(popup, { scale: 1, y: 0, autoAlpha: 1, duration: .55 }, at + .65);
-          loop.to(popup, { scale: .93, y: 18, autoAlpha: 0, duration: .4 }, at + 3.7);
+          loop.to(popup, { autoAlpha: 1, duration: .4 }, at + .65);
+          loop.to(popup, { autoAlpha: 0, duration: .3 }, at + 3.7);
         });
       } else if (index === 5) {
         const rows = [...overlays.querySelectorAll(".demo-queue-row")];
@@ -172,7 +182,7 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
     stop: restore,
     pause: paused => loop?.paused(paused),
     replayPreview: () => { if (active === 4) loop?.restart(); },
-    destroy: () => { restore(); overlays.remove(); search.remove(); continuation.remove(); },
+    destroy: () => { restore(); overlays.remove(); searchLayout.replaceWith(searchButton); continuation.remove(); },
   };
 };
 
