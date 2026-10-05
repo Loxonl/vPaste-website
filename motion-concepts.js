@@ -1,7 +1,7 @@
 (() => {
   "use strict";
   // Do not lock scrolling if one of the enhancement scripts could not be loaded.
-  if (!window.vpasteSite || !window.vpasteIcon || !window.createBackgroundStudy || !window.createProductDemos || !window.createLocalHistoryLoop) return;
+  if (!window.vpasteSite || !window.vpasteIcon || !window.createBackgroundStudy || !window.createProductDemos || !window.createLocalHistoryLoop || !window.createRecallLoop) return;
   document.documentElement.dataset.concept = "a";
   const icon = window.vpasteIcon;
   const story = document.querySelector(".continuous-story");
@@ -88,16 +88,16 @@
     const featureTrack = gallery.querySelector(".feature-track");
     world.append(sheet);
     const demos = window.createProductDemos({ actor, app, icon, tr, translate: window.vpasteSite.translate });
-    const gear = app.querySelectorAll(".vp-app-icon-button")[1];
+    const gear = app.querySelector('[data-product-control="settings"]');
     const rotation = 3.5;
     const poses = [
-      { x: 570, y: 385, scale: .71, rotation: -rotation },
+      { x: 132, y: 430, scale: 1.05, rotation: 0 },
       { x: 575, y: 449.98, scale: 765 / 1120, rotation: 0 },
       { x: 440, y: 430, scale: .8, rotation: 0 },
       { x: 155, y: 160, scale: .84, rotation: 0 },
       { x: 680, y: 645, scale: .56, rotation: 0 },
       { x: 95, y: 210, scale: .67, rotation: 0 },
-      { x: 825, y: 375, scale: .45, rotation: -rotation },
+      { x: 750, y: 475, scale: .6, rotation: -rotation },
     ];
     const layoutWorld = () => {
       const scale = Math.min(story.clientWidth / 1440, (innerHeight - 140) / 820);
@@ -201,19 +201,22 @@
     const next = story.querySelector("[data-story-next]");
     const pauseButton = story.querySelector("[data-demo-pause]");
     let localLoop = null;
+    let recallLoop = null;
     let paused = false;
     const pauseLoops = () => {
       demos.pause(paused || document.hidden);
       localLoop?.pause(paused || document.hidden);
+      recallLoop?.pause(paused || document.hidden);
       pauseButton.querySelector("span").dataset.i18n = paused ? "demo.resume" : "demo.pause";
       window.vpasteSite.translate(pauseButton);
       pauseButton.setAttribute("aria-pressed", String(paused));
     };
-    const stopLoops = () => { demos.stop(); localLoop?.stop(); localLoop = null; pauseButton.hidden = true; delete story.dataset.demo; };
+    const stopLoops = () => { demos.stop(); localLoop?.stop(); localLoop = null; recallLoop?.stop(); recallLoop = null; pauseButton.hidden = true; delete story.dataset.demo; };
     const startLoops = () => {
+      if (step === 1) recallLoop = window.createRecallLoop({ actor, desktop });
       if (step >= 2 && step <= 8) { demos.enter(step - 2); story.dataset.demo = String(step - 2); }
       if (step === 15) localLoop = window.createLocalHistoryLoop({ root: dataVisual, actor, cards });
-      pauseButton.hidden = !(step >= 2 && step <= 8) && step !== 15;
+      pauseButton.hidden = step !== 1 && !(step >= 2 && step <= 8) && step !== 15;
       pauseLoops();
     };
     const togglePause = () => { paused = !paused; pauseLoops(); };

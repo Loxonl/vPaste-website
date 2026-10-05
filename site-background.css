@@ -12,14 +12,12 @@ html[data-background-layout="cutout"] .nav-github { border: 1px solid; border-ra
 html[data-background-layout="cutout"] .language-switch { border-radius: 5px; }
 html[data-background-layout="cutout"] .story-motion .story-wayfinder { left: 0; right: 0; bottom: 0; height: 62px; padding: 0 30px; border: 0; }
 html[data-background-layout="cutout"] .story-wayfinder :is(a, button) { border-radius: 7px; }
-html[data-background-layout="cutout"] .closing-footer { border-top: 2px solid; padding-top: 18px; }
 @media (max-width: 1099px), (max-height: 719px) {
   .study-backdrop { opacity: .7; }
   html[data-background-layout="cutout"] .site-nav { padding-right: 16px; }
   html[data-background-layout="cutout"] .site-nav > .brand { width: 150px; gap: 8px; }
   html[data-background-layout="cutout"] .site-nav > .brand img { width: 36px; height: 36px; }
   html[data-background-layout="cutout"] .site-nav > .brand span { font-size: 24px; }
-  html[data-background-layout="cutout"] .closing-footer { border-top-width: 1px; }
   html[data-backdrop] .continuous-story { padding-top: 110px; }
 }
 @media (prefers-reduced-motion: reduce) { .study-backdrop { opacity: .7; } }

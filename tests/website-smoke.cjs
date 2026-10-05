@@ -38,7 +38,7 @@ async function layout(page) {
         assert.equal(await page.locator(".story-motion").count(), 0);
         assert.equal(await page.locator("html").getAttribute("data-concept"), "a");
         assert.equal(await page.locator(".feature-example").count(), 7);
-        assert.equal(await page.locator("footer").count(), 1);
+        assert.equal(await page.locator("footer").count(), 0);
         assert.equal(await page.locator(".concept-switch, .detail-features, [data-i18n='demo.capture']").count(), 0);
         for (const language of ["zh", "en"]) {
           await page.locator('[data-language-button="' + language + '"]').click();

@@ -59,7 +59,7 @@ const luminance = color => color.match(/[\d.]+/g).slice(0, 3).map(Number).map(v 
       assert.equal(await page.locator(".story-motion").count(), 0);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
       assert(await page.locator(".nav-github").isVisible());
-      assert.equal(await page.locator("footer").count(), 1);
+      assert.equal(await page.locator("footer").count(), 0);
       await page.screenshot({ path: path.join(output, `reduced-${width}.png`) });
     }
     for (const variant of ["c", "e"]) {

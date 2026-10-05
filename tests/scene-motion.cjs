@@ -28,8 +28,8 @@ async function chapter(page, index) {
     await page.goto(base + "/?concept=b", { waitUntil: "networkidle" });
     assert.equal(await page.locator("html").getAttribute("data-concept"), "a", "Old B links now use the selected A direction");
     assert.equal(await page.locator(".concept-switch, #product-details, .final-cta, .site-footer, [data-i18n='demo.capture']").count(), 0);
-    assert.equal(await page.locator("footer").count(), 1);
-    assert.equal(await page.locator("#open-source footer").count(), 1);
+    assert.equal(await page.locator("footer").count(), 0);
+    assert.equal(await page.locator("#open-source footer").count(), 0);
     assert.equal(await page.locator(".chapter-copy").count(), 7);
     assert.equal(await page.locator("#search, .capture-slot, .feature-slot").count(), 0);
     assert.equal(await page.locator("[data-reading-mode]").count(), 0);
@@ -111,6 +111,8 @@ async function chapter(page, index) {
       }), "The underline follows the actual toolbar tab");
       if (i === 3) {
         assert(await page.locator(".demo-search-field").isVisible());
+        await page.waitForFunction(() => document.querySelector(".demo-search-field span").textContent === "vPaste" &&
+          [...document.querySelectorAll(".app-content .vp-clip-card")].filter(c => Number(getComputedStyle(c).opacity) > .9).length === 3);
         assert.equal(await page.locator(".app-content .vp-clip-card").evaluateAll(cards => cards.filter(c => Number(getComputedStyle(c).opacity) > .9).length), 3);
       }
       if (i === 4) {
@@ -155,7 +157,7 @@ async function chapter(page, index) {
               const picture = document.querySelector(".settings-sheet").getBoundingClientRect();
               const content = document.querySelector(".settings-details").getBoundingClientRect();
               const actor = document.querySelector(".app-actor").getBoundingClientRect();
-              const gear = document.querySelectorAll(".app-content .vp-app-icon-button")[1].getBoundingClientRect();
+              const gear = document.querySelector('.app-content [data-product-control="settings"]').getBoundingClientRect();
               return picture.width > 400 && picture.left > content.right && picture.bottom < innerHeight && content.bottom < innerHeight - 55 &&
                 Math.abs(picture.right - (gear.left + gear.width / 2)) < 3 && Math.abs(picture.bottom - (gear.top + gear.height / 2)) < 3 &&
                 (actor.left > content.right || actor.top > content.bottom);
@@ -170,7 +172,13 @@ async function chapter(page, index) {
           await screenshot(page, `${name}-${language}-${size[0]}`);
           assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
         }
-        assert(await page.locator(".closing-footer").evaluate(el => el.getBoundingClientRect().bottom < innerHeight - 35));
+        assert.equal(await page.locator(".closing-footer").count(), 0);
+        assert(await page.locator(".app-actor").evaluate(el => {
+          const box = el.getBoundingClientRect();
+          const facts = document.querySelector(".closing-facts").getBoundingClientRect();
+          return gsap.getProperty(el, "scaleX") >= .6 && gsap.getProperty(el, "rotation") === -3.5 &&
+            box.right < innerWidth && box.bottom + 8 < facts.top && facts.bottom < innerHeight - 62;
+        }), "The enlarged tilted app and project facts fit above the navigation rail");
       }
     }
     assert.equal(await step(page), 16);

@@ -19,7 +19,7 @@ const base = process.env.SITE_URL || "http://127.0.0.1:8765";
       assert.equal(await page.locator(".app-content .vp-clip-card").count(), 6);
       assert.equal(await page.locator(".bg-glyph").count(), 7);
       assert.equal(await page.locator("h1").count(), 1);
-      assert.equal(await page.locator("footer").count(), 1);
+      assert.equal(await page.locator("footer").count(), 0);
       assert.equal(await page.evaluate(() => performance.getEntriesByType("resource").some(r => r.name.includes("brand-palettes.js"))), false);
     }
     await page.emulateMedia({ reducedMotion: "reduce" });

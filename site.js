@@ -63,6 +63,7 @@
     const next = platform === "macos" ? "macos" : "windows";
     root.dataset.platform = next;
     document.querySelectorAll("[data-platform-shortcut]").forEach(element => { element.textContent = next === "macos" ? "Option + V" : "Alt + V"; });
+    document.querySelectorAll("[data-platform-modifier]").forEach(element => { element.textContent = next === "macos" ? "⌘" : "Ctrl"; });
     platformButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.platformButton === next)));
     const desktop = document.querySelector("[data-platform-desktop]");
     if (animate && window.gsap && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -75,6 +76,17 @@
   const platform = /windows|win32|win64/i.test(reported + ua) ? "windows" : !touchMac && /macos|macintosh|macintel|mac os x/i.test(reported + ua) ? "macos" : "windows";
   platformButtons.forEach(button => button.addEventListener("click", () => setPlatform(button.dataset.platformButton)));
   setPlatform(platform, false);
+  const readingDesktop = document.querySelector("[data-platform-desktop]");
+  const desktopObserver = new ResizeObserver(() => {
+    readingDesktop.style.setProperty("--reading-scale", readingDesktop.clientWidth / 1120);
+  });
+  desktopObserver.observe(readingDesktop);
+  const artworkObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting || document.body.classList.contains("story-motion")) return;
+    entry.target.querySelectorAll("[data-artwork-src]").forEach(image => { image.src = image.dataset.artworkSrc; });
+    artworkObserver.unobserve(entry.target);
+  }), { rootMargin: "200px" });
+  artworkObserver.observe(readingDesktop);
 
   // Desktop captures load on scene entry; reading-mode captures load near the viewport.
   const imageObserver = new IntersectionObserver(entries => entries.forEach(entry => {

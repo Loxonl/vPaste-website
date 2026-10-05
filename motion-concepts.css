@@ -304,14 +304,10 @@ html.story-paged, .story-paged body { height: 100%; overflow: hidden; overscroll
 .closing-facts .source-facts strong { font-size: 17px; line-height: 1.4; font-weight: 500; }
 .closing-facts .source-facts small { grid-column: 2; color: var(--muted); line-height: 1.6; }
 .closing-facts .story-icon { color: var(--accent); width: 20px; height: 20px; }
-.closing-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 22px; font: 10px var(--mono); color: var(--muted); }
-.closing-footer .brand { font-size: 17px; }
-.closing-footer .brand img { width: 24px; height: 24px; }
 .story-motion .closing-copy { position: absolute; left: 80px; top: 75px; width: 650px; }
 .story-motion .closing-copy h2 { font-size: 65px; }
 .story-motion .closing-logo { position: absolute; left: 1040px; top: 163px; margin: 0; }
-.story-motion .closing-facts { position: absolute; left: 80px; right: 80px; top: 610px; margin: 0; }
-.story-motion .closing-footer-slot { position: absolute; left: 80px; right: 80px; top: 745px; }
+.story-motion .closing-facts { position: absolute; left: 80px; right: 80px; top: 690px; margin: 0; }
 
 @media (max-width: 1099px), (max-height: 719px) {
   .closing-copy h2 { font-size: 42px; }
@@ -321,8 +317,6 @@ html.story-paged, .story-paged body { height: 100%; overflow: hidden; overscroll
   .closing-facts .source-facts { grid-template-columns: 1fr; gap: 22px; }
   .closing-copy h2 { font-size: 38px; }
   .closing-copy h3 { font-size: 22px; }
-  .closing-footer { flex-wrap: wrap; }
-  .closing-footer > span { width: 100%; order: 3; font-size: 9px; }
 }
 
 /* Keep the illustration's proportions without shrinking reading copy on laptops. */

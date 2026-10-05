@@ -1,4 +1,27 @@
 /* Product interactions act on the existing window; only previews and receiving apps are separate. */
+// One press/release treatment for all keyboard demonstrations. Results follow the press.
+const pressDemoKey = (timeline, key, at) => {
+  timeline.to(key, { y: 3, backgroundColor: "#075be8", color: "#ffffff", boxShadow: "0 0 0 #075be8", duration: .1 }, at)
+    .to(key, { y: 0, backgroundColor: "#ffffff", color: "#075be8", boxShadow: "0 3px 0 #c1d7f9", duration: .2 }, at + .16);
+};
+
+window.createRecallLoop = ({ actor, desktop }) => {
+  let loop;
+  const context = gsap.context(() => {
+    // Clip at the real screen's bottom, not at an imaginary inset inside the desktop.
+    gsap.set(actor, { clipPath: "inset(-12px -12px 0 -12px)" });
+    const content = actor.querySelector(".app-content");
+    const key = desktop.querySelector("kbd");
+    loop = gsap.timeline({ repeat: -1, repeatDelay: .35 });
+    pressDemoKey(loop, key, .35);
+    loop.to(content, { y: 286, duration: .55, ease: "power2.inOut" }, .48);
+    pressDemoKey(loop, key, 1.5);
+    loop.to(content, { y: 0, duration: .62, ease: "power3.out" }, 1.63);
+    loop.to({}, { duration: .4 }, 2.25);
+  });
+  return { pause: value => loop.paused(value), stop: () => context.revert() };
+};
+
 window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
   const cards = [...app.querySelectorAll(".vp-clip-card")];
   const tabs = [...app.querySelectorAll(".vp-app-tab")];
@@ -18,13 +41,14 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
   continuation.innerHTML = `<b aria-hidden="true">···</b>${tr("demo.older")}`;
   app.append(continuation);
   // Public, fictional form data; the independent queue follows the client's list layout.
-  const formFields = [["email", "hello@example.com"], ["address1", "18 Market Street"], ["address2", "Suite 240"], ["postal", "94105"]];
+  const formFields = ["email", "address1", "address2", "postal"];
   const overlays = document.createElement("div");
   overlays.className = "product-overlays";
   overlays.innerHTML = `
-    <div class="demo-format-note">${icon("text-cursor-input")}${tr("demo.keepFormat")}<kbd>Shift + Enter</kbd>${tr("demo.plainText")}</div>
+    <div class="demo-format-note">${icon("text-cursor-input")}${tr("demo.keepFormat")}<kbd class="demo-key">Shift + Enter</kbd>${tr("demo.plainText")}</div>
     <div class="demo-tab-indicator" aria-hidden="true"></div>
-    <div class="demo-keypress"><kbd>Space</kbd>${tr("demo.spacePreview")}</div>
+    <div class="demo-keypress"><kbd class="demo-key">Space</kbd>${tr("demo.spacePreview")}</div>
+    <div class="demo-search-keys"><kbd class="demo-key">v</kbd>${tr("demo.typeSearch")}</div>
     <div class="demo-preview-window" aria-hidden="true">
       <span class="demo-preview-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v6l3 3v2H6v-2l3-3Z"/><path d="M8 3h8M12 14v7"/></svg></span>
       <div class="demo-preview-content">
@@ -38,10 +62,10 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
     </div>
     <div class="demo-queue-window" aria-hidden="true">
       <div class="demo-queue-header"><span>×</span><div>${tr("usecases.queue", "strong")}<small><b data-queue-count>0</b> / 100</small></div><span class="demo-queue-tools">${icon("arrow-right-left")}<b>···</b></span></div>
-      <div class="demo-queue-list">${formFields.map(([, value]) => `<div class="demo-queue-row"><span class="demo-queue-grip">⠿</span>${icon("type")}<div><strong>${value}</strong><small>${tr("demo.queueNext", "span", "demo-queue-next")}${tr("product.text", "span", "demo-queue-type")}</small></div></div>`).join("")}<div class="demo-queue-empty">${icon("check")}${tr("demo.queueEmpty")}</div></div>
-      <div class="demo-queue-workflow" data-phase="copy"><kbd>Ctrl / ⌘ + <b>C</b></kbd>${tr("demo.queueCopy", "span", "demo-copy-label")}${tr("demo.queuePaste", "span", "demo-paste-label")}</div>
+      <div class="demo-queue-list">${formFields.map(key => `<div class="demo-queue-row"><span class="demo-queue-grip">⠿</span>${icon("type")}<div>${tr("demo.value." + key, "strong")}<small>${tr("demo.queueNext", "span", "demo-queue-next")}${tr("product.text", "span", "demo-queue-type")}</small></div></div>`).join("")}<div class="demo-queue-empty">${icon("check")}${tr("demo.queueEmpty")}</div></div>
+      <div class="demo-queue-workflow" data-phase="copy"><kbd class="demo-key"><span data-platform-modifier>Ctrl</span> + <b>C</b></kbd>${tr("demo.queueCopy", "span", "demo-copy-label")}${tr("demo.queuePaste", "span", "demo-paste-label")}</div>
     </div>
-    <div class="demo-form" aria-hidden="true"><div class="demo-window-title">${icon("file")}${tr("demo.formTitle")}<span>− &nbsp; □ &nbsp; ×</span></div><div class="demo-form-fields">${formFields.map(([key, value]) => `<div class="demo-form-field">${tr("demo." + key, "small")}<div><span class="demo-form-value">${value}</span><i></i></div></div>`).join("")}</div></div>
+    <div class="demo-form" aria-hidden="true"><div class="demo-window-title">${icon("file")}${tr("demo.formTitle")}<span>− &nbsp; □ &nbsp; ×</span></div><div class="demo-form-fields">${formFields.map(key => `<div class="demo-form-field">${tr("demo." + key, "small")}<div>${tr("demo.value." + key, "span", "demo-form-value")}<i></i></div></div>`).join("")}</div></div>
     <img class="demo-drag-ghost" src="/assets/format-stack-small.webp" alt="" loading="lazy" />
     <span class="demo-pointer" aria-hidden="true">${icon("mouse-pointer-2")}</span>`;
   actor.append(overlays);
@@ -55,6 +79,7 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
     loop = null;
     active = -1;
     delete actor.dataset.demo;
+    delete actor.dataset.demoTab;
     tabs.forEach(tab => tab.classList.remove("demo-tab-active"));
     cards.forEach(card => card.classList.remove("demo-selected"));
   };
@@ -82,30 +107,43 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
         const indicator = overlays.querySelector(".demo-tab-indicator");
         gsap.set(indicator, { x: tabs[0].offsetLeft + 10, scaleX: tabs[0].offsetWidth - 20, transformOrigin: "0 50%" });
         // These are the real type tabs and original records, not a second filter mockup.
-        [[2, [0, 5]], [3, [1]], [4, [2]], [1, [0, 2]]].forEach(([tabIndex, visible], phase) => {
-          const at = phase * 2.6;
+        gsap.set(pointer, { x: tabs[0].offsetLeft + 15, y: 65 });
+        [[1, [0, 2]], [2, [0, 5]], [3, [1]], [7, [1, 2, 5]]].forEach(([tabIndex, visible], phase) => {
+          const at = phase * 2.9;
           const tab = tabs[tabIndex];
-          loop.call(() => tabs.forEach((item, i) => item.classList.toggle("demo-tab-active", i === tabIndex)), [], at);
-          loop.to(indicator, { x: tab.offsetLeft + 10, scaleX: tab.offsetWidth - 20, duration: .5 }, at);
+          loop.to(pointer, { x: tab.offsetLeft + tab.offsetWidth / 2, y: 28, scale: 1, duration: .55 }, at);
+          loop.to(pointer, { scale: .8, duration: .12 }, at + .6).to(pointer, { scale: 1, duration: .18 }, at + .78);
+          loop.call(() => { actor.dataset.demoTab = String(tabIndex); tabs.forEach((item, i) => item.classList.toggle("demo-tab-active", i === tabIndex)); }, [], at + .72);
+          loop.to(indicator, { x: tab.offsetLeft + 10, scaleX: tab.offsetWidth - 20, duration: .3 }, at + .72);
           cards.forEach((card, i) => {
             const order = visible.indexOf(i);
-            loop.to(card, { x: order < 0 ? 0 : 16 + order * 182 - card.offsetLeft, y: order < 0 ? 14 : 0, opacity: order < 0 ? 0 : 1, duration: .6 }, at + .25);
+            loop.to(card, { x: order < 0 ? 0 : 16 + order * 182 - card.offsetLeft, y: order < 0 ? 14 : 0, opacity: order < 0 ? 0 : 1, duration: .5 }, at + .8);
           });
         });
-        loop.to({}, { duration: 1.5 });
+        loop.to({}, { duration: 1.5 }).to(pointer, { autoAlpha: 0, duration: .25 });
       } else if (index === 3) {
         select(0);
+        const typed = search.querySelector("span");
+        const typingKey = overlays.querySelector(".demo-search-keys kbd");
         // Clipboard.module.css: reserve 316px, keep the 276px input 7px after the button.
         gsap.set(search, { autoAlpha: 0 });
-        gsap.set(search.querySelector("span"), { clipPath: "inset(0 100% 0 0)" });
-        loop.to(searchLayout, { width: 316, duration: .28 }, .1);
-        loop.to(search, { autoAlpha: 1, duration: .28 }, .12);
-        loop.to(search.querySelector("span"), { clipPath: "inset(0 0% 0 0)", duration: .65, ease: "steps(6)" }, .6);
+        gsap.set(typed, { textContent: "" });
+        gsap.set(pointer, { x: 85, y: 80 });
+        loop.to(pointer, { x: 42, y: 26, duration: .5 }, .1);
+        loop.to(pointer, { scale: .8, duration: .12 }, .6).to(pointer, { scale: 1, autoAlpha: 0, duration: .2 }, .8);
+        loop.to(searchLayout, { width: 316, duration: .28 }, .75);
+        loop.to(search, { autoAlpha: 1, duration: .28 }, .78);
+        [..."vPaste"].forEach((letter, i) => {
+          const at = 1.25 + i * .38;
+          loop.set(typingKey, { textContent: letter }, at);
+          pressDemoKey(loop, typingKey, at);
+          loop.set(typed, { textContent: "vPaste".slice(0, i + 1) }, at + .1);
+        });
         cards.forEach((card, i) => {
           const order = [0, 2, 5].indexOf(i);
-          loop.to(card, { x: order < 0 ? 0 : 16 + order * 182 - card.offsetLeft, opacity: order < 0 ? 0 : 1, y: order < 0 ? 14 : 0, duration: .65 }, 1.1);
+          loop.to(card, { x: order < 0 ? 0 : 16 + order * 182 - card.offsetLeft, opacity: order < 0 ? 0 : 1, y: order < 0 ? 14 : 0, duration: .65 }, 3.6);
         });
-        loop.to({}, { duration: 3.8 }).to(search.querySelector("span"), { clipPath: "inset(0 100% 0 0)", duration: .25 });
+        loop.to({}, { duration: 3.8 }).set(typed, { textContent: "" });
         loop.to(cards, { x: 0, y: 0, opacity: 1, duration: .6 });
       } else if (index === 4) {
         const image = overlays.querySelector(".demo-preview-image");
@@ -116,7 +154,7 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
           const at = phase * 4.4;
           loop.call(() => select(selected), [], at);
           loop.set(show, { display: "block" }, at).set(hide, { display: "none" }, at);
-          loop.to(key, { y: 3, backgroundColor: "#c8dfef", duration: .13 }, at + .5).to(key, { y: 0, backgroundColor: "#ffffff", duration: .2 }, at + .7);
+          pressDemoKey(loop, key, at + .5);
           loop.to(popup, { autoAlpha: 1, duration: .4 }, at + .65);
           loop.to(popup, { autoAlpha: 0, duration: .3 }, at + 3.7);
         });
@@ -128,6 +166,7 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
         const empty = overlays.querySelector(".demo-queue-empty");
         const workflow = overlays.querySelector(".demo-queue-workflow");
         const pasteKey = workflow.querySelector("kbd");
+        pasteKey.querySelector("[data-platform-modifier]").textContent = document.documentElement.dataset.platform === "macos" ? "⌘" : "Ctrl";
         const nextRow = index => rows.forEach((row, i) => row.classList.toggle("is-next", i === index));
         gsap.set(rows, { autoAlpha: 0, y: 12 });
         gsap.set(values, { autoAlpha: 0, y: 5 });
@@ -137,9 +176,8 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
         loop.call(() => { workflow.dataset.phase = "copy"; nextRow(0); fields.forEach(field => field.classList.remove("is-current")); }, [], 0);
         rows.forEach((row, i) => {
           const at = .3 + i * .45;
-          loop.to(pasteKey, { y: 3, backgroundColor: "#dcebf4", duration: .12 }, at);
-          loop.to(pasteKey, { y: 0, backgroundColor: "#ffffff", duration: .2 }, at + .12);
-          loop.to(row, { autoAlpha: 1, y: 0, duration: .3 }, at);
+          pressDemoKey(loop, pasteKey, at);
+          loop.to(row, { autoAlpha: 1, y: 0, duration: .3 }, at + .13);
           loop.set(count, { textContent: String(i + 1) }, at + .3);
         });
         loop.set(pasteKey.querySelector("b"), { textContent: "V" }, 2.7);
@@ -147,8 +185,7 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
         rows.forEach((row, i) => {
           const at = 3 + i * 1.35;
           loop.call(() => fields.forEach((field, n) => field.classList.toggle("is-current", n === i)), [], at);
-          loop.to(pasteKey, { y: 3, backgroundColor: "#dcebf4", duration: .14 }, at + .1);
-          loop.to(pasteKey, { y: 0, backgroundColor: "#ffffff", duration: .2 }, at + .26);
+          pressDemoKey(loop, pasteKey, at + .1);
           loop.to(values[i], { autoAlpha: 1, y: 0, duration: .4 }, at + .25);
           loop.to(row, { x: 20, autoAlpha: 0, duration: .3 }, at + .4);
           loop.to(rows.slice(i + 1), { y: -(i + 1) * row.offsetHeight, duration: .35 }, at + .55);
@@ -167,11 +204,13 @@ window.createProductDemos = ({ actor, app, icon, tr, translate }) => {
         gsap.set(dropped, { autoAlpha: 0, scale: .95 });
         loop.to(pointer, { x: 245, y: 112, duration: .5 }, .2);
         loop.set(ghost, { autoAlpha: .9 }, .75);
-        loop.to(ghost, { x: 615, y: -205, scale: .8, duration: 1.4 }, .8);
-        loop.to(pointer, { x: 665, y: -160, duration: 1.4 }, .8);
+        loop.to(pointer, { scale: .8, duration: .12 }, .65);
+        loop.to(ghost, { x: 505, y: -205, scale: .8, duration: 1.45 }, .8);
+        loop.to(pointer, { x: 560, y: -160, duration: 1.45 }, .8);
         loop.to(receiver.querySelector(".demo-dropzone"), { borderColor: "#2670c5", backgroundColor: "#e9f2fb", duration: .4 }, 1.8);
-        loop.to(ghost, { autoAlpha: 0, duration: .15 }, 2.2);
-        loop.to(dropped, { autoAlpha: 1, scale: 1, duration: .4 }, 2.25);
+        loop.to(pointer, { scale: 1, duration: .15 }, 2.25);
+        loop.to(ghost, { autoAlpha: 0, duration: .15 }, 2.4);
+        loop.to(dropped, { autoAlpha: 1, scale: 1, duration: .4 }, 2.45);
         loop.to(pointer, { x: 805, y: -90, duration: .65 }, 2.6).to({}, { duration: 1.8 });
       }
     }, actor);
@@ -193,6 +232,7 @@ window.createLocalHistoryLoop = ({ root, actor, cards }) => {
     const windows = root.querySelector(".local-device--windows .local-device-icon");
     const mac = root.querySelector(".local-device--mac .local-device-icon");
     const bundle = root.querySelector(".migration-bundle");
+    const transferAction = root.querySelector(".migration-action");
     const marks = root.querySelectorAll(".local-save-mark");
     const destination = windows.getBoundingClientRect();
     const actorScale = actor.getBoundingClientRect().width / actor.offsetWidth;
@@ -219,9 +259,13 @@ window.createLocalHistoryLoop = ({ root, actor, cards }) => {
     // Saving copies does not remove the original history from the window.
     loop.set(cards, { x: 0, y: 0, scale: 1 }, 2.8).to(cards, { autoAlpha: 1, duration: .65, stagger: .08 }, 2.8);
     loop.to(bundle, { autoAlpha: 1, duration: .2 }, 3.6);
+    loop.to(transferAction, { backgroundColor: "#075be8", color: "#fff", duration: .2 }, 3.4);
+    loop.to(transferAction, { backgroundColor: "#fff", color: "#075be8", duration: .3 }, 5.7);
     loop.to(bundle, { x: bundleEnd, duration: 1.6 }, 3.9);
     loop.to(marks[1], { scale: 1, autoAlpha: 1, duration: .4 }, 5.3);
     loop.to(bundle, { x: bundleStart, duration: 1.6 }, 6.7);
+    loop.to(transferAction, { backgroundColor: "#075be8", color: "#fff", duration: .2 }, 6.5);
+    loop.to(transferAction, { backgroundColor: "#fff", color: "#075be8", duration: .3 }, 8.4);
     loop.to(bundle, { autoAlpha: 0, duration: .3 }, 8.4);
   }, root);
   return {

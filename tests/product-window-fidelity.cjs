@@ -81,8 +81,8 @@ const settle = async page => {
       await page.waitForTimeout(300);
       check(await page.locator(".demo-search-field, .demo-search-layout, .demo-preview-window").count() === 0,
         `${language}: animated controls must be removed when motion is disabled`);
-      check(await page.locator(".app-content .vp-app-bar > .vp-app-icon-button").count() === 2,
-        `${language}: responsive cleanup must restore both original toolbar buttons`);
+      check(await page.locator(".app-content .vp-app-bar > .vp-app-icon-button").count() === 3,
+        `${language}: responsive cleanup must restore search, paste queue and settings`);
       await page.setViewportSize({ width: 375, height: 812 });
       check(await headerFits(), `${language}: mobile masthead should remain centered`);
       check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${language}: no mobile overflow`);

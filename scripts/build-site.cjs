@@ -62,6 +62,19 @@ const root = path.resolve(__dirname, "..");
           if (link.dataset.languageButton === language) link.setAttribute("aria-current", "page");
           else link.removeAttribute("aria-current");
         });
+        // Reading/mobile mode keeps the same product UI, without the desktop's shared actor.
+        const desktopWindow = document.createElement("div");
+        desktopWindow.className = "desktop-reading-window";
+        const product = document.querySelector(".story-product").cloneNode(true);
+        product.classList.remove("story-product");
+        product.classList.add("reading-product");
+        desktopWindow.append(product);
+        document.querySelector(".shortcut-desktop").append(desktopWindow);
+        const localCards = document.createElement("div");
+        localCards.className = "local-reading-cards";
+        localCards.setAttribute("aria-hidden", "true");
+        document.querySelectorAll(".story-product .vp-clip-card").forEach(card => localCards.append(card.cloneNode(true)));
+        document.querySelector(".data-visual").prepend(localCards);
         document.querySelectorAll("img[src]").forEach(image => {
           const src = image.getAttribute("src");
           if (src === "/assets/format-stack.png") {
@@ -85,7 +98,6 @@ const root = path.resolve(__dirname, "..");
           image.removeAttribute("src");
           image.classList.add("deferred-image");
         });
-        document.querySelector(".desktop-note").textContent = "Alt + V";
         return "<!doctype html>\n" + document.documentElement.outerHTML;
       }, { dictionary: copy[language], language, route });
       const directory = path.join(root, route);
