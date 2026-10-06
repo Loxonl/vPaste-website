@@ -78,6 +78,7 @@
     scrollTo({ top: 0, behavior: "instant" });
     const world = story.querySelector(".story-world");
     const actor = story.querySelector(".app-actor");
+    const content = actor.querySelector(".app-content");
     const board = story.querySelector(".desktop-holder");
     const sheet = story.querySelector(".settings-sheet");
     const dataVisual = story.querySelector(".data-visual");
@@ -97,7 +98,7 @@
       { x: 155, y: 160, scale: .84, rotation: 0 },
       { x: 680, y: 645, scale: .56, rotation: 0 },
       { x: 95, y: 210, scale: .67, rotation: 0 },
-      { x: 750, y: 475, scale: .6, rotation: -rotation },
+      { x: 171, y: 245, scale: .98, rotation: 0 },
     ];
     const layoutWorld = () => {
       const scale = Math.min(story.clientWidth / 1440, (innerHeight - 140) / 820);
@@ -193,6 +194,14 @@
       ...formats.map((_, i) => formatStart + .26 + i * .5), 8.75, 10, 11.3];
     let step = 0;
     let transitionTween = null;
+    let intro = null;
+    const finishIntro = () => {
+      if (!intro) return;
+      intro.kill();
+      intro = null;
+      gsap.set(content, { clearProps: "transform" });
+      gsap.set(actor, { clearProps: "clipPath" });
+    };
     let lastWheel = 0;
     let accumulated = 0;
     let gestureConsumed = false;
@@ -232,6 +241,7 @@
     const go = (index) => {
       index = Math.max(0, Math.min(stops.length - 1, index));
       if (index === step || transitionTween) return false;
+      finishIntro();
       stopLoops();
       const sameChapter = (step >= 2 && step <= 8 && index >= 2 && index <= 8) ||
         (step >= 9 && step <= 13 && index >= 9 && index <= 13);
@@ -335,9 +345,17 @@
     backgroundStudy?.go({ progress: timeline.time() / duration, chapter: Number(story.dataset.chapter) });
     startLoops();
     announce();
+    if (step === 0) {
+      // Reveal from the window's bottom edge, without moving its final layout position.
+      gsap.set(actor, { clipPath: "inset(-12px -12px 0 -12px)" });
+      gsap.set(content, { y: 286 });
+      intro = gsap.timeline({ onComplete: finishIntro });
+      intro.to(content, { y: 0, duration: .85, ease: "power3.out" }, .15);
+    }
     return () => {
       jumpTo = null;
       backgroundStudy?.settle();
+      finishIntro();
       transitionTween?.kill();
       stopLoops();
       demos.destroy();

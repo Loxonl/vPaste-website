@@ -70,6 +70,7 @@ const root = path.resolve(__dirname, "..");
         product.classList.add("reading-product");
         desktopWindow.append(product);
         document.querySelector(".shortcut-desktop").append(desktopWindow);
+        document.querySelector(".closing-product").append(product.cloneNode(true));
         const localCards = document.createElement("div");
         localCards.className = "local-reading-cards";
         localCards.setAttribute("aria-hidden", "true");

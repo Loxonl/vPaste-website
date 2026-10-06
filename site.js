@@ -77,10 +77,11 @@
   platformButtons.forEach(button => button.addEventListener("click", () => setPlatform(button.dataset.platformButton)));
   setPlatform(platform, false);
   const readingDesktop = document.querySelector("[data-platform-desktop]");
-  const desktopObserver = new ResizeObserver(() => {
-    readingDesktop.style.setProperty("--reading-scale", readingDesktop.clientWidth / 1120);
+  const desktopObserver = new ResizeObserver(entries => {
+    entries.forEach(({ target }) => target.style.setProperty("--reading-scale", target.clientWidth / 1120));
   });
   desktopObserver.observe(readingDesktop);
+  desktopObserver.observe(document.querySelector(".closing-product"));
   const artworkObserver = new IntersectionObserver(entries => entries.forEach(entry => {
     if (!entry.isIntersecting || document.body.classList.contains("story-motion")) return;
     entry.target.querySelectorAll("[data-artwork-src]").forEach(image => { image.src = image.dataset.artworkSrc; });

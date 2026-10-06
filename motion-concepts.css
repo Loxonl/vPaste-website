@@ -284,9 +284,6 @@ html.story-paged, .story-paged body { height: 100%; overflow: hidden; overscroll
 .desktop-holder .desktop-copy { width: 74%; margin-top: 64px; color: var(--ink); }
 .desktop-holder .desktop-shortcut-mark kbd { color: var(--ink); background: #f9fcfcd9; border-color: #c8d7dc; }
 .data-visual { width: 800px; max-width: 100%; margin: 38px 0; }
-.data-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 35px; margin-top: 22px; padding-inline: 8px; font-size: 13px; color: var(--muted); }
-.data-actions > span { display: flex; align-items: center; gap: 11px; }
-.data-actions .story-icon { width: 19px; height: 19px; color: var(--accent); }
 .story-motion .data-visual { position: absolute; top: 285px; left: 80px; margin: 0; }
 .story-motion .chapter-copy--privacy .chapter-heading { left: 975px; top: 145px; width: 370px; display: block; }
 .story-motion .chapter-copy--privacy h2 { font-size: 45px; }
@@ -294,27 +291,32 @@ html.story-paged, .story-paged body { height: 100%; overflow: hidden; overscroll
 
 /* The source, download and colophon close the SAME canvas. There is no second footer. */
 .chapter-copy--closing { order: 9; }
-.closing-copy h2 { max-width: 650px; font-size: 60px; }
-.closing-copy h3 { font-size: 24px; line-height: 1.5; font-weight: 500; margin: 30px 0 14px; }
-.closing-copy .story-description { font-size: 14px; max-width: 650px; }
-.closing-logo { margin-top: 35px; display: block; width: 110px; height: 110px; }
-.closing-facts { margin-block: 35px; }
-.closing-facts .source-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 35px; max-width: none; }
-.closing-facts .source-facts > div { display: grid; grid-template-columns: 28px 1fr; align-content: start; gap: 10px 14px; min-height: 0; border-top: 1px solid var(--line); padding: 25px 0 0; }
-.closing-facts .source-facts strong { font-size: 17px; line-height: 1.4; font-weight: 500; }
-.closing-facts .source-facts small { grid-column: 2; color: var(--muted); line-height: 1.6; }
-.closing-facts .story-icon { color: var(--accent); width: 20px; height: 20px; }
-.story-motion .closing-copy { position: absolute; left: 80px; top: 75px; width: 650px; }
-.story-motion .closing-copy h2 { font-size: 65px; }
-.story-motion .closing-logo { position: absolute; left: 1040px; top: 163px; margin: 0; }
-.story-motion .closing-facts { position: absolute; left: 80px; right: 80px; top: 690px; margin: 0; }
+.closing-copy { max-width: 1098px; margin-inline: auto; }
+.closing-brand { display: flex; align-items: center; gap: 28px; }
+.closing-brand > div { min-width: 0; }
+.closing-brand .story-kicker { margin-bottom: 12px; }
+.closing-copy h2 { font-size: 56px; margin: 0; }
+.closing-copy h3 { font-size: 24px; line-height: 1.5; font-weight: 500; margin: 0 0 14px; }
+.closing-copy .story-description { max-width: none; }
+.closing-logo { display: block; width: 84px; height: 84px; flex: 0 0 auto; }
+.closing-product { margin-block: 36px; overflow-x: auto; padding-bottom: 20px; }
+.closing-product .reading-product { transform: none; }
+html[data-enhanced] .closing-product { height: calc(270px * var(--reading-scale, .3)); padding: 0; overflow: hidden; }
+html[data-enhanced] .closing-product .reading-product { transform: scale(var(--reading-scale, .3)); }
+.closing-summary { display: grid; gap: 28px; }
+.closing-copy .hero-actions { margin: 0; }
+.story-motion .closing-copy { position: absolute; left: 171px; top: 45px; width: 1098px; }
+.story-motion .closing-product { display: none; }
+.story-motion .closing-summary { position: absolute; top: 545px; width: 100%; grid-template-columns: minmax(0, 1fr) 280px; align-items: center; gap: 72px; }
+.story-motion .closing-actions .hero-actions { flex-direction: column; align-items: stretch; gap: 14px; }
 
 @media (max-width: 1099px), (max-height: 719px) {
   .closing-copy h2 { font-size: 42px; }
   .data-visual { width: 100%; }
 }
 @media (max-width: 600px) {
-  .closing-facts .source-facts { grid-template-columns: 1fr; gap: 22px; }
+  .closing-brand { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .closing-logo { width: 64px; height: 64px; }
   .closing-copy h2 { font-size: 38px; }
   .closing-copy h3 { font-size: 22px; }
 }

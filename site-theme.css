@@ -91,16 +91,13 @@ html[data-palette] :focus-visible { outline-color: var(--palette-focus); }
   font-size: calc(var(--type-label) / var(--copy-scale, 1));
   line-height: 1.5;
 }
-.reconstructed-site .settings-details .settings-catalog h3,
-.reconstructed-site .closing-facts .source-facts strong {
+.reconstructed-site .settings-details .settings-catalog h3 {
   font-size: calc(var(--type-body) / var(--copy-scale, 1));
 }
 .reconstructed-site .story-kicker,
 .reconstructed-site .chapter-copy .hero-meta,
-.reconstructed-site .closing-facts .source-facts small,
 .reconstructed-site .local-device strong,
-.reconstructed-site .migration-path,
-.reconstructed-site .data-actions {
+.reconstructed-site .migration-path {
   font-size: calc(var(--type-caption) / var(--copy-scale, 1));
   line-height: 1.5;
 }

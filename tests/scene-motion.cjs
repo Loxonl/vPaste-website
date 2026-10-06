@@ -25,7 +25,27 @@ async function chapter(page, index) {
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 980 }, locale: "zh-CN" });
     page.on("pageerror", error => errors.push(error.message));
+    await page.addInitScript(() => {
+      window.introFrames = [];
+      const sample = () => {
+        const actor = document.querySelector(".story-motion .app-actor");
+        if (actor && window.gsap) {
+          window.introFrames.push({
+            y: gsap.getProperty(actor.querySelector(".app-content"), "y"),
+            x: gsap.getProperty(actor, "x"),
+            top: gsap.getProperty(actor, "y"),
+          });
+          if (window.introFrames.at(-1).y === 0) return;
+        }
+        requestAnimationFrame(sample);
+      };
+      requestAnimationFrame(sample);
+    });
     await page.goto(base + "/?concept=b", { waitUntil: "networkidle" });
+    await page.waitForFunction(() => window.introFrames.length > 1 && window.introFrames.at(-1).y === 0);
+    assert(await page.evaluate(() => introFrames[0].y >= 270 && introFrames.some(frame => frame.y > 0 && frame.y < 270) &&
+      introFrames.every(frame => frame.x === 132 && frame.top === 430)), "Opening rises from hidden to visible without moving the app's layout position");
+    assert.equal(await page.locator(".app-actor").evaluate(el => el.style.clipPath), "");
     assert.equal(await page.locator("html").getAttribute("data-concept"), "a", "Old B links now use the selected A direction");
     assert.equal(await page.locator(".concept-switch, #product-details, .final-cta, .site-footer, [data-i18n='demo.capture']").count(), 0);
     assert.equal(await page.locator("footer").count(), 0);
@@ -173,12 +193,18 @@ async function chapter(page, index) {
           assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
         }
         assert.equal(await page.locator(".closing-footer").count(), 0);
+        assert.equal(await page.locator(".closing-facts, .data-actions").count(), 0);
         assert(await page.locator(".app-actor").evaluate(el => {
           const box = el.getBoundingClientRect();
-          const facts = document.querySelector(".closing-facts").getBoundingClientRect();
-          return gsap.getProperty(el, "scaleX") >= .6 && gsap.getProperty(el, "rotation") === -3.5 &&
-            box.right < innerWidth && box.bottom + 8 < facts.top && facts.bottom < innerHeight - 62;
-        }), "The enlarged tilted app and project facts fit above the navigation rail");
+          const brand = document.querySelector(".closing-brand").getBoundingClientRect();
+          const summary = document.querySelector(".closing-summary").getBoundingClientRect();
+          const logo = document.querySelector(".closing-logo").getBoundingClientRect();
+          const title = document.querySelector(".closing-brand h2").getBoundingClientRect();
+          return gsap.getProperty(el, "scaleX") === .98 && gsap.getProperty(el, "rotation") === 0 &&
+            Math.abs(box.left - brand.left) < 1 && Math.abs(box.left - summary.left) < 1 &&
+            box.right < innerWidth && box.top > brand.bottom + 20 && box.bottom + 20 < summary.top &&
+            summary.bottom < innerHeight - 62 && logo.right + 10 < title.left;
+        }), "Closing aligns the brand, front-facing app, introduction and actions without overlap");
       }
     }
     assert.equal(await step(page), 16);
@@ -213,15 +239,25 @@ async function chapter(page, index) {
     await page.waitForTimeout(300);
     assert.equal(await page.locator(".story-motion, [inert]").count(), 0);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
-    assert(await page.evaluate(() => {
-      const image = document.querySelector(".local-pipeline").getBoundingClientRect();
-      const caption = document.querySelector(".data-actions").getBoundingClientRect();
-      return image.bottom < caption.top;
-    }), "Mobile artwork and its captions must not overlap");
+    assert.equal(await page.locator(".data-actions, .closing-facts").count(), 0, "Repeated captions stay removed in reading mode");
     await page.locator("#privacy").scrollIntoViewIfNeeded();
     await screenshot(page, "mobile-data");
     await page.locator("#open-source").scrollIntoViewIfNeeded();
+    assert(await page.locator(".closing-product").isVisible());
+    assert(await page.locator(".closing-product .reading-product").evaluate(el => {
+      const box = el.getBoundingClientRect();
+      const frame = el.parentElement.getBoundingClientRect();
+      return Math.abs(box.width - frame.width) < 1 && box.bottom <= frame.bottom + 1;
+    }), "Reading mode keeps a complete scaled product window in the closing layout");
     await screenshot(page, "mobile-closing");
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.goto(base + "/en/", { waitUntil: "domcontentloaded" });
+    await chapter(page, 4);
+    assert(await page.locator(".app-actor").evaluate(el => el.style.clipPath === "" && gsap.getProperty(el.querySelector(".app-content"), "y") === 0), "Early navigation cleans up the opening reveal");
+    await page.goto("about:blank");
+    await page.goto(base + "/en/#open-source", { waitUntil: "networkidle" });
+    assert.equal(await step(page), 16);
+    assert.equal(await page.locator(".app-content").evaluate(el => gsap.getProperty(el, "y")), 0, "Direct chapter links do not run the hero reveal");
     assert.deepEqual(errors, []);
     await page.close();
     console.log("PASS threshold / complete transitions / momentum guard / 7 use cases / 5 formats / reverse / keyboard / final scene / identity / responsive teardown / both languages");
