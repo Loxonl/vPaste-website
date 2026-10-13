@@ -76,6 +76,35 @@
   const platform = /windows|win32|win64/i.test(reported + ua) ? "windows" : !touchMac && /macos|macintosh|macintel|mac os x/i.test(reported + ua) ? "macos" : "windows";
   platformButtons.forEach(button => button.addEventListener("click", () => setPlatform(button.dataset.platformButton)));
   setPlatform(platform, false);
+
+  // Download buttons link straight to the latest stable installer for Windows and macOS; other devices keep the Releases page.
+  const downloadPlatform = /windows|win32|win64/i.test(reported + ua) ? "windows" : !touchMac && /macos|macintosh|macintel|mac os x/i.test(reported + ua) ? "macos" : null;
+  const downloadLinks = [...document.querySelectorAll("[data-download]")];
+  if (downloadPlatform && downloadLinks.length) {
+    fetch("/download/stable/latest.json", { cache: "no-cache" })
+      .then(response => response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response.status}`)))
+      .then(({ platforms = {} }) => {
+        // macOS manifest entries are updater archives; the release publishes the matching .dmg beside each one.
+        const dmg = url => /\.app\.tar\.gz$/.test(url || "") ? url.replace(/\.app\.tar\.gz$/, ".dmg") : null;
+        const installers = downloadPlatform === "windows"
+          ? [["action.downloadWindows", platforms["windows-x86_64"]?.url]]
+          : [["action.downloadAppleSilicon", dmg(platforms["darwin-aarch64"]?.url)], ["action.downloadIntel", dmg(platforms["darwin-x86_64"]?.url)]];
+        if (!installers.every(([, url]) => /^https:\/\/github\.com\/Loxonl\/vPaste-desktop\/releases\/download\//.test(url || ""))) return;
+        downloadLinks.forEach(link => {
+          let previous = null;
+          installers.forEach(([label, url]) => {
+            const button = previous ? link.cloneNode(true) : link;
+            if (previous) previous.after(button);
+            button.href = url;
+            button.removeAttribute("target");
+            button.querySelector("[data-i18n]").setAttribute("data-i18n", label);
+            translate(button);
+            previous = button;
+          });
+        });
+      })
+      .catch(() => { /* Keep the Releases page link. */ });
+  }
   const readingDesktop = document.querySelector("[data-platform-desktop]");
   const desktopObserver = new ResizeObserver(entries => {
     entries.forEach(({ target }) => target.style.setProperty("--reading-scale", target.clientWidth / 1120));
