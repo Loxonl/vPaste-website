@@ -84,23 +84,17 @@
     fetch("/download/stable/latest.json", { cache: "no-cache" })
       .then(response => response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response.status}`)))
       .then(({ platforms = {} }) => {
-        // macOS manifest entries are updater archives; the release publishes the matching .dmg beside each one.
-        const dmg = url => /\.app\.tar\.gz$/.test(url || "") ? url.replace(/\.app\.tar\.gz$/, ".dmg") : null;
-        const installers = downloadPlatform === "windows"
-          ? [["action.downloadWindows", platforms["windows-x86_64"]?.url]]
-          : [["action.downloadAppleSilicon", dmg(platforms["darwin-aarch64"]?.url)], ["action.downloadIntel", dmg(platforms["darwin-x86_64"]?.url)]];
-        if (!installers.every(([, url]) => /^https:\/\/github\.com\/Loxonl\/vPaste-desktop\/releases\/download\//.test(url || ""))) return;
+        // The manifest only lists per-architecture macOS updater archives; the release also publishes a download-only universal .dmg.
+        const universal = url => /_macos_aarch64\.app\.tar\.gz$/.test(url || "") ? url.replace(/_macos_aarch64\.app\.tar\.gz$/, "_macos_universal.dmg") : null;
+        const [label, url] = downloadPlatform === "windows"
+          ? ["action.downloadWindows", platforms["windows-x86_64"]?.url]
+          : ["action.downloadMac", universal(platforms["darwin-aarch64"]?.url)];
+        if (!/^https:\/\/github\.com\/Loxonl\/vPaste-desktop\/releases\/download\//.test(url || "")) return;
         downloadLinks.forEach(link => {
-          let previous = null;
-          installers.forEach(([label, url]) => {
-            const button = previous ? link.cloneNode(true) : link;
-            if (previous) previous.after(button);
-            button.href = url;
-            button.removeAttribute("target");
-            button.querySelector("[data-i18n]").setAttribute("data-i18n", label);
-            translate(button);
-            previous = button;
-          });
+          link.href = url;
+          link.removeAttribute("target");
+          link.querySelector("[data-i18n]").setAttribute("data-i18n", label);
+          translate(link);
         });
       })
       .catch(() => { /* Keep the Releases page link. */ });
