@@ -237,6 +237,11 @@ svg {
   background: #fff;
 }
 
+/* The cloud drive mirror is only offered on the Chinese pages. */
+html:not([data-language="zh"]) [data-netdisk] {
+  display: none;
+}
+
 .button--compact {
   min-height: 40px;
   padding-inline: 14px;
