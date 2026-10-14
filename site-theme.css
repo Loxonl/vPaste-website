@@ -118,6 +118,17 @@ html[data-palette] :focus-visible { outline-color: var(--palette-focus); }
 .story-motion .intro-heading h1 { font-size: 62px; line-height: 1.15; margin-bottom: 18px; }
 .story-motion .intro-heading .story-description { max-width: 1080px; margin-inline: auto; }
 .story-motion .intro-heading .hero-actions { margin-top: 22px; }
+.reconstructed-site .intro-heading .hero-downloads { display: grid; grid-template-columns: 1fr 1fr .98fr; align-items: stretch; gap: 12px; width: min(100%, 920px); margin-inline: auto; }
+.reconstructed-site .hero-downloads .button { min-width: 0; width: 100%; padding: 10px 12px; }
+.hero-downloads .platform-icon { width: 24px; height: 24px; padding: 3px; box-sizing: content-box; border-radius: 5px; background: #fff; flex-shrink: 0; }
+.hero-downloads .button span { text-align: center; }
+.reconstructed-site .intro-heading .hero-netdisk { max-width: 100%; min-height: calc(46px / var(--copy-scale, 1)); border-color: var(--line-strong); background: var(--palette-plate); color: var(--blue-deep); font-weight: 550; text-align: center; }
+.hero-downloads .hero-netdisk svg { width: 20px; height: 20px; flex-shrink: 0; }
+.intro-heading .hero-netdisk:hover { background: var(--surface); }
+@media (max-width: 700px) {
+  .reconstructed-site .intro-heading .hero-downloads { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-downloads .hero-netdisk { grid-column: 1 / -1; }
+}
 .story-motion .intro-colophon { top: 755px; left: 132px; width: 1176px; }
 .story-motion .chapter-copy--desktop .chapter-heading { top: 105px; }
 .story-motion .chapter-copy--desktop h2 { font-size: 52px; }

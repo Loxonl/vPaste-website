@@ -77,20 +77,22 @@
   platformButtons.forEach(button => button.addEventListener("click", () => setPlatform(button.dataset.platformButton)));
   setPlatform(platform, false);
 
-  // Download buttons link straight to the latest stable installer for Windows and macOS; other devices keep the Releases page.
+  // Explicit platform buttons work on every device; generic buttons follow the detected platform.
   const downloadPlatform = /windows|win32|win64/i.test(reported + ua) ? "windows" : !touchMac && /macos|macintosh|macintel|mac os x/i.test(reported + ua) ? "macos" : null;
   const downloadLinks = [...document.querySelectorAll("[data-download]")];
-  if (downloadPlatform && downloadLinks.length) {
+  if (downloadLinks.length) {
     fetch("/download/stable/latest.json", { cache: "no-cache" })
       .then(response => response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response.status}`)))
       .then(({ platforms = {} }) => {
         // The manifest only lists per-architecture macOS updater archives; the release also publishes a download-only universal .dmg.
         const universal = url => /_macos_aarch64\.app\.tar\.gz$/.test(url || "") ? url.replace(/_macos_aarch64\.app\.tar\.gz$/, "_macos_universal.dmg") : null;
-        const [label, url] = downloadPlatform === "windows"
-          ? ["action.downloadWindows", platforms["windows-x86_64"]?.url]
-          : ["action.downloadMac", universal(platforms["darwin-aarch64"]?.url)];
-        if (!/^https:\/\/github\.com\/Loxonl\/vPaste-desktop\/releases\/download\//.test(url || "")) return;
         downloadLinks.forEach(link => {
+          const targetPlatform = link.dataset.download || downloadPlatform;
+          if (!targetPlatform) return;
+          const [label, url] = targetPlatform === "windows"
+            ? ["action.downloadWindows", platforms["windows-x86_64"]?.url]
+            : ["action.downloadMac", universal(platforms["darwin-aarch64"]?.url)];
+          if (!/^https:\/\/github\.com\/Loxonl\/vPaste-desktop\/releases\/download\//.test(url || "")) return;
           link.href = url;
           link.removeAttribute("target");
           link.querySelector("[data-i18n]").setAttribute("data-i18n", label);

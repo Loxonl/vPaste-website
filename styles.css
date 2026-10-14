@@ -237,8 +237,8 @@ svg {
   background: #fff;
 }
 
-/* The cloud drive mirror is only offered on the Chinese pages. */
-html:not([data-language="zh"]) [data-netdisk] {
+/* The closing scene's cloud drive mirror is offered on the Chinese pages. */
+html:not([data-language="zh"]) .closing-actions [data-netdisk] {
   display: none;
 }
 
