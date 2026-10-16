@@ -1,0 +1,193 @@
+{
+  "cards": [
+    {
+      "x": 24,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 260,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 496,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 732,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 968,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 1204,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    }
+  ],
+  "tabs": [
+    {
+      "label": "全部",
+      "x": 71,
+      "y": 0,
+      "width": 84,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "收藏",
+      "x": 163,
+      "y": 0,
+      "width": 84,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "📝 文本",
+      "x": 255,
+      "y": 0,
+      "width": 72.90625,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "🖼️ 图片",
+      "x": 335.90625,
+      "y": 0,
+      "width": 72.90625,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "🔗 链接",
+      "x": 416.8125,
+      "y": 0,
+      "width": 72.90625,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "🎨 颜色",
+      "x": 497.71875,
+      "y": 0,
+      "width": 72.90625,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "📁 文件",
+      "x": 578.625,
+      "y": 0,
+      "width": 72.90625,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "项目",
+      "x": 659.53125,
+      "y": 0,
+      "width": 74,
+      "height": 48,
+      "fontSize": "14.5px"
+    }
+  ],
+  "buttons": [
+    {
+      "label": "搜索",
+      "x": 28,
+      "y": 9.5,
+      "width": 28,
+      "height": 28,
+      "fontSize": "24px"
+    },
+    {
+      "label": "添加标签",
+      "x": 742.53125,
+      "y": 0,
+      "width": 36,
+      "height": 48,
+      "fontSize": "24px"
+    },
+    {
+      "label": "粘贴队列",
+      "x": 1356,
+      "y": 9.5,
+      "width": 28,
+      "height": 28,
+      "fontSize": "24px"
+    },
+    {
+      "label": "设置",
+      "x": 1392,
+      "y": 9.5,
+      "width": 28,
+      "height": 28,
+      "fontSize": "24px"
+    }
+  ],
+  "images": [
+    {
+      "width": 150,
+      "height": 150,
+      "complete": true
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "complete": true
+    },
+    {
+      "width": 1536,
+      "height": 1024,
+      "complete": true
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "complete": true
+    },
+    {
+      "width": 1025,
+      "height": 1025,
+      "complete": true
+    },
+    {
+      "width": 256,
+      "height": 224,
+      "complete": true
+    },
+    {
+      "width": 150,
+      "height": 150,
+      "complete": true
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "complete": true
+    },
+    {
+      "width": 150,
+      "height": 150,
+      "complete": true
+    }
+  ]
+}

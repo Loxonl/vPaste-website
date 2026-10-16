@@ -1,0 +1,45 @@
+{
+  "Status": "final-updated-at-user-request",
+  "OriginalApprovalOn": "2026-10-05",
+  "UpdatedOn": "2026-10-08",
+  "Timezone": "Asia/Shanghai",
+  "Resolution": "2560x1440",
+  "FPS": 30,
+  "VideoSeconds": 40,
+  "CoverTimeSeconds": 0,
+  "OpeningHoldSeconds": 1,
+  "OpeningTransitionSeconds": [
+    1,
+    2
+  ],
+  "FeatureTimeOffsetSeconds": 1.2,
+  "EndingStartsAtSeconds": 38.7,
+  "EndingStaticFromSeconds": 39.3,
+  "Files": [
+    {
+      "File": "vpaste-40s-1440p-zh.mp4",
+      "Language": "zh",
+      "Bytes": 8177973,
+      "SHA256": "f551f7d3e3df6a3f8d38509f6079366f5a89127d8ba9246225352b46b0b491df",
+      "PromotedFrom": "out/revised-1440/zh/vpaste-40s-1440p-zh.mp4"
+    },
+    {
+      "File": "vpaste-40s-1440p-en.mp4",
+      "Language": "en",
+      "Bytes": 8261656,
+      "SHA256": "164899a31591331e1409a9c0d8537975d4192a81ed61587e633c0743315bc69b",
+      "PromotedFrom": "out/revised-1440/en/vpaste-40s-1440p-en.mp4"
+    },
+    {
+      "File": "vpaste-cover-1440p.png",
+      "Language": "shared",
+      "Bytes": 122638,
+      "SHA256": "e8cfaff6f6eb6fbb996dffc411b670d32b4d797e3dd81988f30a8a5d8e964aa9",
+      "PromotedFrom": "out/revised-1440/zh/vpaste-cover.png"
+    }
+  ],
+  "Archive": "../archive/2026-10-08",
+  "SourceEntry": "../src/revised-index.tsx",
+  "TimingSource": "../src/revised-timing.json",
+  "Note": "Re-rendered from the approved content at the user request: brand opening, upward transition and shortened ending. Existing feature durations preserved; keyboard and transition sounds shifted together. Previous media archived unchanged. Not uploaded externally."
+}

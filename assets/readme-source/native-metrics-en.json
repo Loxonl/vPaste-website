@@ -1,0 +1,193 @@
+{
+  "cards": [
+    {
+      "x": 24,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 260,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 496,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 732,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 968,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    },
+    {
+      "x": 1204,
+      "y": 60,
+      "width": 220,
+      "height": 230,
+      "fontSize": "16px"
+    }
+  ],
+  "tabs": [
+    {
+      "label": "All",
+      "x": 71,
+      "y": 0,
+      "width": 78,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "Favorites",
+      "x": 157,
+      "y": 0,
+      "width": 113.53125,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "📝 Text",
+      "x": 278.53125,
+      "y": 0,
+      "width": 70.703125,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "🖼️ Images",
+      "x": 357.234375,
+      "y": 0,
+      "width": 91.234375,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "🔗 Links",
+      "x": 456.46875,
+      "y": 0,
+      "width": 77.09375,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "🎨 Colors",
+      "x": 541.5625,
+      "y": 0,
+      "width": 85.71875,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "📁 Files",
+      "x": 635.28125,
+      "y": 0,
+      "width": 72.71875,
+      "height": 48,
+      "fontSize": "14.5px"
+    },
+    {
+      "label": "Project",
+      "x": 716,
+      "y": 0,
+      "width": 74,
+      "height": 48,
+      "fontSize": "14.5px"
+    }
+  ],
+  "buttons": [
+    {
+      "label": "Search",
+      "x": 28,
+      "y": 9.5,
+      "width": 28,
+      "height": 28,
+      "fontSize": "24px"
+    },
+    {
+      "label": "Add Tab",
+      "x": 799,
+      "y": 0,
+      "width": 36,
+      "height": 48,
+      "fontSize": "24px"
+    },
+    {
+      "label": "Paste Queue",
+      "x": 1356,
+      "y": 9.5,
+      "width": 28,
+      "height": 28,
+      "fontSize": "24px"
+    },
+    {
+      "label": "Settings",
+      "x": 1392,
+      "y": 9.5,
+      "width": 28,
+      "height": 28,
+      "fontSize": "24px"
+    }
+  ],
+  "images": [
+    {
+      "width": 150,
+      "height": 150,
+      "complete": true
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "complete": true
+    },
+    {
+      "width": 1536,
+      "height": 1024,
+      "complete": true
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "complete": true
+    },
+    {
+      "width": 1025,
+      "height": 1025,
+      "complete": true
+    },
+    {
+      "width": 256,
+      "height": 224,
+      "complete": true
+    },
+    {
+      "width": 150,
+      "height": 150,
+      "complete": true
+    },
+    {
+      "width": 256,
+      "height": 256,
+      "complete": true
+    },
+    {
+      "width": 150,
+      "height": 150,
+      "complete": true
+    }
+  ]
+}

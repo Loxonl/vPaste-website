@@ -1,0 +1,388 @@
+{
+  "revision": 3,
+  "seedPolicy": "Three distinct editorial structures are constraints. Independent 141-byte seeds drive card order, framing, alignment and music voicing. Native UI geometry and motion are never randomized.",
+  "variants": [
+    {
+      "id": "A",
+      "name": "桌面长镜头",
+      "strategy": "continuous",
+      "bpm": 96,
+      "style": "breaks",
+      "key": 40,
+      "palette": {
+        "background": "#f7faff",
+        "surface": "#e3edfa",
+        "accent": "#1366bb",
+        "ink": "#19344f"
+      },
+      "shots": [
+        {
+          "kind": "desktop",
+          "title": "呼出，选择，直接粘贴",
+          "fromBeat": 0,
+          "beats": 12,
+          "from": 0,
+          "to": 225,
+          "cameraBias": -5.310883983038366,
+          "alignment": 1,
+          "index": 0
+        },
+        {
+          "kind": "types",
+          "title": "文本 · 图片 · 链接 · 文件 · 颜色",
+          "fromBeat": 12,
+          "beats": 11,
+          "from": 225,
+          "to": 431,
+          "cameraBias": -0.808260174933821,
+          "alignment": 0,
+          "index": 1
+        },
+        {
+          "kind": "search",
+          "title": "记得一点，就能找到",
+          "fromBeat": 23,
+          "beats": 9,
+          "from": 431,
+          "to": 600,
+          "cameraBias": 3.7851617075502872,
+          "alignment": 1,
+          "index": 2
+        },
+        {
+          "kind": "formatting",
+          "title": "保留原有格式",
+          "fromBeat": 32,
+          "beats": 7,
+          "from": 600,
+          "to": 731,
+          "cameraBias": 5.546262168791145,
+          "alignment": 1,
+          "index": 3
+        },
+        {
+          "kind": "queue",
+          "title": "连续粘贴，一气呵成",
+          "fromBeat": 39,
+          "beats": 9,
+          "from": 731,
+          "to": 900,
+          "cameraBias": 4.5810611769557,
+          "alignment": 1,
+          "index": 4
+        },
+        {
+          "kind": "drag",
+          "title": "跨应用拖拽",
+          "fromBeat": 48,
+          "beats": 7,
+          "from": 900,
+          "to": 1031,
+          "cameraBias": 4.066090350039303,
+          "alignment": 1,
+          "index": 5
+        },
+        {
+          "kind": "local",
+          "title": "记录留在本机",
+          "fromBeat": 55,
+          "beats": 4,
+          "from": 1031,
+          "to": 1106,
+          "cameraBias": -1.7702238336205482,
+          "alignment": 1,
+          "index": 6
+        },
+        {
+          "kind": "closing",
+          "title": "GPL-3.0 开源",
+          "fromBeat": 59,
+          "beats": 5,
+          "from": 1106,
+          "to": 1200,
+          "cameraBias": -2.430604468099773,
+          "alignment": 1,
+          "index": 7
+        }
+      ],
+      "seed": "9b3057f1d6c082b2ae3cd190508813ae54bf44ec953b35b76ec8d33bb8565393c2f2dca090d543d38bc11fb7e819afb3d52022de9f6ddc78edd7088d777be521c902ff5dd23487885e641a2486d9dbc92820b060e581a84ead320ffd555426c0098516765f8c08f497857c81064591f1199886ac1351d28100d46e9239ee5f1bfb5564ac10ba9c750103699b2d",
+      "seedBits": 1128,
+      "typeOrder": [
+        3,
+        2,
+        4,
+        1,
+        0
+      ],
+      "music": {
+        "style": "breaks",
+        "bpm": 96,
+        "key": 40,
+        "hatVariant": 3,
+        "bassVariant": 2
+      }
+    },
+    {
+      "id": "B",
+      "name": "节拍广告",
+      "strategy": "kinetic",
+      "bpm": 144,
+      "style": "electro",
+      "key": 38,
+      "palette": {
+        "background": "#fffaf0",
+        "surface": "#ffe4bb",
+        "accent": "#c64b24",
+        "ink": "#482e23"
+      },
+      "shots": [
+        {
+          "kind": "desktop",
+          "title": "呼出，选择，直接粘贴",
+          "fromBeat": 0,
+          "beats": 12,
+          "from": 0,
+          "to": 150,
+          "cameraBias": 4.762538297101855,
+          "alignment": 0,
+          "index": 0
+        },
+        {
+          "kind": "types",
+          "title": "文本 · 图片 · 链接 · 文件 · 颜色",
+          "fromBeat": 12,
+          "beats": 18,
+          "from": 150,
+          "to": 375,
+          "cameraBias": 0.5346372183412313,
+          "alignment": 1,
+          "index": 1
+        },
+        {
+          "kind": "formatting",
+          "title": "保留原有格式",
+          "fromBeat": 30,
+          "beats": 10,
+          "from": 375,
+          "to": 500,
+          "cameraBias": 3.7195350718684494,
+          "alignment": 1,
+          "index": 2
+        },
+        {
+          "kind": "search",
+          "title": "记得一点，就能找到",
+          "fromBeat": 40,
+          "beats": 10,
+          "from": 500,
+          "to": 625,
+          "cameraBias": -0.6999143571592867,
+          "alignment": 1,
+          "index": 3
+        },
+        {
+          "kind": "categories",
+          "title": "分类、标签与收藏",
+          "fromBeat": 50,
+          "beats": 8,
+          "from": 625,
+          "to": 725,
+          "cameraBias": 6.178069749381393,
+          "alignment": 1,
+          "index": 4
+        },
+        {
+          "kind": "preview",
+          "title": "粘贴前，先预览",
+          "fromBeat": 58,
+          "beats": 10,
+          "from": 725,
+          "to": 850,
+          "cameraBias": -2.661030687391758,
+          "alignment": 0,
+          "index": 5
+        },
+        {
+          "kind": "queue",
+          "title": "连续粘贴，一气呵成",
+          "fromBeat": 68,
+          "beats": 12,
+          "from": 850,
+          "to": 1000,
+          "cameraBias": -0.049883761908859015,
+          "alignment": 1,
+          "index": 6
+        },
+        {
+          "kind": "local",
+          "title": "记录留在本机",
+          "fromBeat": 80,
+          "beats": 8,
+          "from": 1000,
+          "to": 1100,
+          "cameraBias": 0.7931316108442843,
+          "alignment": 1,
+          "index": 7
+        },
+        {
+          "kind": "closing",
+          "title": "GPL-3.0 开源",
+          "fromBeat": 88,
+          "beats": 8,
+          "from": 1100,
+          "to": 1200,
+          "cameraBias": 3.145936958491802,
+          "alignment": 1,
+          "index": 8
+        }
+      ],
+      "seed": "f66f580c5f438bb64cd1412278488c9ed189ebf884a0a24ce41f74dd7fdd4d741a499ba02eda34c9fe46c6e8fdd6ad156ccfb99cf58e401ebecc5f8a6a00f2a1dde4e4e0a9c32ab18c349e9ee23c628688436a26751164b9ae29fad8e1f572204acbd7f8b087ff60cf295a8b49206d513a4e5c05d8a43afd5298fe67cfc58d1f99ea4f66297cacd12c2c35d699",
+      "seedBits": 1128,
+      "typeOrder": [
+        2,
+        0,
+        1,
+        4,
+        3
+      ],
+      "music": {
+        "style": "electro",
+        "bpm": 144,
+        "key": 38,
+        "hatVariant": 3,
+        "bassVariant": 0
+      }
+    },
+    {
+      "id": "C",
+      "name": "分镜叙事",
+      "strategy": "split",
+      "bpm": 120,
+      "style": "pulse",
+      "key": 43,
+      "palette": {
+        "background": "#f3faf6",
+        "surface": "#d9ede3",
+        "accent": "#127664",
+        "ink": "#1b453c"
+      },
+      "shots": [
+        {
+          "kind": "desktop",
+          "title": "呼出，选择，直接粘贴",
+          "fromBeat": 0,
+          "beats": 14,
+          "from": 0,
+          "to": 210,
+          "cameraBias": 5.71581015503034,
+          "alignment": 0,
+          "index": 0
+        },
+        {
+          "kind": "types",
+          "title": "文本 · 图片 · 链接 · 文件 · 颜色",
+          "fromBeat": 14,
+          "beats": 14,
+          "from": 210,
+          "to": 420,
+          "cameraBias": 0.5018704235553741,
+          "alignment": 1,
+          "index": 1
+        },
+        {
+          "kind": "queue",
+          "title": "连续粘贴，一气呵成",
+          "fromBeat": 28,
+          "beats": 10,
+          "from": 420,
+          "to": 570,
+          "cameraBias": -1.7950106882490218,
+          "alignment": 1,
+          "index": 2
+        },
+        {
+          "kind": "drag",
+          "title": "跨应用拖拽",
+          "fromBeat": 38,
+          "beats": 8,
+          "from": 570,
+          "to": 690,
+          "cameraBias": -1.5597979906015098,
+          "alignment": 1,
+          "index": 3
+        },
+        {
+          "kind": "search",
+          "title": "记得一点，就能找到",
+          "fromBeat": 46,
+          "beats": 10,
+          "from": 690,
+          "to": 840,
+          "cameraBias": -0.09722755895927548,
+          "alignment": 1,
+          "index": 4
+        },
+        {
+          "kind": "formatting",
+          "title": "保留原有格式",
+          "fromBeat": 56,
+          "beats": 6,
+          "from": 840,
+          "to": 930,
+          "cameraBias": -1.4031757242046297,
+          "alignment": 0,
+          "index": 5
+        },
+        {
+          "kind": "settings",
+          "title": "按你的习惯工作",
+          "fromBeat": 62,
+          "beats": 4,
+          "from": 930,
+          "to": 990,
+          "cameraBias": 6.861653045751154,
+          "alignment": 1,
+          "index": 6
+        },
+        {
+          "kind": "local",
+          "title": "记录留在本机",
+          "fromBeat": 66,
+          "beats": 6,
+          "from": 990,
+          "to": 1080,
+          "cameraBias": -2.5253580533899367,
+          "alignment": 0,
+          "index": 7
+        },
+        {
+          "kind": "closing",
+          "title": "GPL-3.0 开源",
+          "fromBeat": 72,
+          "beats": 8,
+          "from": 1080,
+          "to": 1200,
+          "cameraBias": 5.749103050678968,
+          "alignment": 0,
+          "index": 8
+        }
+      ],
+      "seed": "8f7dbaaeb1c5bc5eead16d4a917da9fb0248bd9c1a3d2b26367993a9f1c8510d76195c9dfc4cb9449e440a7dd567d2d9db60b89011841976c949a9ab061d000682115c7142d1b3f73c1d2c359ab8b4e131786dc9767d8929135ec143356a73c8d72a43e0eb28b7347c565be1b25392a18ab717186bb9a0eaebfaf748eda23c66f820d3cbab5c2d2b2b3b71e9fa",
+      "seedBits": 1128,
+      "typeOrder": [
+        4,
+        3,
+        0,
+        1,
+        2
+      ],
+      "music": {
+        "style": "pulse",
+        "bpm": 120,
+        "key": 43,
+        "hatVariant": 1,
+        "bassVariant": 0
+      }
+    }
+  ]
+}

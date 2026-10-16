@@ -1,0 +1,8 @@
+{
+  "summon": [0.45],
+  "search": [16.2, 16.4, 16.6, 16.8, 17, 17.2],
+  "preview": [19.75],
+  "paste": [23.65, 24.45, 25.25],
+  "searchResultsAt": 17.5,
+  "previewOpensAt": 20.05
+}

@@ -1,0 +1,431 @@
+{
+  "seedPolicy": "Independent 1128-bit seeds. SHA-256 domain-separated draws use all 141 bytes; style choices sampled without replacement. Native product appearance and interaction are excluded from randomization.",
+  "variants": [
+    {
+      "id": "A",
+      "name": "电光白",
+      "seed": "fc93ea4b769e2d1a3bb1d91c188ba3f1ad875067d722da838b934be9849869b9759863543181c210a6794147be14571e95e06491ea2eb893c1efd9a9c5fad2ddaf597fd6e48239a423b10991b2570c97c329c446eecb932c206bf671e6dfaa7b6d5f27b7964d439ad196635b2e33d4296613df6cb6007cacbf2e96e61043e7c15397827079ee9c0b375c435d40",
+      "seedBits": 1128,
+      "palette": {
+        "name": "电光白",
+        "background": "#f9fbff",
+        "surface": "#e7efff",
+        "accent": "#075be8",
+        "ink": "#123466"
+      },
+      "layout": "spotlight",
+      "music": {
+        "style": "breaks",
+        "bpm": 108,
+        "key": 42,
+        "hatVariant": 1,
+        "bassVariant": 0
+      },
+      "titleMotion": "focus-reveal",
+      "transitionFrames": 10,
+      "shots": [
+        {
+          "kind": "intro",
+          "title": "剪贴捷径，一键即达",
+          "fromBeat": 0,
+          "beats": 4,
+          "from": 0,
+          "to": 67,
+          "cameraBias": 5.848837521392852
+        },
+        {
+          "kind": "shortcut",
+          "title": "快捷呼出，直接粘贴",
+          "fromBeat": 4,
+          "beats": 5,
+          "from": 67,
+          "to": 150,
+          "cameraBias": -3.231427597347647
+        },
+        {
+          "kind": "history",
+          "title": "每次复制，都清晰可见",
+          "fromBeat": 9,
+          "beats": 5,
+          "from": 150,
+          "to": 233,
+          "cameraBias": 8.780446091666818
+        },
+        {
+          "kind": "formatting",
+          "title": "保留原有格式",
+          "fromBeat": 14,
+          "beats": 4,
+          "from": 233,
+          "to": 300,
+          "cameraBias": -16.377912288997322
+        },
+        {
+          "kind": "categories",
+          "title": "分类、标签与收藏",
+          "fromBeat": 18,
+          "beats": 4,
+          "from": 300,
+          "to": 367,
+          "cameraBias": -5.940058671403676
+        },
+        {
+          "kind": "search",
+          "title": "记得一点，就能找到",
+          "fromBeat": 22,
+          "beats": 7,
+          "from": 367,
+          "to": 483,
+          "cameraBias": -15.815767549909651
+        },
+        {
+          "kind": "preview",
+          "title": "粘贴前先预览",
+          "fromBeat": 29,
+          "beats": 6,
+          "from": 483,
+          "to": 583,
+          "cameraBias": -7.441922997124493
+        },
+        {
+          "kind": "queue",
+          "title": "粘贴队列",
+          "fromBeat": 35,
+          "beats": 7,
+          "from": 583,
+          "to": 700,
+          "cameraBias": -13.098235507495701
+        },
+        {
+          "kind": "drag",
+          "title": "跨应用拖拽",
+          "fromBeat": 42,
+          "beats": 5,
+          "from": 700,
+          "to": 783,
+          "cameraBias": 8.897027281112969
+        },
+        {
+          "kind": "types",
+          "title": "每种内容，都看得清楚",
+          "fromBeat": 47,
+          "beats": 10,
+          "from": 783,
+          "to": 950,
+          "cameraBias": -16.473061386030167
+        },
+        {
+          "kind": "settings",
+          "title": "按你的习惯工作",
+          "fromBeat": 57,
+          "beats": 4,
+          "from": 950,
+          "to": 1017,
+          "cameraBias": 18.40600494015962
+        },
+        {
+          "kind": "local",
+          "title": "记录留在本机",
+          "fromBeat": 61,
+          "beats": 5,
+          "from": 1017,
+          "to": 1100,
+          "cameraBias": 14.36920980969444
+        },
+        {
+          "kind": "closing",
+          "title": "GPL-3.0 开源",
+          "fromBeat": 66,
+          "beats": 6,
+          "from": 1100,
+          "to": 1200,
+          "cameraBias": 5.046110101509839
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "暖杏白",
+      "seed": "d8ebcc9468e4632af9408738adb77d244a8ab1843540ba258228dccbc50f7fa401a338f8916b14eb0ff1299ade398500dac0b6f67b82c0848ecd14fb65e0d9f422b080d56c973f103a38f54b2013bcda5cc7e3248eab3bed8191ec71c355574143cefcd2875aab823a6411faad0f0aa96abbc5a8ee9b04e79a761bf85407852a22f3d8801b4eb0d6a4872ee628",
+      "seedBits": 1128,
+      "palette": {
+        "name": "暖杏白",
+        "background": "#fff9ee",
+        "surface": "#ffe8c5",
+        "accent": "#b44820",
+        "ink": "#462b20"
+      },
+      "layout": "precision",
+      "music": {
+        "style": "electro",
+        "bpm": 150,
+        "key": 45,
+        "hatVariant": 0,
+        "bassVariant": 2
+      },
+      "titleMotion": "horizontal-reveal",
+      "transitionFrames": 7,
+      "shots": [
+        {
+          "kind": "intro",
+          "title": "剪贴捷径，一键即达",
+          "fromBeat": 0,
+          "beats": 5,
+          "from": 0,
+          "to": 60,
+          "cameraBias": -4.934325052890927
+        },
+        {
+          "kind": "shortcut",
+          "title": "快捷呼出，直接粘贴",
+          "fromBeat": 5,
+          "beats": 6,
+          "from": 60,
+          "to": 132,
+          "cameraBias": -11.930313238874078
+        },
+        {
+          "kind": "history",
+          "title": "每次复制，都清晰可见",
+          "fromBeat": 11,
+          "beats": 8,
+          "from": 132,
+          "to": 228,
+          "cameraBias": -12.129211982246488
+        },
+        {
+          "kind": "formatting",
+          "title": "保留原有格式",
+          "fromBeat": 19,
+          "beats": 5,
+          "from": 228,
+          "to": 288,
+          "cameraBias": 15.858176359441131
+        },
+        {
+          "kind": "categories",
+          "title": "分类、标签与收藏",
+          "fromBeat": 24,
+          "beats": 5,
+          "from": 288,
+          "to": 348,
+          "cameraBias": -13.872751724906266
+        },
+        {
+          "kind": "search",
+          "title": "记得一点，就能找到",
+          "fromBeat": 29,
+          "beats": 9,
+          "from": 348,
+          "to": 456,
+          "cameraBias": -18.832305324729532
+        },
+        {
+          "kind": "preview",
+          "title": "粘贴前先预览",
+          "fromBeat": 38,
+          "beats": 9,
+          "from": 456,
+          "to": 564,
+          "cameraBias": -17.684007511474192
+        },
+        {
+          "kind": "queue",
+          "title": "粘贴队列",
+          "fromBeat": 47,
+          "beats": 10,
+          "from": 564,
+          "to": 684,
+          "cameraBias": 15.439237989019603
+        },
+        {
+          "kind": "drag",
+          "title": "跨应用拖拽",
+          "fromBeat": 57,
+          "beats": 8,
+          "from": 684,
+          "to": 780,
+          "cameraBias": 16.666689874138683
+        },
+        {
+          "kind": "types",
+          "title": "每种内容，都看得清楚",
+          "fromBeat": 65,
+          "beats": 14,
+          "from": 780,
+          "to": 948,
+          "cameraBias": -18.492146933451295
+        },
+        {
+          "kind": "settings",
+          "title": "按你的习惯工作",
+          "fromBeat": 79,
+          "beats": 6,
+          "from": 948,
+          "to": 1020,
+          "cameraBias": -6.268910282291472
+        },
+        {
+          "kind": "local",
+          "title": "记录留在本机",
+          "fromBeat": 85,
+          "beats": 6,
+          "from": 1020,
+          "to": 1092,
+          "cameraBias": 6.447826084680855
+        },
+        {
+          "kind": "closing",
+          "title": "GPL-3.0 开源",
+          "fromBeat": 91,
+          "beats": 9,
+          "from": 1092,
+          "to": 1200,
+          "cameraBias": -16.548352487385273
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "name": "冰薄荷",
+      "seed": "b1bc4d639b669ca75dd79af7e964cdde3921d80517fef315c94334faf36c574320f7e88a61e3342159b87f6a48bc8b08f1931071bd0b739ace0afaac5f95866402cf84ce6682b14914b763c1702d84b180a35bbda5a4c0a43b0a07bfa273f8359048f0ccedd78809d3321b135d747092a243a09e706524ae5ab08e4ae2bd29c93e37a61cae334b50630b6477e3",
+      "seedBits": 1128,
+      "palette": {
+        "name": "冰薄荷",
+        "background": "#f1fcf8",
+        "surface": "#d4f5e8",
+        "accent": "#08725d",
+        "ink": "#123f36"
+      },
+      "layout": "ribbon",
+      "music": {
+        "style": "pulse",
+        "bpm": 132,
+        "key": 38,
+        "hatVariant": 2,
+        "bassVariant": 2
+      },
+      "titleMotion": "vertical-roll",
+      "transitionFrames": 12,
+      "shots": [
+        {
+          "kind": "intro",
+          "title": "剪贴捷径，一键即达",
+          "fromBeat": 0,
+          "beats": 4,
+          "from": 0,
+          "to": 55,
+          "cameraBias": 3.311279980931431
+        },
+        {
+          "kind": "shortcut",
+          "title": "快捷呼出，直接粘贴",
+          "fromBeat": 4,
+          "beats": 6,
+          "from": 55,
+          "to": 136,
+          "cameraBias": 13.43589141825214
+        },
+        {
+          "kind": "history",
+          "title": "每次复制，都清晰可见",
+          "fromBeat": 10,
+          "beats": 7,
+          "from": 136,
+          "to": 232,
+          "cameraBias": -13.074843077920377
+        },
+        {
+          "kind": "formatting",
+          "title": "保留原有格式",
+          "fromBeat": 17,
+          "beats": 5,
+          "from": 232,
+          "to": 300,
+          "cameraBias": 17.03930210508406
+        },
+        {
+          "kind": "categories",
+          "title": "分类、标签与收藏",
+          "fromBeat": 22,
+          "beats": 4,
+          "from": 300,
+          "to": 355,
+          "cameraBias": -8.088716349098831
+        },
+        {
+          "kind": "search",
+          "title": "记得一点，就能找到",
+          "fromBeat": 26,
+          "beats": 9,
+          "from": 355,
+          "to": 477,
+          "cameraBias": -0.43766355933621526
+        },
+        {
+          "kind": "preview",
+          "title": "粘贴前先预览",
+          "fromBeat": 35,
+          "beats": 8,
+          "from": 477,
+          "to": 586,
+          "cameraBias": -9.473480646498501
+        },
+        {
+          "kind": "queue",
+          "title": "粘贴队列",
+          "fromBeat": 43,
+          "beats": 8,
+          "from": 586,
+          "to": 695,
+          "cameraBias": -9.602023026440293
+        },
+        {
+          "kind": "drag",
+          "title": "跨应用拖拽",
+          "fromBeat": 51,
+          "beats": 7,
+          "from": 695,
+          "to": 791,
+          "cameraBias": 17.237838425673544
+        },
+        {
+          "kind": "types",
+          "title": "每种内容，都看得清楚",
+          "fromBeat": 58,
+          "beats": 12,
+          "from": 791,
+          "to": 955,
+          "cameraBias": -1.5005077729001641
+        },
+        {
+          "kind": "settings",
+          "title": "按你的习惯工作",
+          "fromBeat": 70,
+          "beats": 6,
+          "from": 955,
+          "to": 1036,
+          "cameraBias": -2.2429041638970375
+        },
+        {
+          "kind": "local",
+          "title": "记录留在本机",
+          "fromBeat": 76,
+          "beats": 5,
+          "from": 1036,
+          "to": 1105,
+          "cameraBias": -5.680421999655664
+        },
+        {
+          "kind": "closing",
+          "title": "GPL-3.0 开源",
+          "fromBeat": 81,
+          "beats": 7,
+          "from": 1105,
+          "to": 1200,
+          "cameraBias": 18.35155978007242
+        }
+      ]
+    }
+  ]
+}

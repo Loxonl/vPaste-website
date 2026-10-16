@@ -1,0 +1,39 @@
+{
+  "name": "vpaste-video-demo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prepare:revised": "node scripts/prepare-promo.cjs && node scripts/make-soundtrack.cjs --revised",
+    "studio:revised": "remotion studio src/revised-index.tsx",
+    "check:revised": "tsc -p tsconfig.revised.json && node scripts/render-revised.cjs stills",
+    "render:revised": "node scripts/render-revised.cjs final",
+    "check:1440": "tsc -p tsconfig.revised.json && node scripts/render-revised.cjs stills zh 1440 && node scripts/render-revised.cjs stills en 1440",
+    "render:1440": "node scripts/render-revised.cjs final zh 1440 && node scripts/render-revised.cjs final en 1440",
+    "prepare:revision3": "node scripts/prepare-native.cjs && node scripts/design-revision3.cjs && node scripts/prepare-desktop-images.cjs && node scripts/make-variant-audio.cjs --revision3",
+    "check:revision3": "tsc --noEmit && node scripts/render-variants.cjs stills all --revision3",
+    "render:revision3": "node scripts/render-variants.cjs final all --revision3",
+    "finish:revision3": "node scripts/finish-variants.cjs --revision3",
+    "prepare:variants": "node scripts/prepare-native.cjs && node scripts/design-variants.cjs && node scripts/make-variant-audio.cjs",
+    "check:variants": "tsc --noEmit && node scripts/render-variants.cjs stills",
+    "render:variants": "node scripts/render-variants.cjs final",
+    "prepare:promo": "node scripts/prepare-promo.cjs && node scripts/make-soundtrack.cjs",
+    "check:promo": "tsc --noEmit && node scripts/render-promo.cjs stills",
+    "render:promo:preview": "node scripts/render-promo.cjs preview",
+    "render:promo": "node scripts/render-promo.cjs final",
+    "studio": "remotion studio src/index.ts",
+    "render:preview": "remotion render src/index.ts Vpaste20s out/vpaste-20s-preview.mp4 --codec=h264 --scale=0.5 --crf=28",
+    "render": "remotion render src/index.ts Vpaste20s out/vpaste-20s.mp4 --codec=h264 --crf=18"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.505",
+    "@remotion/transitions": "4.0.505",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.505"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,5 +1,7 @@
 # vPaste website
 
+视频与 README 横幅的后续工作统一在 `E:/Coding/vPaste/vPaste-website` 进行，先阅读 [媒体工程交接说明](MEDIA-HANDOFF.md)。当前中英 1440p 成片在 [video-demo/final/](video-demo/final/README.md)，最终横幅在 [assets/readme-banners.md](assets/readme-banners.md)。成片、渲染输出和历史归档由本地保存并忽略；GitHub Pages 发布排除视频工程及制作参考目录。
+
 最终官网采用「电光白」配色、C 版图标背景和 E 版页面结构，保留连续的产品窗口动效。网站仍是可直接部署至 GitHub Pages 的静态文件，没有线上 Node 服务、远程字体或前端框架依赖
 
 ## 修改与生成

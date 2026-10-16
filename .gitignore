@@ -1,3 +1,7 @@
 node_modules/
 test-results/
 playwright-report/
+
+# Local media archives and README preview renders are not publishing inputs.
+/assets/archive/
+/assets/readme-source/preview-*.png

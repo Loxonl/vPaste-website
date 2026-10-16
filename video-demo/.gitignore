@@ -1,0 +1,19 @@
+node_modules/
+out/
+src/generated/*
+!src/generated/website.ts
+public/promo/
+public/native/
+public/variants/
+public/revision3/
+.cache/
+# Video/audio binaries remain local, including future source clips and exports.
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+*.mp3
+final/*.png
+archive/*
+!archive/README.md

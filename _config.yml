@@ -1,0 +1,6 @@
+# GitHub Pages serves main from the repository root. Media production stays local.
+exclude:
+  - video-demo
+  - assets/readme-source
+  - assets/archive
+  - MEDIA-HANDOFF.md

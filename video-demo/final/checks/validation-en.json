@@ -1,0 +1,63 @@
+{
+  "validatedAt": "2026-10-08T02:52:07.2311015+00:00",
+  "video": "../vpaste-40s-1440p-en.mp4",
+  "language": "en",
+  "width": 2560,
+  "height": 1440,
+  "fps": 30,
+  "videoSeconds": 40,
+  "frames": 1200,
+  "fullDecode": "passed",
+  "keyFrames": 55,
+  "coverTime": 0,
+  "firstFrameMatchesCoverSSIM": 0.996418,
+  "openingHoldSeconds": 1,
+  "openingTransitionSeconds": [
+    1,
+    2
+  ],
+  "featureTimeOffsetSeconds": 1.2,
+  "endingStartsAt": 38.7,
+  "endingStaticFrom": 39.3,
+  "heldCoverComparison": "passed: first frame vs 0.5s, 1s, 39.4s, 39.8s and final frame",
+  "englishLayout": "Unchanged from the approved translation/layout; reviewed shifted key frames",
+  "encoding": {
+    "crf": 22,
+    "preset": "slow",
+    "codec": "h264",
+    "audioBitrate": "160k"
+  },
+  "metadata": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 2560,
+        "height": 1440,
+        "r_frame_rate": "30/1",
+        "duration": "40.000000",
+        "bit_rate": "1485827",
+        "nb_frames": "1200",
+        "side_data_list": [
+          {}
+        ]
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0",
+        "duration": "40.042667",
+        "bit_rate": "157375",
+        "nb_frames": "1877"
+      }
+    ],
+    "format": {
+      "duration": "40.042667",
+      "size": "8261656"
+    }
+  }
+}

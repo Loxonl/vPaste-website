@@ -1,0 +1,33 @@
+{
+  "viewport": {
+    "width": 1448,
+    "height": 302
+  },
+  "captureScale": 2,
+  "output": {
+    "width": 1800,
+    "height": 600
+  },
+  "window": {
+    "x": 60,
+    "y": 208,
+    "width": 1680,
+    "height": 350
+  },
+  "languages": {
+    "zh": {
+      "nativeToolbarPixelDifference": 0,
+      "promoCardsPixelDifference": 0,
+      "headerPixelDifference": 0,
+      "bytes": 504202,
+      "sha256": "7893bf4a6247232cec647bd9b9bf82509626fe1137c4bbe6bbc89adb26825940"
+    },
+    "en": {
+      "nativeToolbarPixelDifference": 0,
+      "promoCardsPixelDifference": 0,
+      "headerPixelDifference": 0,
+      "bytes": 468805,
+      "sha256": "ab8a8479929aa002750c6241d6c93b7371cb98d4a44295b6ecf87988d8f1f4e4"
+    }
+  }
+}

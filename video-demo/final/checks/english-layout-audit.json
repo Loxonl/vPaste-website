@@ -1,0 +1,335 @@
+{
+  "headings": [
+    {
+      "title": {
+        "text": "Your clipboard, one shortcut away",
+        "width": 1444,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "vPaste · Clipboard manager for Windows and macOS",
+        "width": 744,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Your history at a glance",
+        "width": 994,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "Every copy saved, with its content, time and source",
+        "width": 717,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Five types of clipboard content",
+        "width": 1307,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "Text · Images · Links · Files · Colors",
+        "width": 477,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Keep the original formatting",
+        "width": 1211,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "Preserve headings and tables, or paste as plain text",
+        "width": 720,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Filter, tag and favorite",
+        "width": 934,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "Filter by type. Organize with tags and favorites",
+        "width": 655,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Search your clipboard history",
+        "width": 1243,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "Find text, page titles, file paths or source apps",
+        "width": 646,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Preview before you paste",
+        "width": 1070,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "See full-size images and complete content",
+        "width": 597,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Paste queue",
+        "width": 512,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "Copy in sequence. Paste into each field in order",
+        "width": 669,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Drag and drop across apps",
+        "width": 1127,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "Drag text, images and files into supported apps",
+        "width": 668,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Make it yours",
+        "width": 575,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "Themes, language, shortcuts and history settings",
+        "width": 687,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    },
+    {
+      "title": {
+        "text": "Local history, cross-platform transfer",
+        "width": 1404,
+        "maxWidth": 1760,
+        "lines": 1
+      },
+      "detail": {
+        "text": "Stored on your device · Manually transfer between Windows and macOS",
+        "width": 1018,
+        "maxWidth": 1760,
+        "lines": 1
+      }
+    }
+  ],
+  "values": [
+    {
+      "text": "hello@example.com",
+      "width": 242,
+      "maxWidth": 558,
+      "lines": 1
+    },
+    {
+      "text": "18 Market Street, San Francisco",
+      "width": 372,
+      "maxWidth": 558,
+      "lines": 1
+    },
+    {
+      "text": "94105",
+      "width": 73,
+      "maxWidth": 558,
+      "lines": 1
+    }
+  ],
+  "tabs": [
+    {
+      "text": "All",
+      "width": 20,
+      "maxWidth": 39,
+      "lines": 1
+    },
+    {
+      "text": "Favorites",
+      "width": 68,
+      "maxWidth": 81,
+      "lines": 1
+    },
+    {
+      "text": "Text",
+      "width": 32,
+      "maxWidth": 57,
+      "lines": 1
+    },
+    {
+      "text": "Images",
+      "width": 54,
+      "maxWidth": 65,
+      "lines": 1
+    },
+    {
+      "text": "Links",
+      "width": 38,
+      "maxWidth": 57,
+      "lines": 1
+    },
+    {
+      "text": "Colors",
+      "width": 48,
+      "maxWidth": 65,
+      "lines": 1
+    },
+    {
+      "text": "Files",
+      "width": 33,
+      "maxWidth": 55,
+      "lines": 1
+    },
+    {
+      "text": "Project",
+      "width": 53,
+      "maxWidth": 65,
+      "lines": 1
+    }
+  ],
+  "labels": [
+    {
+      "text": "Text & headings",
+      "width": 213,
+      "maxWidth": 384,
+      "lines": 1
+    },
+    {
+      "text": "Tables & links",
+      "width": 181,
+      "maxWidth": 384,
+      "lines": 1
+    },
+    {
+      "text": "↔ Manual history transfer",
+      "width": 306,
+      "maxWidth": 362,
+      "lines": 1
+    },
+    {
+      "text": "Drop an image into your document",
+      "width": 484,
+      "maxWidth": 808,
+      "lines": 1
+    }
+  ],
+  "cells": [
+    {
+      "text": "Content",
+      "width": 58,
+      "scrollWidth": 58,
+      "height": 22
+    },
+    {
+      "text": "Type",
+      "width": 36,
+      "scrollWidth": 36,
+      "height": 22
+    },
+    {
+      "text": "Result",
+      "width": 58,
+      "scrollWidth": 58,
+      "height": 22
+    },
+    {
+      "text": "vPaste text",
+      "width": 58,
+      "scrollWidth": 58,
+      "height": 35
+    },
+    {
+      "text": "Plain text",
+      "width": 36,
+      "scrollWidth": 36,
+      "height": 35
+    },
+    {
+      "text": "Searchable",
+      "width": 58,
+      "scrollWidth": 58,
+      "height": 35
+    },
+    {
+      "text": "vpaste.app",
+      "width": 58,
+      "scrollWidth": 58,
+      "height": 22
+    },
+    {
+      "text": "Link",
+      "width": 36,
+      "scrollWidth": 36,
+      "height": 22
+    },
+    {
+      "text": "Title kept",
+      "width": 58,
+      "scrollWidth": 58,
+      "height": 22
+    },
+    {
+      "text": "#2563EB",
+      "width": 58,
+      "scrollWidth": 58,
+      "height": 35
+    },
+    {
+      "text": "Color",
+      "width": 36,
+      "scrollWidth": 36,
+      "height": 35
+    },
+    {
+      "text": "Value shown",
+      "width": 58,
+      "scrollWidth": 58,
+      "height": 35
+    }
+  ],
+  "table": {
+    "height": 118.84375,
+    "bodyHeight": 136,
+    "insideCard": true
+  },
+  "remainingChinese": false,
+  "status": "passed"
+}
