@@ -1,6 +1,6 @@
 # vPaste 媒体工程交接
 
-迁移日期：2026-10-16。视频、横幅、Social preview 的后续编辑统一使用 **`E:/Coding/vPaste/vPaste-website`**。C 盘的 `C:/Users/lxlx5/.codex/worktrees/9510/vPaste-website` 保留作历史副本；聊天仍绑定旧工作树时，也应显式在 E 盘读写。
+迁移日期：2026-10-16。视频、横幅、Social preview 的后续编辑统一使用 **`E:/Coding/vPaste/vPaste-website`**。C 盘的 `C:/Users/lxlx5/.codex/worktrees/9510/vPaste-website` 仅保留对话关联的工作树骨架、迁移指引和未提交的官网改动；媒体、素材、依赖及临时副本已移至 E 盘恢复目录。聊天仍绑定旧工作树时，也应显式在 E 盘读写。
 
 ## 当前最终文件
 
@@ -41,7 +41,9 @@
 
 ## 迁移备份与继续对话
 
-E 盘原有旧工程备份在 `E:/Coding/vPaste/_local-media-backups/2026-10-16/previous-e-video-demo/`。同目录的 `primary-before.json` 保存迁移前关键文件校验值；`migration-verification.json` 保存迁移校验结果。原 C 盘文件仍保留。
+E 盘原有旧工程备份在 `E:/Coding/vPaste/_local-media-backups/2026-10-16/previous-e-video-demo/`。同目录的 `primary-before.json` 保存迁移前关键文件校验值；`migration-verification.json` 保存迁移校验结果。
+
+2026-10-16 已从 C 盘移走 14,115 个媒体、依赖、临时及实验副本文件，约 672 MB。为保留恢复能力，原文件归档到 `E:/Coding/vPaste/_local-media-backups/2026-10-16/c-drive-cleanup/moved-from-c/`；未与主工程完全相同的少量文件还单独备份在 `originals/`。`cleanup-plan.json` 与 `cleanup-result.json` 保存路径、体积和完整性校验记录。E 盘正式工程及最终成片保持不变；恢复目录只作历史回退用途，不作为下一次编辑入口。
 
 当前对话可以继续，所有媒体读写使用上面的 E 盘目录。新开对话时也可直接使用这句话：
 

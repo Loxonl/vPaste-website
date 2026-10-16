@@ -1,6 +1,6 @@
 # Video delivery status
 
-- Active media workspace since 2026-10-16: `E:/Coding/vPaste/vPaste-website`. Start with the repository's `MEDIA-HANDOFF.md`. The C-drive worktree is a retained historical copy; video/banner edits belong in the E-drive workspace even when a chat is still attached to the old worktree.
+- Active media workspace since 2026-10-16: `E:/Coding/vPaste/vPaste-website`. Start with the repository's `MEDIA-HANDOFF.md`. Only the C-drive worktree shell remains for chat continuity; its media/dependency copies have been archived to E. Video/banner edits belong in the E-drive workspace even when a chat is still attached to the old worktree.
 - `src/generated/website.ts` is the approved, versioned card/CSS snapshot shared with README banner production. Keep it pinned when editing video copy/timing. `prepare:revised` refreshes this snapshot from the current website; run it only when intentionally updating that visual source or rebuilding its generated assets, then review both languages. Existing local assets are sufficient for ordinary edits and renders.
 
 - The user approved two final videos on 2026-10-05 and requested a brand-opening update on 2026-10-08: `final/vpaste-40s-1440p-zh.mp4` and `final/vpaste-40s-1440p-en.mp4`. `final/vpaste-cover-1440p.png` is their shared cover. Start with `final/README.md` and `final/manifest.json`.

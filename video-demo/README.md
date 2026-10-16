@@ -1,6 +1,6 @@
 # vPaste 宣传视频
 
-后续编辑统一使用 `E:/Coding/vPaste/vPaste-website`，先读 [媒体工程交接](../MEDIA-HANDOFF.md) 和 [AGENTS.md](AGENTS.md)。C 盘工作树保留作历史副本；当前对话也应在 E 盘读写。
+后续编辑统一使用 `E:/Coding/vPaste/vPaste-website`，先读 [媒体工程交接](../MEDIA-HANDOFF.md) 和 [AGENTS.md](AGENTS.md)。C 盘只保留对话工作树骨架，其媒体副本已归档到 E 盘；当前对话也应在 E 盘读写。
 
 用户于 **2026-10-05** 确认中文、英文两支 1440p 视频为最终发布版，并于 **2026-10-08** 要求增加品牌首帧、缩短片尾。唯一发布入口是 **[final/README.md](final/README.md)**；不要从旧文件名中的 `final`、`refined-v3` 或修改时间推断最终版本。
 
