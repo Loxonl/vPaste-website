@@ -69,7 +69,7 @@ body { overflow-x: clip; }
 .story-motion main { height: 100svh; padding-top: 80px; }
 .story-motion .story-stage { position: relative; top: 0; height: calc(100svh - 80px); overflow: clip; }
 .story-motion .story-world { display: block; position: absolute; left: 50%; top: var(--world-top, 0px); width: 1440px; height: 820px; margin-left: -720px; padding: 0; transform: scale(var(--world-scale, 1)); transform-origin: 50% 0; }
-.story-motion .story-copies { display: block; position: absolute; inset: 0; z-index: 30; pointer-events: none; }
+.story-motion .story-copies { display: block; position: absolute; inset: 0; overflow: clip; z-index: 30; pointer-events: none; }
 .story-motion .chapter-copy { position: absolute; inset: 0; padding: 0; pointer-events: none; }
 .story-motion .chapter-copy[aria-hidden="false"] a, .story-motion .chapter-copy[aria-hidden="false"] button { pointer-events: auto; }
 .story-motion .chapter-copy[aria-hidden="false"] > * { pointer-events: auto; }
