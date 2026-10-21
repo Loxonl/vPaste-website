@@ -72,8 +72,21 @@ html[data-palette] :focus-visible { outline-color: var(--palette-focus); }
   --type-body: 1rem;
   --type-label: .875rem;
   --type-caption: .75rem;
+  --radius-control: .75rem;
+  --radius-inset: .5rem;
+  --radius-icon: .375rem;
 }
 .story-motion .story-world { --copy-scale: var(--world-scale, 1); }
+/* Website controls share screen-size corner roles; native product surfaces keep their own geometry. */
+html[data-palette] :is(.button, .language-switch, .platform-switch, .feature-select button, .format-select button) {
+  border-radius: calc(var(--radius-control) / var(--copy-scale, 1));
+}
+html[data-palette] :is(.language-switch a, .platform-switch button) {
+  border-radius: calc(var(--radius-inset) / var(--copy-scale, 1));
+}
+html[data-background-layout="cutout"] .story-wayfinder :is(a, button) {
+  border-radius: calc(var(--radius-control) / var(--copy-scale, 1));
+}
 .reconstructed-site .chapter-copy .story-description,
 .reconstructed-site .feature-example figcaption p,
 .reconstructed-site .format-notes-track article > p {
@@ -120,7 +133,7 @@ html[data-palette] :focus-visible { outline-color: var(--palette-focus); }
 .story-motion .intro-heading .hero-actions { margin-top: 22px; }
 .reconstructed-site .intro-heading .hero-downloads { display: grid; grid-template-columns: 1fr 1fr .98fr; align-items: stretch; gap: 12px; width: min(100%, 920px); margin-inline: auto; }
 .reconstructed-site .hero-downloads .button { min-width: 0; width: 100%; padding: 10px 12px; }
-.hero-downloads .platform-icon { width: 24px; height: 24px; padding: 3px; box-sizing: content-box; border-radius: 5px; background: #fff; flex-shrink: 0; }
+.hero-downloads .platform-icon { width: 24px; height: 24px; padding: 3px; box-sizing: content-box; border-radius: calc(var(--radius-icon) / var(--copy-scale, 1)); background: #fff; flex-shrink: 0; }
 .hero-downloads .button span { text-align: center; }
 .reconstructed-site .intro-heading .hero-netdisk { max-width: 100%; min-height: calc(46px / var(--copy-scale, 1)); border-color: var(--line-strong); background: var(--palette-plate); color: var(--blue-deep); font-weight: 550; text-align: center; }
 .hero-downloads .hero-netdisk svg { width: 20px; height: 20px; flex-shrink: 0; }
@@ -137,7 +150,7 @@ html[lang="en"] .story-motion .chapter-copy--desktop h2 { font-size: 44px; }
 .desktop-holder .desktop-copy { width: 100%; margin-top: 30px; padding-inline: 30px; }
 .desktop-holder .desktop-shortcut-mark { margin-top: 12px; }
 .platform-icon { display: block; object-fit: contain; flex-shrink: 0; }
-.platform-switch .platform-icon { width: 22px; height: 22px; padding: 3px; box-sizing: content-box; border-radius: 4px; background: #fff; }
+.platform-switch .platform-icon { width: 22px; height: 22px; padding: 3px; box-sizing: content-box; border-radius: calc(var(--radius-icon) / var(--copy-scale, 1)); background: #fff; }
 .local-device-icon .platform-icon { width: 43px; height: 43px; }
 .local-device--mac .platform-icon { width: 52px; height: 52px; }
 .vp-product-surface .vp-native-icon { fill: currentColor; stroke: none; }

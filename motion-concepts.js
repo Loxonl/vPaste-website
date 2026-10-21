@@ -206,6 +206,8 @@
     let accumulated = 0;
     let gestureConsumed = false;
     let wheelDirection = 0;
+    let lastWheelDelta = 0;
+    let repeatedNotches = 0;
     const previous = story.querySelector("[data-story-prev]");
     const next = story.querySelector("[data-story-next]");
     const pauseButton = story.querySelector("[data-demo-pause]");
@@ -275,18 +277,31 @@
     };
     jumpTo = (time) => go(stops.reduce((best, value, i) => Math.abs(value - time) < Math.abs(stops[best] - time) ? i : best, 0));
     const wheel = (event) => {
-      if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
+      // Read the unit first: some browsers use it to choose compatible delta values.
+      const mode = event.deltaMode;
+      const deltaY = event.deltaY;
+      if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(deltaY) || !deltaY) return;
       event.preventDefault();
       const now = performance.now();
-      const direction = Math.sign(event.deltaY);
-      if (now - lastWheel > 180 || (direction !== wheelDirection && !transitionTween)) {
-        accumulated = 0;
+      const gap = now - lastWheel;
+      const direction = Math.sign(deltaY);
+      const delta = deltaY * (mode === 1 ? 16 : mode === 2 ? innerHeight : 1);
+      const magnitude = Math.abs(delta);
+      // Slow mouse notches can add up without treating a momentum tail as a new gesture.
+      if (gap > 1000 || direction !== wheelDirection) accumulated = 0;
+      if (gap > 180 || direction !== wheelDirection) {
         gestureConsumed = false;
+        repeatedNotches = 0;
       }
+      const regularNotch = mode !== 0 || (gap >= 50 && magnitude >= lastWheelDelta);
+      if (regularNotch) repeatedNotches += 1;
+      else if (gap < 50) repeatedNotches = 0;
       lastWheel = now;
       wheelDirection = direction;
-      if (transitionTween || gestureConsumed) return;
-      accumulated += event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? innerHeight : 1);
+      lastWheelDelta = magnitude;
+      // Spaced, renewed impulses can continue after a scene; dense or decaying inertia cannot.
+      if (transitionTween || (gestureConsumed && (!regularNotch || repeatedNotches < 3))) return;
+      accumulated += delta;
       if (Math.abs(accumulated) >= 55) {
         gestureConsumed = true;
         accumulated = 0;
