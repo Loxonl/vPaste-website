@@ -22,6 +22,14 @@ const base = process.env.SITE_URL || "http://127.0.0.1:8765";
       assert.equal(await page.locator("footer").count(), 0);
       assert.equal(await page.evaluate(() => performance.getEntriesByType("resource").some(r => r.name.includes("brand-palettes.js"))), false);
     }
+    assert.deepEqual(await page.locator(".site-nav > .brand").evaluate(el => {
+      const style = getComputedStyle(el);
+      return [style.borderTopLeftRadius, style.borderTopRightRadius, style.borderBottomRightRadius, style.borderBottomLeftRadius];
+    }), ["0px", "0px", "18px", "0px"], "The corner-attached brand keeps its original shape");
+    assert(await page.locator(".button, .language-switch, .language-switch a, .feature-select button, .format-select button, .platform-switch, .platform-switch button, .story-wayfinder a, .story-wayfinder button").evaluateAll(nodes =>
+      nodes.every(el => getComputedStyle(el).borderTopLeftRadius === "999px")), "Website controls use the approved pill and circular corners");
+    assert.equal(await page.locator(".story-wayfinder").evaluate(el => getComputedStyle(el).borderRadius), "24px");
+    assert.equal(await page.locator(".story-product .vp-app-window").evaluate(el => getComputedStyle(el).borderRadius), "13px", "Native product window corners stay unchanged");
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.waitForFunction(() => !document.querySelector(".story-motion"));
     assert.equal(await page.locator(".chapter-copy").count(), 7);

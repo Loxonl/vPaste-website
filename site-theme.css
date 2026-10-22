@@ -48,7 +48,7 @@ html[data-palette] .button--light { color: var(--blue-deep); border-color: var(-
 html[data-palette] .button--light:hover { color: var(--ink); background: var(--surface); }
 html[data-palette] .story-kicker b { color: var(--blue-deep); }
 html[data-palette] .story-kicker > .story-icon { color: var(--accent); }
-html[data-palette] .feature-select button[aria-pressed="true"] { color: var(--blue-deep); background: var(--surface); }
+html[data-palette] .feature-select button[aria-pressed="true"] { color: var(--blue-deep); background: var(--surface); box-shadow: none; }
 html[data-palette] .format-select button[aria-pressed="true"], html[data-palette] .format-select button:hover { color: var(--palette-action-ink); background: var(--palette-action); border-color: transparent; }
 html[data-palette] .local-device-icon, html[data-palette] .migration-bundle { background: var(--palette-plate); border-color: var(--line-strong); color: var(--palette-plate-ink); }
 html[data-palette] .local-device-icon svg { fill: var(--palette-plate-ink); }
@@ -72,21 +72,26 @@ html[data-palette] :focus-visible { outline-color: var(--palette-focus); }
   --type-body: 1rem;
   --type-label: .875rem;
   --type-caption: .75rem;
-  --radius-control: .75rem;
-  --radius-inset: .5rem;
-  --radius-icon: .375rem;
+  --radius-control: 999px;
+  --radius-container: 1.5rem;
+  --radius-icon: .625rem;
 }
 .story-motion .story-world { --copy-scale: var(--world-scale, 1); }
-/* Website controls share screen-size corner roles; native product surfaces keep their own geometry. */
-html[data-palette] :is(.button, .language-switch, .platform-switch, .feature-select button, .format-select button) {
-  border-radius: calc(var(--radius-control) / var(--copy-scale, 1));
+/* Rounded website controls; the corner-attached brand and native product surfaces keep their geometry. */
+html[data-palette] :is(.button, .nav-github, .language-switch, .language-switch a,
+  .platform-switch, .platform-switch button, .feature-select button, .format-select button) {
+  border-radius: var(--radius-control);
 }
-html[data-palette] :is(.language-switch a, .platform-switch button) {
-  border-radius: calc(var(--radius-inset) / var(--copy-scale, 1));
+html[data-background-layout="cutout"] .story-motion .story-wayfinder {
+  border-radius: var(--radius-container);
 }
 html[data-background-layout="cutout"] .story-wayfinder :is(a, button) {
-  border-radius: calc(var(--radius-control) / var(--copy-scale, 1));
+  border-radius: var(--radius-control);
 }
+body:not(.story-motion) .feature-gallery { border-radius: var(--radius-container); }
+body:not(.story-motion) .feature-art { border-radius: 20px; }
+.migration-action { border-radius: var(--radius-control); }
+.migration-bundle { border-radius: 16px; }
 .reconstructed-site .chapter-copy .story-description,
 .reconstructed-site .feature-example figcaption p,
 .reconstructed-site .format-notes-track article > p {
