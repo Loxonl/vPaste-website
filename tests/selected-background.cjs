@@ -27,11 +27,11 @@ const luminance = color => color.match(/[\d.]+/g).slice(0, 3).map(Number).map(v 
     assert.equal(await page.locator(".bg-glyph").count(), 7);
     assert.equal(await page.locator('[data-bg-motion^="cutout"]').count(), 0);
     assert.equal(await page.locator(".world-lines").isVisible(), false);
-    assert.equal(await page.locator("html").evaluate(el => getComputedStyle(el).getPropertyValue("--accent").trim()), "#0b86ff");
+    assert.equal(await page.locator("html").evaluate(el => getComputedStyle(el).getPropertyValue("--accent").trim()), "#3671d4");
     assert.equal(await page.locator(".study-backdrop").getAttribute("data-seed"), "72522374415698564986764039109175775362558060185520166889326183585323754639733375696758390039863613407718927478202773874106329198");
     const rail = await page.locator(".story-wayfinder").evaluate(el => { const r = el.getBoundingClientRect(), s = getComputedStyle(el); return { left: r.left, right: r.right, bottom: r.bottom, height: r.height, background: s.backgroundColor, color: s.color }; });
     assert.deepEqual([rail.left, rail.right, rail.bottom, rail.height], [0, 1440, 980, 62]);
-    assert.equal(rail.background, "rgb(7, 91, 232)");
+    assert.equal(rail.background, "rgb(47, 111, 224)");
     const brightness = [luminance(rail.background), luminance(rail.color)].sort((a, b) => b - a);
     assert((brightness[0] + .05) / (brightness[1] + .05) >= 4.5, "Footer labels remain readable on product blue");
     await page.evaluate(() => { window.originalApp = document.querySelector(".app-actor"); window.originalCards = [...document.querySelectorAll(".app-content .vp-clip-card")]; });

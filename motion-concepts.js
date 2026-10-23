@@ -192,8 +192,11 @@
     // Wheel movement expresses intent. A paused timeline only rests at complete scenes.
     const stops = [0, 1.3, ...features.map((_, i) => featureStart + i * featureStep),
       ...formats.map((_, i) => formatStart + .26 + i * .5), 8.75, 10, 11.3];
+    const detailGroups = [[2, 8], [9, 13]];
+    const detailGroup = index => detailGroups.find(([first, last]) => index >= first && index <= last);
     let step = 0;
     let transitionTween = null;
+    let transitionGroup = null;
     let intro = null;
     const finishIntro = () => {
       if (!intro) return;
@@ -208,6 +211,7 @@
     let wheelDirection = 0;
     let lastWheelDelta = 0;
     let repeatedNotches = 0;
+    let wheelDetailGroup = null;
     const previous = story.querySelector("[data-story-prev]");
     const next = story.querySelector("[data-story-next]");
     const pauseButton = story.querySelector("[data-demo-pause]");
@@ -240,21 +244,24 @@
       const detail = chapter === 2 ? story.querySelectorAll(".feature-example h3")[step - 2]?.textContent : chapter === 3 ? story.querySelectorAll("[data-format-note] h3")[step - 9]?.textContent : null;
       story.querySelector(".story-status").textContent = detail || panels[chapter].querySelector("h1, h2").textContent;
     };
-    const go = (index) => {
+    const go = (index, fast = false) => {
       index = Math.max(0, Math.min(stops.length - 1, index));
-      if (index === step || transitionTween) return false;
+      const group = detailGroup(step);
+      const sameChapter = !!group && group === detailGroup(index);
+      if (index === step || (transitionTween && !(fast && sameChapter && transitionGroup === group))) return false;
+      transitionTween?.kill();
       finishIntro();
       stopLoops();
-      const sameChapter = (step >= 2 && step <= 8 && index >= 2 && index <= 8) ||
-        (step >= 9 && step <= 13 && index >= 9 && index <= 13);
+      const travel = sameChapter ? (fast ? .45 : .85) : 1.35;
+      transitionGroup = sameChapter ? group : null;
       const directJump = Math.abs(index - step) > 1 && !sameChapter;
       const previousChapter = Number(story.dataset.chapter);
       const targetChapter = chapterTimes.reduce((chapter, time, i) => time <= stops[index] ? i : chapter, 0);
-      backgroundStudy?.go({ progress: stops[index] / duration, chapter: targetChapter, duration: sameChapter ? .85 : 1.35 });
+      backgroundStudy?.go({ progress: stops[index] / duration, chapter: targetChapter, duration: travel });
       step = index;
       prepareArtwork(targetChapter);
       story.dataset.transitioning = "true";
-      const complete = () => { transitionTween = null; startLoops(); announce(); };
+      const complete = () => { transitionTween = null; transitionGroup = null; startLoops(); announce(); };
       if (directJump) {
         // Navigation links travel straight to their scene, without fast-forwarding intervening chapters.
         const elements = [actor, panels[previousChapter], panels[targetChapter], ...cards, story.querySelector(".world-lines")];
@@ -270,7 +277,7 @@
         return true;
       }
       transitionTween = timeline.tweenTo(stops[step], {
-        duration: sameChapter ? .85 : 1.35, ease: "none",
+        duration: travel, ease: "none",
         onComplete: complete,
       });
       return true;
@@ -285,13 +292,19 @@
       const now = performance.now();
       const gap = now - lastWheel;
       const direction = Math.sign(deltaY);
+      const reversing = direction !== wheelDirection;
       const delta = deltaY * (mode === 1 ? 16 : mode === 2 ? innerHeight : 1);
       const magnitude = Math.abs(delta);
       // Slow mouse notches can add up without treating a momentum tail as a new gesture.
-      if (gap > 1000 || direction !== wheelDirection) accumulated = 0;
-      if (gap > 180 || direction !== wheelDirection) {
+      if (gap > 1000 || reversing) accumulated = 0;
+      if (gap > 180 || reversing) {
+        if (gestureConsumed && wheelDetailGroup) accumulated = 0;
         gestureConsumed = false;
         repeatedNotches = 0;
+        const group = detailGroup(step);
+        // Latch the group for this gesture so momentum cannot spill into another chapter.
+        wheelDetailGroup = mode !== 2 && group && step + direction >= group[0] && step + direction <= group[1] &&
+          (!transitionTween || transitionGroup === group) ? group : null;
       }
       const regularNotch = mode !== 0 || (gap >= 50 && magnitude >= lastWheelDelta);
       if (regularNotch) repeatedNotches += 1;
@@ -299,6 +312,26 @@
       lastWheel = now;
       wheelDirection = direction;
       lastWheelDelta = magnitude;
+      if (!wheelDetailGroup && !transitionTween && regularNotch && repeatedNotches >= 3) {
+        const group = detailGroup(step);
+        if (group && step + direction >= group[0] && step + direction <= group[1]) wheelDetailGroup = group;
+      }
+      if (wheelDetailGroup && detailGroup(step) === wheelDetailGroup) {
+        accumulated += delta;
+        const distance = Math.abs(accumulated);
+        if (distance < (gestureConsumed ? 160 : 55)) return;
+        const count = gestureConsumed ? Math.floor(distance / 160) : 1 + Math.floor(Math.max(0, distance - 100) / 160);
+        const from = transitionTween && direction * (stops[step] - timeline.time()) < 0 ? stops.reduce((best, time, i) =>
+          Math.abs(time - timeline.time()) < Math.abs(stops[best] - timeline.time()) ? i : best, 0) : step;
+        const target = Math.max(wheelDetailGroup[0], Math.min(wheelDetailGroup[1], from + direction * count));
+        if (target === step) { accumulated = 0; gestureConsumed = true; return; }
+        if (go(target, gestureConsumed || count > 1 || !!transitionTween)) {
+          const used = gestureConsumed ? count * 160 : 100 + (count - 1) * 160;
+          accumulated = target === wheelDetailGroup[0] || target === wheelDetailGroup[1] ? 0 : direction * Math.max(0, distance - used);
+          gestureConsumed = true;
+        }
+        return;
+      }
       // Spaced, renewed impulses can continue after a scene; dense or decaying inertia cannot.
       if (transitionTween || (gestureConsumed && (!regularNotch || repeatedNotches < 3))) return;
       accumulated += delta;
