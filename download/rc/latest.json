@@ -1,19 +1,19 @@
 {
-  "version": "1.7.0-rc.3",
+  "version": "1.7.0-rc.4",
   "notes": "",
-  "pub_date": "2026-11-03T05:24:20Z",
+  "pub_date": "2026-11-03T10:09:37Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRQ0d6Q1BZU1JSMERmWGpiZkNmaHFpOWdtQUdIOFhtaGg1clhuTkVFZXBxS1lvWlZzeWp1MjMxY3cvbi8rTEQ3NG94SWNoTlNFZ0w1NHFnZjVCZi9kaWo5UDZLdXFoN1FFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNjgzNDM0CWZpbGU6dlBhc3RlXzEuNy4wLXJjLjNfd2luZG93c194NjRfc2V0dXAuZXhlCnBBR2p6RHVLbjRnZS9JQ2dycjlKWk9qSXYyN1VZUG1ZZVpZUUJsandVSlFyZ2dkMFA4Um1JUFduUisyVWMxcSt5MXpDYm1wUUQ2TzlQcnpZODJXbUJBPT0K",
-      "url": "https://github.com/Loxonl/vPaste-desktop/releases/download/v1.7.0-rc.3/vPaste_1.7.0-rc.3_windows_x64_setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRQ0d6Q1BZU1JSME5Sa2NzMlRadTZPV0N3UUVuVXZmT1hnSXduVWFNSlBCZUJPc3NYRm41ZUN2MWYwellLN2xDcythZXdya2VkblBxaVZMcmdjT3VaQUdMTlZLMzVtNWdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNzAwNTQwCWZpbGU6dlBhc3RlXzEuNy4wLXJjLjRfd2luZG93c194NjRfc2V0dXAuZXhlCkJoUDNKcnpYeGVPd29mcFF5UjFxT0wrZFdBWjRyWktpRnRJUFVYOWdDeEJXVGp2di84SElab29DRUFtUVBndGNyZXJ1bVN0TWJrN0g0bE95amZodEF3PT0K",
+      "url": "https://github.com/Loxonl/vPaste-desktop/releases/download/v1.7.0-rc.4/vPaste_1.7.0-rc.4_windows_x64_setup.exe"
     },
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRQ0d6Q1BZU1JSMExKcGMvTkg1WVhNaUhRUVF2Smljd2Y2YUc3K1UxckJuU0UzaFVPWFRzN3pqc1U5QW9nQjV3MWJKbFhhMkFnRGRMTmQxVkp4K1RwQnFEdWs1M2tERmdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNjgzMTA1CWZpbGU6dlBhc3RlLmFwcC50YXIuZ3oJdmVyc2lvbjoxLjcuMC1yYy4zCk9ndW5za09VdHFjYW5wMUdBQzM1S1lXNkozUzdCOHMxVWh3c09sZDk3MXZMcEN0a3FNMU43YUNFMkxlRmhDTnAvMG5FRFlwQ1dNYS9MbGNKMFBhakNBPT0K",
-      "url": "https://github.com/Loxonl/vPaste-desktop/releases/download/v1.7.0-rc.3/vPaste_1.7.0-rc.3_macos_aarch64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRQ0d6Q1BZU1JSMExsNFZaK0JNLzNGWDlrVWMvNWFuSjJRdEhmQ0pYSVF6cFBzMVNybDVodldTbFN4RmNVVU9iTkg4U0JoeXRmNEwwNFJ3bm1GSzJ4NEx2RThpcnFpSFE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNzAwMDYxCWZpbGU6dlBhc3RlLmFwcC50YXIuZ3oJdmVyc2lvbjoxLjcuMC1yYy40CjBXRVBYNzVueGJoajUzNzJEN0x2MDA3NVl4aUlLb1dDcmJRSzQ1L1dYZy9sREUrUmVlMzg2bTlTaVNQc3B4c1c5WXlzc09PRjQzbVpYNy9VL29mZ0RRPT0K",
+      "url": "https://github.com/Loxonl/vPaste-desktop/releases/download/v1.7.0-rc.4/vPaste_1.7.0-rc.4_macos_aarch64.app.tar.gz"
     },
     "darwin-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRQ0d6Q1BZU1JSME9CcWNXMWhhQy9lQWRqVjFSWVM2R0l1ZlFqaG4yMEJNcHl4UTJMakdjR2Z1V2ZDd0NQdkJrTTBsV3Mxb08zSFlOSVQrZW9mc21NQ0RvekFLb1R0QUE0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNjgyOTk3CWZpbGU6dlBhc3RlLmFwcC50YXIuZ3oJdmVyc2lvbjoxLjcuMC1yYy4zCjRpeFd4dDd5VTNyUFZtZU1TM3g2Q21scUJGbGZCV0prRk5Mc2pDUk9GaFcyNENjY2hveDhXTVNqMmR1Q25zZjJLTGJqQ1NKOWM0UGFRcXhobkYxbERBPT0K",
-      "url": "https://github.com/Loxonl/vPaste-desktop/releases/download/v1.7.0-rc.3/vPaste_1.7.0-rc.3_macos_x86_64.app.tar.gz"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRQ0d6Q1BZU1JSMEIrSkRyM2VzbkVYQUg0dkFiZHVEOWd6Nk9TTXFEeVBWSUJid0k5WWFEaVorZVJUbHZaWnZEWVc2SkU3ZE5hT2xtU3JXaWQ5dVlJY1oweXp5M213d2d3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkzNzAwMTIzCWZpbGU6dlBhc3RlLmFwcC50YXIuZ3oJdmVyc2lvbjoxLjcuMC1yYy40Cm83VklFQ2M3T0docmhGc1ZQUkNOc25Sbi9Fa1lMSEx3Z2FzRmc3emg5OVBlcnVCN24yemlIWlA2MmFDWmpEMWIvazJobkR1Q2YvZWcrdU9IYXFuVkRRPT0K",
+      "url": "https://github.com/Loxonl/vPaste-desktop/releases/download/v1.7.0-rc.4/vPaste_1.7.0-rc.4_macos_x86_64.app.tar.gz"
     }
   }
 }
